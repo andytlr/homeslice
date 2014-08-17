@@ -27,6 +27,7 @@
 
 		.cityname {
 			line-height: 44px;
+			height: 44px;
 			font-size: 16px;
 			background: hsla(0, 0%, 100%, 0.88);
 
@@ -35,6 +36,15 @@
 			display: block;
 			width: 50%;
 			z-index: 1;
+			overflow: hidden;
+		}
+
+		.cityname.current {
+			left: 0;
+		}
+
+		.cityname.remote {
+			right: 0;
 		}
 
 		.hour {
@@ -51,7 +61,8 @@
 			border-color: hsl(0, 0%, 80%);
 		}
 
-		.outsidebusiness {
+		.outsidebusiness,
+		.timediff {
 			color: hsl(0, 0%, 75%);
 		}
 
@@ -79,30 +90,17 @@
 		}
 	</style>
 
+	<script src="moment.min.js"></script>
+
 	<script type="text/javascript">
 		// Change this if line-height of .hour cells changes
-		var cellHeight     = 24
+		var cellHeight       = 24
 
-		var currentTime    = new Date()
-		var hours          = currentTime.getHours()
-		var minutes        = currentTime.getMinutes()
-		var pointSomething = minutes / 60
+		var hours            = parseInt(moment().format('h'))
+		var minutes          = parseInt(moment().format('m'))
+		var minutesAsDecimal = minutes / 60
 
-		if (minutes < 10) {
-			var minutes = "0" + minutes
-		}
-
-		if (hours < 12) {
-			var twelveHour = hours
-			var ampm = "am"
-		}
-
-		if (hours > 12) {
-			var twelveHour = hours - 12
-			var ampm = "pm"
-		}
-
-		var pxFromTop = (cellHeight + 1) * (hours + pointSomething)
+		var pxFromTop = ((cellHeight + 1) * (hours + minutesAsDecimal)) + 1;
 
 		window.scrollTo(0,(((cellHeight + 1) * hours) - (cellHeight * 3)));
 
@@ -112,7 +110,7 @@
 <body>
 
 	<div class="city melbourne">
-		<div class="cityname">Melbourne</div>
+		<div class="cityname current">Current Location</div>
 
 		<div id="now">
 			<span id="now-time"></span>
@@ -120,7 +118,7 @@
 
 		<script charset="utf-8">
 			document.getElementById("now").style["top"] = pxFromTop + "px";
-			document.getElementById("now-time").innerHTML = twelveHour + ":" + minutes + ampm
+			document.getElementById("now-time").innerHTML = moment().format('h:mma');
 		</script>
 
 		<div class="hour sleep daystart">Today</div>
@@ -174,7 +172,7 @@
 	</div>
 
 	<div class="city sf">
-		<div class="cityname">San Francisco</div>
+		<div class="cityname remote">San Francisco <span class="timediff">-17</span></div>
 		<div class="hour outsidebusiness"><span class="leadingzero">0</span>7am</div>
 		<div class="hour outsidebusiness"><span class="leadingzero">0</span>8am</div>
 		<div class="hour"><span class="leadingzero">0</span>9am</div>

@@ -28,7 +28,7 @@
 		.cityname {
 			line-height: 44px;
 			font-size: 16px;
-			background: hsla(0, 0%, 100%, 0.85);
+			background: hsla(0, 0%, 100%, 0.88);
 
 			position: fixed;
 			top: 0;
@@ -84,7 +84,9 @@
 			var twelveHour = hours - 12
 		}
 
-		var pxFromTop = (cellHeight + 1) * hours + (pointSomething + 1) + "px"
+		var pxFromTop = (cellHeight + 1) * hours + (pointSomething + 1)
+
+		window.scrollTo(0,pxFromTop - (cellHeight * 3));
 
 	</script>
 
@@ -97,7 +99,7 @@
 		<div class="now" id="now">
 			<script charset="utf-8">
 				document.write(twelveHour + ":" + minutes)
-				document.getElementById("now").style["top"] = pxFromTop;
+				document.getElementById("now").style["top"] = pxFromTop + "px";
 			</script>
 		</div>
 

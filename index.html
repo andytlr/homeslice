@@ -100,10 +100,10 @@
 		var minutes          = parseInt(moment().format('m'))
 		var minutesAsDecimal = minutes / 60
 
-		var pxFromTop = ((cellHeight + 1) * (hours + minutesAsDecimal)) + 1;
+		var pxFromTop        = ((cellHeight + 1) * (hours + minutesAsDecimal)) + 1;
+		var scrollPosition   = (((cellHeight + 1) * hours) - (cellHeight * 3));
 
-		window.scrollTo(0,(((cellHeight + 1) * hours) - (cellHeight * 3)));
-
+		window.scrollTo(0,scrollPosition);
 	</script>
 
 </head>
@@ -118,7 +118,7 @@
 
 		<script charset="utf-8">
 			document.getElementById("now").style["top"] = pxFromTop + "px";
-			document.getElementById("now-time").innerHTML = moment().format('h:mma');
+			document.getElementById("now-time").innerHTML = moment().format('h:mma') + " / " + moment().subtract('hours', 17).format('h:mma');
 		</script>
 
 		<div class="hour sleep daystart">Today</div>

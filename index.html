@@ -58,14 +58,27 @@
 			color: transparent;
 		}
 
-		/*.now {
+		.now {
 			height: 1px;
 			width: 200%;
 			background: pink;
 			position: relative;
-			top: 210px;
-		}*/
+		}
 	</style>
+
+	<script type="text/javascript">
+		var currentTime = new Date()
+		var hours = currentTime.getHours()
+		var minutes = currentTime.getMinutes()
+		var pointSomething = minutes / 60
+		var cellHeight = 24
+
+		if (minutes < 10)
+		minutes = "0" + minutes
+
+		var pxFromTop = (cellHeight + 1) * hours + (pointSomething + 1) + "px"
+
+	</script>
 
 </head>
 <body>
@@ -73,7 +86,13 @@
 	<div class="city melbourne">
 		<div class="cityname">Melbourne</div>
 
-		<div class="now"></div>
+		<div class="now" id="now">
+			<script charset="utf-8">
+				document.write(hours + ":" + minutes)
+				document.getElementById("now").style["top"] = pxFromTop;
+			</script>
+		</div>
+
 		<div class="hour sleep daystart">Today</div>
 		<div class="hour sleep"><span class="leadingzero">0</span>1am</div>
 		<div class="hour sleep"><span class="leadingzero">0</span>2am</div>

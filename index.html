@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8"/>
+	<title>MEL ✈ SFO</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui"/>
+	<link rel="apple-touch-icon-precomposed" href="airplane-twitter.png"/>
+
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: sans-serif;
+			text-align: center;
+			font-size: 0;
+		}
+
+		.city {
+			display: inline-block;
+			width: 50%;
+			font-size: 12px;
+
+			padding-top: 44px;
+		}
+
+		.cityname {
+			line-height: 44px;
+			font-size: 16px;
+			background: hsla(0, 0%, 100%, 0.85);
+
+			position: fixed;
+			top: 0;
+			display: block;
+			width: 50%;
+		}
+
+		.hour {
+			padding: 0;
+			line-height: 24px;
+			border-top: 1px solid hsl(0, 0%, 95%);
+		}
+
+		.sleep {
+			color: hsl(0, 0%, 87%);
+		}
+
+		.daystart {
+			border-color: hsl(0, 0%, 80%);
+		}
+
+		.outsidebusiness {
+			color: hsl(0, 0%, 75%);
+		}
+
+		.leadingzero {
+			color: transparent;
+		}
+
+		/*.now {
+			height: 1px;
+			width: 200%;
+			background: pink;
+			position: relative;
+			top: 210px;
+		}*/
+	</style>
+
+</head>
+<body>
+
+	<div class="city melbourne">
+		<div class="cityname">Melbourne</div>
+
+		<div class="now"></div>
+		<div class="hour sleep daystart">Today</div>
+		<div class="hour sleep"><span class="leadingzero">0</span>1am</div>
+		<div class="hour sleep"><span class="leadingzero">0</span>2am</div>
+		<div class="hour sleep"><span class="leadingzero">0</span>3am</div>
+		<div class="hour sleep"><span class="leadingzero">0</span>4am</div>
+		<div class="hour sleep"><span class="leadingzero">0</span>5am</div>
+		<div class="hour sleep"><span class="leadingzero">0</span>6am</div>
+		<div class="hour outsidebusiness"><span class="leadingzero">0</span>7am</div>
+		<div class="hour outsidebusiness"><span class="leadingzero">0</span>8am</div>
+		<div class="hour"><span class="leadingzero">0</span>9am</div>
+		<div class="hour">10am</div>
+		<div class="hour">11am</div>
+		<div class="hour">12pm</div>
+		<div class="hour"><span class="leadingzero">0</span>1pm</div>
+		<div class="hour"><span class="leadingzero">0</span>2pm</div>
+		<div class="hour"><span class="leadingzero">0</span>3pm</div>
+		<div class="hour"><span class="leadingzero">0</span>4pm</div>
+		<div class="hour"><span class="leadingzero">0</span>5pm</div>
+		<div class="hour outsidebusiness"><span class="leadingzero">0</span>6pm</div>
+		<div class="hour outsidebusiness"><span class="leadingzero">0</span>7pm</div>
+		<div class="hour outsidebusiness"><span class="leadingzero">0</span>8pm</div>
+		<div class="hour outsidebusiness">09pm</div>
+		<div class="hour outsidebusiness">10pm</div>
+		<div class="hour sleep">11pm</div>
+		<div class="hour sleep daystart">Tomorrow</div>
+		<div class="hour sleep"><span class="leadingzero">0</span>1am</div>
+		<div class="hour sleep"><span class="leadingzero">0</span>2am</div>
+		<div class="hour sleep"><span class="leadingzero">0</span>3am</div>
+		<div class="hour sleep"><span class="leadingzero">0</span>4am</div>
+		<div class="hour sleep"><span class="leadingzero">0</span>5am</div>
+		<div class="hour sleep"><span class="leadingzero">0</span>6am</div>
+		<div class="hour outsidebusiness"><span class="leadingzero">0</span>7am</div>
+		<div class="hour outsidebusiness"><span class="leadingzero">0</span>8am</div>
+		<div class="hour"><span class="leadingzero">0</span>9am</div>
+		<div class="hour">10am</div>
+		<div class="hour">11am</div>
+		<div class="hour">12pm</div>
+		<div class="hour"><span class="leadingzero">0</span>1pm</div>
+		<div class="hour"><span class="leadingzero">0</span>2pm</div>
+		<div class="hour"><span class="leadingzero">0</span>3pm</div>
+		<div class="hour"><span class="leadingzero">0</span>4pm</div>
+		<div class="hour"><span class="leadingzero">0</span>5pm</div>
+		<div class="hour outsidebusiness"><span class="leadingzero">0</span>6pm</div>
+		<div class="hour outsidebusiness"><span class="leadingzero">0</span>7pm</div>
+		<div class="hour outsidebusiness"><span class="leadingzero">0</span>8pm</div>
+		<div class="hour outsidebusiness">09pm</div>
+		<div class="hour outsidebusiness">10pm</div>
+		<div class="hour sleep">11pm</div>
+	</div>
+
+	<div class="city sf">
+		<div class="cityname">San Francisco</div>
+		<div class="hour outsidebusiness"><span class="leadingzero">0</span>7am</div>
+		<div class="hour outsidebusiness"><span class="leadingzero">0</span>8am</div>
+		<div class="hour"><span class="leadingzero">0</span>9am</div>
+		<div class="hour">10am</div>
+		<div class="hour">11am</div>
+		<div class="hour">12pm</div>
+		<div class="hour"><span class="leadingzero">0</span>1pm</div>
+		<div class="hour"><span class="leadingzero">0</span>2pm</div>
+		<div class="hour"><span class="leadingzero">0</span>3pm</div>
+		<div class="hour"><span class="leadingzero">0</span>4pm</div>
+		<div class="hour"><span class="leadingzero">0</span>5pm</div>
+		<div class="hour outsidebusiness"><span class="leadingzero">0</span>6pm</div>
+		<div class="hour outsidebusiness"><span class="leadingzero">0</span>7pm</div>
+		<div class="hour outsidebusiness"><span class="leadingzero">0</span>8pm</div>
+		<div class="hour outsidebusiness">09pm</div>
+		<div class="hour outsidebusiness">10pm</div>
+		<div class="hour sleep">11pm</div>
+		<div class="hour sleep daystart">Today</div>
+		<div class="hour sleep"><span class="leadingzero">0</span>1am</div>
+		<div class="hour sleep"><span class="leadingzero">0</span>2am</div>
+		<div class="hour sleep"><span class="leadingzero">0</span>3am</div>
+		<div class="hour sleep"><span class="leadingzero">0</span>4am</div>
+		<div class="hour sleep"><span class="leadingzero">0</span>5am</div>
+		<div class="hour sleep"><span class="leadingzero">0</span>6am</div>
+		<div class="hour outsidebusiness"><span class="leadingzero">0</span>7am</div>
+		<div class="hour outsidebusiness"><span class="leadingzero">0</span>8am</div>
+		<div class="hour"><span class="leadingzero">0</span>9am</div>
+		<div class="hour">10am</div>
+		<div class="hour">11am</div>
+		<div class="hour">12pm</div>
+		<div class="hour"><span class="leadingzero">0</span>1pm</div>
+		<div class="hour"><span class="leadingzero">0</span>2pm</div>
+		<div class="hour"><span class="leadingzero">0</span>3pm</div>
+		<div class="hour"><span class="leadingzero">0</span>4pm</div>
+		<div class="hour"><span class="leadingzero">0</span>5pm</div>
+		<div class="hour outsidebusiness"><span class="leadingzero">0</span>6pm</div>
+		<div class="hour outsidebusiness"><span class="leadingzero">0</span>7pm</div>
+		<div class="hour outsidebusiness"><span class="leadingzero">0</span>8pm</div>
+		<div class="hour outsidebusiness">09pm</div>
+		<div class="hour outsidebusiness">10pm</div>
+		<div class="hour sleep">11pm</div>
+		<div class="hour sleep daystart">Tomorrow</div>
+		<div class="hour sleep"><span class="leadingzero">0</span>1am</div>
+		<div class="hour sleep"><span class="leadingzero">0</span>2am</div>
+		<div class="hour sleep"><span class="leadingzero">0</span>3am</div>
+		<div class="hour sleep"><span class="leadingzero">0</span>4am</div>
+		<div class="hour sleep"><span class="leadingzero">0</span>5am</div>
+		<div class="hour sleep"><span class="leadingzero">0</span>6am</div>
+	</div>
+
+</body>
+</html>

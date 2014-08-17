@@ -43,7 +43,7 @@
 		}
 
 		.sleep {
-			color: hsl(0, 0%, 87%);
+			color: hsl(0, 0%, 98%);
 		}
 
 		.daystart {
@@ -58,12 +58,24 @@
 			color: transparent;
 		}
 
-		.now {
+		#now {
 			height: 1px;
 			width: 200%;
 			background: orange;
 			color: orange;
+			display: block;
 			position: relative;
+		}
+
+		#now-time {
+			line-height: 20px;
+			position: relative;
+			display: inline-block;
+			top: -10px;
+			padding: 0 10px;
+			border-radius: 10px;
+			background: orange;
+			color: #fff;
 		}
 	</style>
 
@@ -102,11 +114,13 @@
 	<div class="city melbourne">
 		<div class="cityname">Melbourne</div>
 
-		<div class="now" id="now"></div>
+		<div id="now">
+			<span id="now-time"></span>
+		</div>
 
 		<script charset="utf-8">
-			document.getElementById("now").innerHTML = twelveHour + ":" + minutes + ampm
 			document.getElementById("now").style["top"] = pxFromTop + "px";
+			document.getElementById("now-time").innerHTML = twelveHour + ":" + minutes + ampm
 		</script>
 
 		<div class="hour sleep daystart">Today</div>

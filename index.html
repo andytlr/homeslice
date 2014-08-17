@@ -101,12 +101,12 @@
 	<div class="city melbourne">
 		<div class="cityname">Melbourne</div>
 
-		<div class="now" id="now">
-			<script charset="utf-8">
-				document.write(twelveHour + ":" + minutes + ampm)
-				document.getElementById("now").style["top"] = pxFromTop + "px";
-			</script>
-		</div>
+		<div class="now" id="now"></div>
+		
+		<script charset="utf-8">
+			document.getElementById("now").innerHTML = twelveHour + ":" + minutes + ampm
+			document.getElementById("now").style["top"] = pxFromTop + "px";
+		</script>
 
 		<div class="hour sleep daystart">Today</div>
 		<div class="hour sleep"><span class="leadingzero">0</span>1am</div>

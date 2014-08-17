@@ -82,6 +82,11 @@
 
 		if (hours > 12) {
 			var twelveHour = hours - 12
+			var ampm = "pm"
+		}
+
+		if (hours < 12) {
+			var ampm = "am"
 		}
 
 		var pxFromTop = (cellHeight + 1) * (hours + pointSomething)
@@ -98,7 +103,7 @@
 
 		<div class="now" id="now">
 			<script charset="utf-8">
-				document.write(twelveHour + ":" + minutes)
+				document.write(twelveHour + ":" + minutes + ampm)
 				document.getElementById("now").style["top"] = pxFromTop + "px";
 			</script>
 		</div>

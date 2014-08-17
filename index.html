@@ -61,20 +61,28 @@
 		.now {
 			height: 1px;
 			width: 200%;
-			background: pink;
+			background: orange;
+			color: orange;
 			position: relative;
 		}
 	</style>
 
 	<script type="text/javascript">
-		var currentTime = new Date()
-		var hours = currentTime.getHours()
-		var minutes = currentTime.getMinutes()
-		var pointSomething = minutes / 60
-		var cellHeight = 24
+		// Change this if line-height of .hour cells changes
+		var cellHeight     = 24
 
-		if (minutes < 10)
-		minutes = "0" + minutes
+		var currentTime    = new Date()
+		var hours          = currentTime.getHours()
+		var minutes        = currentTime.getMinutes()
+		var pointSomething = minutes / 60
+
+		if (minutes < 10) {
+			var minutes = "0" + minutes
+		}
+
+		if (hours > 12) {
+			var twelveHour = hours - 12
+		}
 
 		var pxFromTop = (cellHeight + 1) * hours + (pointSomething + 1) + "px"
 
@@ -88,7 +96,7 @@
 
 		<div class="now" id="now">
 			<script charset="utf-8">
-				document.write(hours + ":" + minutes)
+				document.write(twelveHour + ":" + minutes)
 				document.getElementById("now").style["top"] = pxFromTop;
 			</script>
 		</div>

@@ -80,13 +80,14 @@
 			var minutes = "0" + minutes
 		}
 
+		if (hours < 12) {
+			var twelveHour = hours
+			var ampm = "am"
+		}
+
 		if (hours > 12) {
 			var twelveHour = hours - 12
 			var ampm = "pm"
-		}
-
-		if (hours < 12) {
-			var ampm = "am"
 		}
 
 		var pxFromTop = (cellHeight + 1) * (hours + pointSomething)
@@ -102,7 +103,7 @@
 		<div class="cityname">Melbourne</div>
 
 		<div class="now" id="now"></div>
-		
+
 		<script charset="utf-8">
 			document.getElementById("now").innerHTML = twelveHour + ":" + minutes + ampm
 			document.getElementById("now").style["top"] = pxFromTop + "px";

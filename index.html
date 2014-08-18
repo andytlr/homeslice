@@ -5,7 +5,7 @@
 	<meta charset="utf-8"/>
 	<title>MEL ✈ SFO</title>
 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimal-ui"/>
 	<link rel="apple-touch-icon-precomposed" href="img/airplane-twitter.png"/>
 
 	<style>
@@ -20,7 +20,6 @@
 		.city {
 			display: inline-block;
 			width: 50%;
-			font-size: 12px;
 			padding-top: 44px;
 		}
 
@@ -37,28 +36,17 @@
 			overflow: hidden;
 		}
 
-		.cityname.current {
-			left: 0;
-		}
-
-		.cityname.sfo {
-			right: 0;
-		}
-
 		.hour {
 			padding: 0;
-			line-height: 24px;
 			height: 24px;
+			line-height: 24px;
+			font-size: 12px;
 			border-top: 1px solid hsl(0, 0%, 95%);
 		}
 
 		.hour.current {
-			background: hsl(173, 83%, 40%);
-			color: hsl(0, 0%, 100%);
-			/*font-size: 14px;
-			line-height: 14px;
-			height: auto;
-			padding: 10px 0;*/
+			color: hsl(173, 83%, 40%);
+			/*color: hsl(0, 0%, 100%);*/
 		}
 
 		.sleep {
@@ -74,7 +62,7 @@
 		}
 
 		.outsidebusiness {
-			color: hsl(0, 0%, 75%);
+			color: hsl(0, 0%, 65%);
 		}
 	</style>
 
@@ -93,7 +81,7 @@
 <body>
 
 	<div class="city">
-		<div class="cityname current">Melbourne</div>
+		<div class="cityname cityname">Melbourne</div>
 
 		<div class="hour" id="mel-minus-3"></div>
 		<div class="hour" id="mel-minus-2"></div>
@@ -144,7 +132,7 @@
 	</div>
 
 	<div class="city">
-		<div class="cityname sfo">San Francisco</div>
+		<div class="cityname cityname">San Francisco</div>
 
 		<div class="hour" id="sfo-minus-3"></div>
 		<div class="hour" id="sfo-minus-2"></div>
@@ -290,22 +278,25 @@
 			document.getElementById("sfo-add-41").innerHTML = moment().zone(SfoUtcOffset).add('hours', 41).format(formatTime);
 			document.getElementById("sfo-add-42").innerHTML = moment().zone(SfoUtcOffset).add('hours', 42).format(formatTime);
 
+			$('.hour:contains("12am")').addClass('daystart');
+
 			// This doesn't seem robust. Think I need regex.
 			$('.hour:contains("12am")').addClass('sleep');
-			$('.hour:contains("01am")').addClass('sleep');
-			$('.hour:contains("02am")').addClass('sleep');
-			$('.hour:contains("03am")').addClass('sleep');
-			$('.hour:contains("04am")').addClass('sleep');
-			$('.hour:contains("05am")').addClass('sleep');
-			$('.hour:contains("06am")').addClass('sleep');
-			$('.hour:contains("07am")').addClass('outsidebusiness');
-			$('.hour:contains("08am")').addClass('outsidebusiness');
-			$('.hour:contains("06pm")').addClass('outsidebusiness');
-			$('.hour:contains("07pm")').addClass('outsidebusiness');
-			$('.hour:contains("08pm")').addClass('outsidebusiness');
-			$('.hour:contains("09pm")').addClass('outsidebusiness');
+			$('.hour:contains("1am")').addClass('sleep');
+			$('.hour:contains("2am")').addClass('sleep');
+			$('.hour:contains("3am")').addClass('sleep');
+			$('.hour:contains("4am")').addClass('sleep');
+			$('.hour:contains("5am")').addClass('sleep');
+			$('.hour:contains("6am")').addClass('sleep');
+			$('.hour:contains("7am")').addClass('outsidebusiness');
+			$('.hour:contains("8am")').addClass('outsidebusiness');
+			$('.hour:contains("6pm")').addClass('outsidebusiness');
+			$('.hour:contains("7pm")').addClass('outsidebusiness');
+			$('.hour:contains("8pm")').addClass('outsidebusiness');
+			$('.hour:contains("9pm")').addClass('outsidebusiness');
 			$('.hour:contains("10pm")').addClass('outsidebusiness');
 			$('.hour:contains("11pm")').addClass('outsidebusiness');
+			$('.hour:contains("11am")').removeClass('sleep');
 
 			// This doesn't work because H:01 gets matched.
 			// $('.hour:contains("01")').contents().each(function () {

@@ -6,7 +6,7 @@
 	<title>MEL ✈ SFO</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui"/>
-	<link rel="apple-touch-icon-precomposed" href="airplane-twitter.png"/>
+	<link rel="apple-touch-icon-precomposed" href="img/airplane-twitter.png"/>
 
 	<style>
 		body {
@@ -71,8 +71,8 @@
 		}
 	</style>
 
-	<script src="moment.min.js"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="js/moment.min.js"></script>
+	<script src="js/jquery.min.js"></script>
 
 	<script type="text/javascript">
 		var timeZoneOffset   = 17
@@ -201,7 +201,7 @@
 			document.getElementById("local-minus-3").innerHTML = moment().subtract('hours', 3).format('ha');
 			document.getElementById("local-minus-2").innerHTML = moment().subtract('hours', 2).format('ha');
 			document.getElementById("local-minus-1").innerHTML = moment().subtract('hours', 1).format('ha');
-			document.getElementById("local-current").innerHTML = moment().format('h:mm:ssa');
+			document.getElementById("local-current").innerHTML = moment().format('h:mma');
 			document.getElementById("local-add-1").innerHTML = moment().add('hours', 1).format('ha');
 			document.getElementById("local-add-2").innerHTML = moment().add('hours', 2).format('ha');
 			document.getElementById("local-add-3").innerHTML = moment().add('hours', 3).format('ha');
@@ -249,7 +249,7 @@
 			document.getElementById("remote-minus-3").innerHTML = moment().subtract('hours', 3).subtract('hours', timeZoneOffset).format('ha');
 			document.getElementById("remote-minus-2").innerHTML = moment().subtract('hours', 2).subtract('hours', timeZoneOffset).format('ha');
 			document.getElementById("remote-minus-1").innerHTML = moment().subtract('hours', 1).subtract('hours', timeZoneOffset).format('ha');
-			document.getElementById("remote-current").innerHTML = moment().subtract('hours', timeZoneOffset).format('h:mm:ssa');
+			document.getElementById("remote-current").innerHTML = moment().subtract('hours', timeZoneOffset).format('h:mma');
 			document.getElementById("remote-add-1").innerHTML = moment().add('hours', 1).subtract('hours', timeZoneOffset).format('ha');
 			document.getElementById("remote-add-2").innerHTML = moment().add('hours', 2).subtract('hours', timeZoneOffset).format('ha');
 			document.getElementById("remote-add-3").innerHTML = moment().add('hours', 3).subtract('hours', timeZoneOffset).format('ha');
@@ -303,7 +303,7 @@
 			$('.hour:contains("10pm")').addClass('outsidebusiness');
 			$('.hour:contains("11pm")').addClass('outsidebusiness');
 			$('.hour:contains("11am")').removeClass('sleep');
-			
+
 		}, 1000);
 	</script>
 

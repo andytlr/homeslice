@@ -80,11 +80,6 @@
 		var scrollPosition   = (cellHeight + 1) * 7
 
 		window.scrollTo(0,scrollPosition);
-
-		window.setInterval(function(){
-			document.getElementById("current-remote").innerHTML = moment().subtract('hours', timeZoneOffset).format('h:mm:ssa');
-		}, 1000);
-
 	</script>
 
 </head>
@@ -206,7 +201,7 @@
 			document.getElementById("local-minus-3").innerHTML = moment().subtract('hours', 3).format('ha');
 			document.getElementById("local-minus-2").innerHTML = moment().subtract('hours', 2).format('ha');
 			document.getElementById("local-minus-1").innerHTML = moment().subtract('hours', 1).format('ha');
-			document.getElementById("local-current").innerHTML = moment().format('h:mma');
+			document.getElementById("local-current").innerHTML = moment().format('h:mm:ssa');
 			document.getElementById("local-add-1").innerHTML = moment().add('hours', 1).format('ha');
 			document.getElementById("local-add-2").innerHTML = moment().add('hours', 2).format('ha');
 			document.getElementById("local-add-3").innerHTML = moment().add('hours', 3).format('ha');
@@ -254,7 +249,7 @@
 			document.getElementById("remote-minus-3").innerHTML = moment().subtract('hours', 3).subtract('hours', timeZoneOffset).format('ha');
 			document.getElementById("remote-minus-2").innerHTML = moment().subtract('hours', 2).subtract('hours', timeZoneOffset).format('ha');
 			document.getElementById("remote-minus-1").innerHTML = moment().subtract('hours', 1).subtract('hours', timeZoneOffset).format('ha');
-			document.getElementById("remote-current").innerHTML = moment().subtract('hours', timeZoneOffset).format('h:mma');
+			document.getElementById("remote-current").innerHTML = moment().subtract('hours', timeZoneOffset).format('h:mm:ssa');
 			document.getElementById("remote-add-1").innerHTML = moment().add('hours', 1).subtract('hours', timeZoneOffset).format('ha');
 			document.getElementById("remote-add-2").innerHTML = moment().add('hours', 2).subtract('hours', timeZoneOffset).format('ha');
 			document.getElementById("remote-add-3").innerHTML = moment().add('hours', 3).subtract('hours', timeZoneOffset).format('ha');

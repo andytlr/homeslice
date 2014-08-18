@@ -6,7 +6,7 @@
 	<title>MEL ✈ SFO</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui"/>
-	<link rel="apple-touch-icon-precomposed" href="airplane-twitter.png"/>
+	<link rel="apple-touch-icon-precomposed" href="img/airplane-twitter.png"/>
 
 	<style>
 		body {
@@ -21,7 +21,6 @@
 			display: inline-block;
 			width: 50%;
 			font-size: 12px;
-
 			padding-top: 44px;
 		}
 
@@ -30,7 +29,6 @@
 			height: 44px;
 			font-size: 16px;
 			background: hsla(0, 0%, 100%, 0.88);
-
 			position: fixed;
 			top: 0;
 			display: block;
@@ -50,6 +48,7 @@
 		.hour {
 			padding: 0;
 			line-height: 24px;
+			height: 24px;
 			border-top: 1px solid hsl(0, 0%, 95%);
 		}
 
@@ -66,39 +65,19 @@
 			color: hsl(0, 0%, 75%);
 		}
 
-		.leadingzero {
-			color: transparent;
-		}
-
-		#now {
-			height: 1px;
-			width: 200%;
-			background: hsl(173, 83%, 40%);
-			display: block;
-			position: relative;
-		}
-
-		#now-time {
-			line-height: 20px;
-			position: relative;
-			display: inline-block;
-			top: -10px;
-			padding: 0 10px;
-			border-radius: 10px;
+		.hour.current {
 			background: hsl(173, 83%, 40%);
 			color: hsl(0, 0%, 100%);
 		}
 	</style>
 
-	<script src="moment.min.js"></script>
+	<script src="js/moment.min.js"></script>
+	<script src="js/jquery.min.js"></script>
 
 	<script type="text/javascript">
-		// Change this if line-height of .hour cells changes
+		var timeZoneOffset   = 17
 		var cellHeight       = 24
-
-		var hours            = parseInt(moment().format('h'))
-
-		var scrollPosition   = (((cellHeight + 1) * hours) - (cellHeight * 3));
+		var scrollPosition   = (cellHeight + 1) * 7
 
 		window.scrollTo(0,scrollPosition);
 	</script>
@@ -106,129 +85,227 @@
 </head>
 <body>
 
-	<div class="city melbourne">
+	<div class="city">
 		<div class="cityname current">Current Location</div>
 
-		<div id="now">
-			<span id="now-time"></span>
-		</div>
-
-		<script charset="utf-8">
-			window.setInterval(function(){
-				document.getElementById("now").style["top"] =
-					(
-						(cellHeight + 1) // Add a pixel to the cell height to account for the border.
-						* (parseInt(moment().format('h')) // X number of hours.
-						+ (parseInt(moment().format('m')) / 60)) // Plus minutes as a decimal.
-					)
-						+ 1 // Plus one because of rounding? Maybe use a round function.
-						+ "px" // The unit.
-					;
-			  document.getElementById("now-time").innerHTML = moment().format('h:mma') + " / " + moment().subtract('hours', 17).format('h:mma');
-			}, 1000);
-		</script>
-
-		<div class="hour sleep daystart">Today</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>1am</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>2am</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>3am</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>4am</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>5am</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>6am</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>7am</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>8am</div>
-		<div class="hour"><span class="leadingzero">0</span>9am</div>
-		<div class="hour">10am</div>
-		<div class="hour">11am</div>
-		<div class="hour">12pm</div>
-		<div class="hour"><span class="leadingzero">0</span>1pm</div>
-		<div class="hour"><span class="leadingzero">0</span>2pm</div>
-		<div class="hour"><span class="leadingzero">0</span>3pm</div>
-		<div class="hour"><span class="leadingzero">0</span>4pm</div>
-		<div class="hour"><span class="leadingzero">0</span>5pm</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>6pm</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>7pm</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>8pm</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>9pm</div>
-		<div class="hour outsidebusiness">10pm</div>
-		<div class="hour sleep">11pm</div>
-		<div class="hour sleep daystart">Tomorrow</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>1am</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>2am</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>3am</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>4am</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>5am</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>6am</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>7am</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>8am</div>
-		<div class="hour"><span class="leadingzero">0</span>9am</div>
-		<div class="hour">10am</div>
-		<div class="hour">11am</div>
-		<div class="hour">12pm</div>
-		<div class="hour"><span class="leadingzero">0</span>1pm</div>
-		<div class="hour"><span class="leadingzero">0</span>2pm</div>
-		<div class="hour"><span class="leadingzero">0</span>3pm</div>
-		<div class="hour"><span class="leadingzero">0</span>4pm</div>
-		<div class="hour"><span class="leadingzero">0</span>5pm</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>6pm</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>7pm</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>8pm</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>9pm</div>
-		<div class="hour outsidebusiness">10pm</div>
-		<div class="hour sleep">11pm</div>
+		<div class="hour" id="local-minus-10"></div>
+		<div class="hour" id="local-minus-9"></div>
+		<div class="hour" id="local-minus-8"></div>
+		<div class="hour" id="local-minus-7"></div>
+		<div class="hour" id="local-minus-6"></div>
+		<div class="hour" id="local-minus-5"></div>
+		<div class="hour" id="local-minus-4"></div>
+		<div class="hour" id="local-minus-3"></div>
+		<div class="hour" id="local-minus-2"></div>
+		<div class="hour" id="local-minus-1"></div>
+		<div class="hour current" id="local-current"></div>
+		<div class="hour" id="local-add-1"></div>
+		<div class="hour" id="local-add-2"></div>
+		<div class="hour" id="local-add-3"></div>
+		<div class="hour" id="local-add-4"></div>
+		<div class="hour" id="local-add-5"></div>
+		<div class="hour" id="local-add-6"></div>
+		<div class="hour" id="local-add-7"></div>
+		<div class="hour" id="local-add-8"></div>
+		<div class="hour" id="local-add-9"></div>
+		<div class="hour" id="local-add-10"></div>
+		<div class="hour" id="local-add-11"></div>
+		<div class="hour" id="local-add-12"></div>
+		<div class="hour" id="local-add-13"></div>
+		<div class="hour" id="local-add-14"></div>
+		<div class="hour" id="local-add-15"></div>
+		<div class="hour" id="local-add-16"></div>
+		<div class="hour" id="local-add-17"></div>
+		<div class="hour" id="local-add-18"></div>
+		<div class="hour" id="local-add-19"></div>
+		<div class="hour" id="local-add-20"></div>
+		<div class="hour" id="local-add-21"></div>
+		<div class="hour" id="local-add-22"></div>
+		<div class="hour" id="local-add-23"></div>
+		<div class="hour" id="local-add-24"></div>
+		<div class="hour" id="local-add-25"></div>
+		<div class="hour" id="local-add-26"></div>
+		<div class="hour" id="local-add-27"></div>
+		<div class="hour" id="local-add-28"></div>
+		<div class="hour" id="local-add-29"></div>
+		<div class="hour" id="local-add-30"></div>
+		<div class="hour" id="local-add-31"></div>
+		<div class="hour" id="local-add-32"></div>
+		<div class="hour" id="local-add-33"></div>
+		<div class="hour" id="local-add-34"></div>
+		<div class="hour" id="local-add-35"></div>
+		<div class="hour" id="local-add-36"></div>
 	</div>
 
-	<div class="city sf">
-		<div class="cityname remote">San Francisco <span class="timediff">-17</span></div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>7am</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>8am</div>
-		<div class="hour"><span class="leadingzero">0</span>9am</div>
-		<div class="hour">10am</div>
-		<div class="hour">11am</div>
-		<div class="hour">12pm</div>
-		<div class="hour"><span class="leadingzero">0</span>1pm</div>
-		<div class="hour"><span class="leadingzero">0</span>2pm</div>
-		<div class="hour"><span class="leadingzero">0</span>3pm</div>
-		<div class="hour"><span class="leadingzero">0</span>4pm</div>
-		<div class="hour"><span class="leadingzero">0</span>5pm</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>6pm</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>7pm</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>8pm</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>9pm</div>
-		<div class="hour outsidebusiness">10pm</div>
-		<div class="hour sleep">11pm</div>
-		<div class="hour sleep daystart">Today</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>1am</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>2am</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>3am</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>4am</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>5am</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>6am</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>7am</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>8am</div>
-		<div class="hour"><span class="leadingzero">0</span>9am</div>
-		<div class="hour">10am</div>
-		<div class="hour">11am</div>
-		<div class="hour">12pm</div>
-		<div class="hour"><span class="leadingzero">0</span>1pm</div>
-		<div class="hour"><span class="leadingzero">0</span>2pm</div>
-		<div class="hour"><span class="leadingzero">0</span>3pm</div>
-		<div class="hour"><span class="leadingzero">0</span>4pm</div>
-		<div class="hour"><span class="leadingzero">0</span>5pm</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>6pm</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>7pm</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>8pm</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>9pm</div>
-		<div class="hour outsidebusiness">10pm</div>
-		<div class="hour sleep">11pm</div>
-		<div class="hour sleep daystart">Tomorrow</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>1am</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>2am</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>3am</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>4am</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>5am</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>6am</div>
+	<div class="city">
+		<div class="cityname remote">San Francisco <span class="timediff">-<script charset="utf-8">document.write(timeZoneOffset)</script></span></div>
+
+		<div class="hour" id="remote-minus-10"></div>
+		<div class="hour" id="remote-minus-9"></div>
+		<div class="hour" id="remote-minus-8"></div>
+		<div class="hour" id="remote-minus-7"></div>
+		<div class="hour" id="remote-minus-6"></div>
+		<div class="hour" id="remote-minus-5"></div>
+		<div class="hour" id="remote-minus-4"></div>
+		<div class="hour" id="remote-minus-3"></div>
+		<div class="hour" id="remote-minus-2"></div>
+		<div class="hour" id="remote-minus-1"></div>
+		<div class="hour current" id="remote-current"></div>
+		<div class="hour" id="remote-add-1"></div>
+		<div class="hour" id="remote-add-2"></div>
+		<div class="hour" id="remote-add-3"></div>
+		<div class="hour" id="remote-add-4"></div>
+		<div class="hour" id="remote-add-5"></div>
+		<div class="hour" id="remote-add-6"></div>
+		<div class="hour" id="remote-add-7"></div>
+		<div class="hour" id="remote-add-8"></div>
+		<div class="hour" id="remote-add-9"></div>
+		<div class="hour" id="remote-add-10"></div>
+		<div class="hour" id="remote-add-11"></div>
+		<div class="hour" id="remote-add-12"></div>
+		<div class="hour" id="remote-add-13"></div>
+		<div class="hour" id="remote-add-14"></div>
+		<div class="hour" id="remote-add-15"></div>
+		<div class="hour" id="remote-add-16"></div>
+		<div class="hour" id="remote-add-17"></div>
+		<div class="hour" id="remote-add-18"></div>
+		<div class="hour" id="remote-add-19"></div>
+		<div class="hour" id="remote-add-20"></div>
+		<div class="hour" id="remote-add-21"></div>
+		<div class="hour" id="remote-add-22"></div>
+		<div class="hour" id="remote-add-23"></div>
+		<div class="hour" id="remote-add-24"></div>
+		<div class="hour" id="remote-add-25"></div>
+		<div class="hour" id="remote-add-26"></div>
+		<div class="hour" id="remote-add-27"></div>
+		<div class="hour" id="remote-add-28"></div>
+		<div class="hour" id="remote-add-29"></div>
+		<div class="hour" id="remote-add-30"></div>
+		<div class="hour" id="remote-add-31"></div>
+		<div class="hour" id="remote-add-32"></div>
+		<div class="hour" id="remote-add-33"></div>
+		<div class="hour" id="remote-add-34"></div>
+		<div class="hour" id="remote-add-35"></div>
+		<div class="hour" id="remote-add-36"></div>
 	</div>
+
+	<script charset="utf-8">
+		window.setInterval(function(){
+			document.getElementById("local-minus-10").innerHTML = moment().subtract('hours', 10).format('ha');
+			document.getElementById("local-minus-9").innerHTML = moment().subtract('hours', 9).format('ha');
+			document.getElementById("local-minus-8").innerHTML = moment().subtract('hours', 8).format('ha');
+			document.getElementById("local-minus-7").innerHTML = moment().subtract('hours', 7).format('ha');
+			document.getElementById("local-minus-6").innerHTML = moment().subtract('hours', 6).format('ha');
+			document.getElementById("local-minus-5").innerHTML = moment().subtract('hours', 5).format('ha');
+			document.getElementById("local-minus-4").innerHTML = moment().subtract('hours', 4).format('ha');
+			document.getElementById("local-minus-3").innerHTML = moment().subtract('hours', 3).format('ha');
+			document.getElementById("local-minus-2").innerHTML = moment().subtract('hours', 2).format('ha');
+			document.getElementById("local-minus-1").innerHTML = moment().subtract('hours', 1).format('ha');
+			document.getElementById("local-current").innerHTML = moment().format('h:mma');
+			document.getElementById("local-add-1").innerHTML = moment().add('hours', 1).format('ha');
+			document.getElementById("local-add-2").innerHTML = moment().add('hours', 2).format('ha');
+			document.getElementById("local-add-3").innerHTML = moment().add('hours', 3).format('ha');
+			document.getElementById("local-add-4").innerHTML = moment().add('hours', 4).format('ha');
+			document.getElementById("local-add-5").innerHTML = moment().add('hours', 5).format('ha');
+			document.getElementById("local-add-6").innerHTML = moment().add('hours', 6).format('ha');
+			document.getElementById("local-add-7").innerHTML = moment().add('hours', 7).format('ha');
+			document.getElementById("local-add-8").innerHTML = moment().add('hours', 8).format('ha');
+			document.getElementById("local-add-9").innerHTML = moment().add('hours', 9).format('ha');
+			document.getElementById("local-add-10").innerHTML = moment().add('hours', 10).format('ha');
+			document.getElementById("local-add-11").innerHTML = moment().add('hours', 11).format('ha');
+			document.getElementById("local-add-12").innerHTML = moment().add('hours', 12).format('ha');
+			document.getElementById("local-add-13").innerHTML = moment().add('hours', 13).format('ha');
+			document.getElementById("local-add-14").innerHTML = moment().add('hours', 14).format('ha');
+			document.getElementById("local-add-15").innerHTML = moment().add('hours', 15).format('ha');
+			document.getElementById("local-add-16").innerHTML = moment().add('hours', 16).format('ha');
+			document.getElementById("local-add-17").innerHTML = moment().add('hours', 17).format('ha');
+			document.getElementById("local-add-18").innerHTML = moment().add('hours', 18).format('ha');
+			document.getElementById("local-add-19").innerHTML = moment().add('hours', 19).format('ha');
+			document.getElementById("local-add-20").innerHTML = moment().add('hours', 20).format('ha');
+			document.getElementById("local-add-21").innerHTML = moment().add('hours', 21).format('ha');
+			document.getElementById("local-add-22").innerHTML = moment().add('hours', 22).format('ha');
+			document.getElementById("local-add-23").innerHTML = moment().add('hours', 23).format('ha');
+			document.getElementById("local-add-24").innerHTML = moment().add('hours', 24).format('ha');
+			document.getElementById("local-add-25").innerHTML = moment().add('hours', 25).format('ha');
+			document.getElementById("local-add-26").innerHTML = moment().add('hours', 26).format('ha');
+			document.getElementById("local-add-27").innerHTML = moment().add('hours', 27).format('ha');
+			document.getElementById("local-add-28").innerHTML = moment().add('hours', 28).format('ha');
+			document.getElementById("local-add-29").innerHTML = moment().add('hours', 29).format('ha');
+			document.getElementById("local-add-30").innerHTML = moment().add('hours', 30).format('ha');
+			document.getElementById("local-add-31").innerHTML = moment().add('hours', 31).format('ha');
+			document.getElementById("local-add-32").innerHTML = moment().add('hours', 32).format('ha');
+			document.getElementById("local-add-33").innerHTML = moment().add('hours', 33).format('ha');
+			document.getElementById("local-add-34").innerHTML = moment().add('hours', 34).format('ha');
+			document.getElementById("local-add-35").innerHTML = moment().add('hours', 35).format('ha');
+			document.getElementById("local-add-36").innerHTML = moment().add('hours', 36).format('ha');
+
+			document.getElementById("remote-minus-10").innerHTML = moment().subtract('hours', 10).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-minus-9").innerHTML = moment().subtract('hours', 9).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-minus-8").innerHTML = moment().subtract('hours', 8).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-minus-7").innerHTML = moment().subtract('hours', 7).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-minus-6").innerHTML = moment().subtract('hours', 6).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-minus-5").innerHTML = moment().subtract('hours', 5).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-minus-4").innerHTML = moment().subtract('hours', 4).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-minus-3").innerHTML = moment().subtract('hours', 3).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-minus-2").innerHTML = moment().subtract('hours', 2).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-minus-1").innerHTML = moment().subtract('hours', 1).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-current").innerHTML = moment().subtract('hours', timeZoneOffset).format('h:mma');
+			document.getElementById("remote-add-1").innerHTML = moment().add('hours', 1).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-add-2").innerHTML = moment().add('hours', 2).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-add-3").innerHTML = moment().add('hours', 3).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-add-4").innerHTML = moment().add('hours', 4).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-add-5").innerHTML = moment().add('hours', 5).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-add-6").innerHTML = moment().add('hours', 6).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-add-7").innerHTML = moment().add('hours', 7).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-add-8").innerHTML = moment().add('hours', 8).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-add-9").innerHTML = moment().add('hours', 9).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-add-10").innerHTML = moment().add('hours', 10).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-add-11").innerHTML = moment().add('hours', 11).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-add-12").innerHTML = moment().add('hours', 12).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-add-13").innerHTML = moment().add('hours', 13).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-add-14").innerHTML = moment().add('hours', 14).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-add-15").innerHTML = moment().add('hours', 15).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-add-16").innerHTML = moment().add('hours', 16).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-add-17").innerHTML = moment().add('hours', 17).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-add-18").innerHTML = moment().add('hours', 18).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-add-19").innerHTML = moment().add('hours', 19).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-add-20").innerHTML = moment().add('hours', 20).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-add-21").innerHTML = moment().add('hours', 21).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-add-22").innerHTML = moment().add('hours', 22).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-add-23").innerHTML = moment().add('hours', 23).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-add-24").innerHTML = moment().add('hours', 24).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-add-25").innerHTML = moment().add('hours', 25).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-add-26").innerHTML = moment().add('hours', 26).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-add-27").innerHTML = moment().add('hours', 27).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-add-28").innerHTML = moment().add('hours', 28).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-add-29").innerHTML = moment().add('hours', 29).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-add-30").innerHTML = moment().add('hours', 30).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-add-31").innerHTML = moment().add('hours', 31).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-add-32").innerHTML = moment().add('hours', 32).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-add-33").innerHTML = moment().add('hours', 33).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-add-34").innerHTML = moment().add('hours', 34).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-add-35").innerHTML = moment().add('hours', 35).subtract('hours', timeZoneOffset).format('ha');
+			document.getElementById("remote-add-36").innerHTML = moment().add('hours', 36).subtract('hours', timeZoneOffset).format('ha');
+
+			$('.hour:contains("12am")').addClass('sleep');
+			$('.hour:contains("1am")').addClass('sleep');
+			$('.hour:contains("2am")').addClass('sleep');
+			$('.hour:contains("3am")').addClass('sleep');
+			$('.hour:contains("4am")').addClass('sleep');
+			$('.hour:contains("5am")').addClass('sleep');
+			$('.hour:contains("6am")').addClass('sleep');
+			$('.hour:contains("7am")').addClass('outsidebusiness');
+			$('.hour:contains("8am")').addClass('outsidebusiness');
+			$('.hour:contains("6pm")').addClass('outsidebusiness');
+			$('.hour:contains("7pm")').addClass('outsidebusiness');
+			$('.hour:contains("8pm")').addClass('outsidebusiness');
+			$('.hour:contains("9pm")').addClass('outsidebusiness');
+			$('.hour:contains("10pm")').addClass('outsidebusiness');
+			$('.hour:contains("11pm")').addClass('outsidebusiness');
+			$('.hour:contains("11am")').removeClass('sleep');
+
+		}, 1000);
+	</script>
 
 </body>
 </html>

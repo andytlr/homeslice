@@ -77,8 +77,7 @@
 			color: transparent;
 		}
 
-		.outsidebusiness,
-		.timediff {
+		.outsidebusiness {
 			color: hsl(0, 0%, 75%);
 		}
 	</style>
@@ -87,7 +86,6 @@
 	<script src="js/jquery.min.js"></script>
 
 	<script type="text/javascript">
-		var timeZoneOffset   = 17
 		var cellHeight       = 24
 		var scrollPosition   = (cellHeight + 1) * 7
 
@@ -109,7 +107,7 @@
 <body>
 
 	<div class="city">
-		<div class="cityname current">Current Location</div>
+		<div class="cityname current">Melbourne</div>
 
 		<div class="hour" id="local-minus-10"></div>
 		<div class="hour" id="local-minus-9"></div>
@@ -161,7 +159,7 @@
 	</div>
 
 	<div class="city">
-		<div class="cityname remote">San Francisco <span class="timediff">-<script charset="utf-8">document.write(timeZoneOffset)</script></span></div>
+		<div class="cityname remote">San Francisco</div>
 
 		<div class="hour" id="remote-minus-10"></div>
 		<div class="hour" id="remote-minus-9"></div>
@@ -216,7 +214,6 @@
 		window.setInterval(function(){
 			var formatTime        = 'hha'
 			var formatCurrentTime = 'h:mma <br /> Do MMM'
-			// var formatCurrentTime = 'hha (Do)'
 
 			document.getElementById("local-minus-10").innerHTML = moment().subtract('hours', 10).format(formatTime);
 			document.getElementById("local-minus-9").innerHTML = moment().subtract('hours', 9).format(formatTime);
@@ -266,53 +263,53 @@
 			document.getElementById("local-add-35").innerHTML = moment().add('hours', 35).format(formatTime);
 			document.getElementById("local-add-36").innerHTML = moment().add('hours', 36).format(formatTime);
 
-			document.getElementById("remote-minus-10").innerHTML = moment().subtract('hours', 10).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-minus-9").innerHTML = moment().subtract('hours', 9).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-minus-8").innerHTML = moment().subtract('hours', 8).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-minus-7").innerHTML = moment().subtract('hours', 7).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-minus-6").innerHTML = moment().subtract('hours', 6).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-minus-5").innerHTML = moment().subtract('hours', 5).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-minus-4").innerHTML = moment().subtract('hours', 4).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-minus-3").innerHTML = moment().subtract('hours', 3).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-minus-2").innerHTML = moment().subtract('hours', 2).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-minus-1").innerHTML = moment().subtract('hours', 1).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-current").innerHTML = moment().subtract('hours', timeZoneOffset).format(formatCurrentTime);
-			document.getElementById("remote-add-1").innerHTML = moment().add('hours', 1).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-add-2").innerHTML = moment().add('hours', 2).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-add-3").innerHTML = moment().add('hours', 3).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-add-4").innerHTML = moment().add('hours', 4).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-add-5").innerHTML = moment().add('hours', 5).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-add-6").innerHTML = moment().add('hours', 6).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-add-7").innerHTML = moment().add('hours', 7).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-add-8").innerHTML = moment().add('hours', 8).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-add-9").innerHTML = moment().add('hours', 9).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-add-10").innerHTML = moment().add('hours', 10).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-add-11").innerHTML = moment().add('hours', 11).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-add-12").innerHTML = moment().add('hours', 12).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-add-13").innerHTML = moment().add('hours', 13).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-add-14").innerHTML = moment().add('hours', 14).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-add-15").innerHTML = moment().add('hours', 15).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-add-16").innerHTML = moment().add('hours', 16).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-add-17").innerHTML = moment().add('hours', 17).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-add-18").innerHTML = moment().add('hours', 18).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-add-19").innerHTML = moment().add('hours', 19).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-add-20").innerHTML = moment().add('hours', 20).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-add-21").innerHTML = moment().add('hours', 21).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-add-22").innerHTML = moment().add('hours', 22).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-add-23").innerHTML = moment().add('hours', 23).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-add-24").innerHTML = moment().add('hours', 24).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-add-25").innerHTML = moment().add('hours', 25).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-add-26").innerHTML = moment().add('hours', 26).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-add-27").innerHTML = moment().add('hours', 27).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-add-28").innerHTML = moment().add('hours', 28).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-add-29").innerHTML = moment().add('hours', 29).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-add-30").innerHTML = moment().add('hours', 30).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-add-31").innerHTML = moment().add('hours', 31).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-add-32").innerHTML = moment().add('hours', 32).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-add-33").innerHTML = moment().add('hours', 33).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-add-34").innerHTML = moment().add('hours', 34).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-add-35").innerHTML = moment().add('hours', 35).subtract('hours', timeZoneOffset).format(formatTime);
-			document.getElementById("remote-add-36").innerHTML = moment().add('hours', 36).subtract('hours', timeZoneOffset).format(formatTime);
+			document.getElementById("remote-minus-10").innerHTML = moment.utc().subtract('hours', 17).format(formatTime);
+			document.getElementById("remote-minus-9").innerHTML = moment.utc().subtract('hours', 16).format(formatTime);
+			document.getElementById("remote-minus-8").innerHTML = moment.utc().subtract('hours', 15).format(formatTime);
+			document.getElementById("remote-minus-7").innerHTML = moment.utc().subtract('hours', 14).format(formatTime);
+			document.getElementById("remote-minus-6").innerHTML = moment.utc().subtract('hours', 13).format(formatTime);
+			document.getElementById("remote-minus-5").innerHTML = moment.utc().subtract('hours', 12).format(formatTime);
+			document.getElementById("remote-minus-4").innerHTML = moment.utc().subtract('hours', 11).format(formatTime);
+			document.getElementById("remote-minus-3").innerHTML = moment.utc().subtract('hours', 10).format(formatTime);
+			document.getElementById("remote-minus-2").innerHTML = moment.utc().subtract('hours', 9).format(formatTime);
+			document.getElementById("remote-minus-1").innerHTML = moment.utc().subtract('hours', 8).format(formatTime);
+			document.getElementById("remote-current").innerHTML = moment.utc().subtract('hours', 7).format(formatCurrentTime);
+			document.getElementById("remote-add-1").innerHTML = moment.utc().subtract('hours', 6).format(formatTime);
+			document.getElementById("remote-add-2").innerHTML = moment.utc().subtract('hours', 5).format(formatTime);
+			document.getElementById("remote-add-3").innerHTML = moment.utc().subtract('hours', 4).format(formatTime);
+			document.getElementById("remote-add-4").innerHTML = moment.utc().subtract('hours', 3).format(formatTime);
+			document.getElementById("remote-add-5").innerHTML = moment.utc().subtract('hours', 2).format(formatTime);
+			document.getElementById("remote-add-6").innerHTML = moment.utc().subtract('hours', 1).format(formatTime);
+			document.getElementById("remote-add-7").innerHTML = moment.utc().format(formatTime);
+			document.getElementById("remote-add-8").innerHTML = moment.utc().add('hours', 1).format(formatTime);
+			document.getElementById("remote-add-9").innerHTML = moment.utc().add('hours', 2).format(formatTime);
+			document.getElementById("remote-add-10").innerHTML = moment.utc().add('hours', 3).format(formatTime);
+			document.getElementById("remote-add-11").innerHTML = moment.utc().add('hours', 4).format(formatTime);
+			document.getElementById("remote-add-12").innerHTML = moment.utc().add('hours', 5).format(formatTime);
+			document.getElementById("remote-add-13").innerHTML = moment.utc().add('hours', 6).format(formatTime);
+			document.getElementById("remote-add-14").innerHTML = moment.utc().add('hours', 7).format(formatTime);
+			document.getElementById("remote-add-15").innerHTML = moment.utc().add('hours', 8).format(formatTime);
+			document.getElementById("remote-add-16").innerHTML = moment.utc().add('hours', 9).format(formatTime);
+			document.getElementById("remote-add-17").innerHTML = moment.utc().add('hours', 10).format(formatTime);
+			document.getElementById("remote-add-18").innerHTML = moment.utc().add('hours', 11).format(formatTime);
+			document.getElementById("remote-add-19").innerHTML = moment.utc().add('hours', 12).format(formatTime);
+			document.getElementById("remote-add-20").innerHTML = moment.utc().add('hours', 13).format(formatTime);
+			document.getElementById("remote-add-21").innerHTML = moment.utc().add('hours', 14).format(formatTime);
+			document.getElementById("remote-add-22").innerHTML = moment.utc().add('hours', 15).format(formatTime);
+			document.getElementById("remote-add-23").innerHTML = moment.utc().add('hours', 16).format(formatTime);
+			document.getElementById("remote-add-24").innerHTML = moment.utc().add('hours', 17).format(formatTime);
+			document.getElementById("remote-add-25").innerHTML = moment.utc().add('hours', 18).format(formatTime);
+			document.getElementById("remote-add-26").innerHTML = moment.utc().add('hours', 19).format(formatTime);
+			document.getElementById("remote-add-27").innerHTML = moment.utc().add('hours', 20).format(formatTime);
+			document.getElementById("remote-add-28").innerHTML = moment.utc().add('hours', 21).format(formatTime);
+			document.getElementById("remote-add-29").innerHTML = moment.utc().add('hours', 22).format(formatTime);
+			document.getElementById("remote-add-30").innerHTML = moment.utc().add('hours', 23).format(formatTime);
+			document.getElementById("remote-add-31").innerHTML = moment.utc().add('hours', 24).format(formatTime);
+			document.getElementById("remote-add-32").innerHTML = moment.utc().add('hours', 25).format(formatTime);
+			document.getElementById("remote-add-33").innerHTML = moment.utc().add('hours', 26).format(formatTime);
+			document.getElementById("remote-add-34").innerHTML = moment.utc().add('hours', 27).format(formatTime);
+			document.getElementById("remote-add-35").innerHTML = moment.utc().add('hours', 28).format(formatTime);
+			document.getElementById("remote-add-36").innerHTML = moment.utc().add('hours', 29).format(formatTime);
 
 			$('.hour:contains("12am")').addClass('sleep');
 			$('.hour:contains("01am")').addClass('sleep');

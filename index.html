@@ -52,6 +52,19 @@
 			border-top: 1px solid hsl(0, 0%, 95%);
 		}
 
+		.hour.current {
+			background: hsl(173, 83%, 40%);
+			color: hsl(0, 0%, 100%);
+			font-size: 16px;
+			line-height: 16px;
+			height: auto;
+			padding: 15px 0;
+		}
+
+		.hour.current span {
+			font-size: 12px;
+		}
+
 		.sleep {
 			color: hsl(0, 0%, 90%);
 		}
@@ -67,11 +80,6 @@
 		.outsidebusiness,
 		.timediff {
 			color: hsl(0, 0%, 75%);
-		}
-
-		.hour.current {
-			background: hsl(173, 83%, 40%);
-			color: hsl(0, 0%, 100%);
 		}
 	</style>
 
@@ -207,7 +215,7 @@
 	<script charset="utf-8">
 		window.setInterval(function(){
 			var formatTime        = 'hha'
-			var formatCurrentTime = 'h:mma (Do)'
+			var formatCurrentTime = 'h:mma <br /> Do MMM'
 			// var formatCurrentTime = 'hha (Do)'
 
 			document.getElementById("local-minus-10").innerHTML = moment().subtract('hours', 10).format(formatTime);

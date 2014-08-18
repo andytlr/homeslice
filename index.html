@@ -117,9 +117,9 @@
 		</div>
 
 		<script charset="utf-8">
+			document.getElementById("now").style["top"] = pxFromTop + "px";
+			
 			window.setInterval(function(){
-				// Don't think top position is updating.
-				document.getElementById("now").style["top"] = pxFromTop + "px";
 				// This is working.
 			  document.getElementById("now-time").innerHTML = moment().format('h:mma') + " / " + moment().subtract('hours', 17).format('h:mma');
 			}, 1000);

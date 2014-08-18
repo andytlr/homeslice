@@ -60,6 +60,10 @@
 			border-color: hsl(0, 0%, 80%);
 		}
 
+		.leadingzero {
+			color: transparent;
+		}
+
 		.outsidebusiness,
 		.timediff {
 			color: hsl(0, 0%, 75%);
@@ -303,21 +307,29 @@
 			document.getElementById("remote-add-36").innerHTML = moment().add('hours', 36).subtract('hours', timeZoneOffset).format(formatTime);
 
 			$('.hour:contains("12am")').addClass('sleep');
-			$('.hour:contains("1am")').addClass('sleep');
-			$('.hour:contains("2am")').addClass('sleep');
-			$('.hour:contains("3am")').addClass('sleep');
-			$('.hour:contains("4am")').addClass('sleep');
-			$('.hour:contains("5am")').addClass('sleep');
-			$('.hour:contains("6am")').addClass('sleep');
-			$('.hour:contains("7am")').addClass('outsidebusiness');
-			$('.hour:contains("8am")').addClass('outsidebusiness');
-			$('.hour:contains("6pm")').addClass('outsidebusiness');
-			$('.hour:contains("7pm")').addClass('outsidebusiness');
-			$('.hour:contains("8pm")').addClass('outsidebusiness');
-			$('.hour:contains("9pm")').addClass('outsidebusiness');
+			$('.hour:contains("01am")').addClass('sleep');
+			$('.hour:contains("02am")').addClass('sleep');
+			$('.hour:contains("03am")').addClass('sleep');
+			$('.hour:contains("04am")').addClass('sleep');
+			$('.hour:contains("05am")').addClass('sleep');
+			$('.hour:contains("06am")').addClass('sleep');
+			$('.hour:contains("07am")').addClass('outsidebusiness');
+			$('.hour:contains("08am")').addClass('outsidebusiness');
+			$('.hour:contains("06pm")').addClass('outsidebusiness');
+			$('.hour:contains("07pm")').addClass('outsidebusiness');
+			$('.hour:contains("08pm")').addClass('outsidebusiness');
+			$('.hour:contains("09pm")').addClass('outsidebusiness');
 			$('.hour:contains("10pm")').addClass('outsidebusiness');
 			$('.hour:contains("11pm")').addClass('outsidebusiness');
-			$('.hour:contains("11am")').removeClass('sleep');
+
+			// This only works for 01. Need to expand.
+			$('.hour:contains("01")').contents().each(function () {
+		    if (this.nodeType == 3) {
+	        $(this).parent().html(function (_, oldValue) {
+            return oldValue.replace(/0/g, "<span class='leadingzero'>0</span>")
+	        })
+		    }
+			});
 
 		}, 1000);
 	</script>

@@ -97,10 +97,7 @@
 		var cellHeight       = 24
 
 		var hours            = parseInt(moment().format('h'))
-		var minutes          = parseInt(moment().format('m'))
-		var minutesAsDecimal = minutes / 60
 
-		var pxFromTop        = ((cellHeight + 1) * (hours + minutesAsDecimal)) + 2;
 		var scrollPosition   = (((cellHeight + 1) * hours) - (cellHeight * 3));
 
 		window.scrollTo(0,scrollPosition);
@@ -117,10 +114,16 @@
 		</div>
 
 		<script charset="utf-8">
-			document.getElementById("now").style["top"] = pxFromTop + "px";
-			
 			window.setInterval(function(){
-				// This is working.
+				document.getElementById("now").style["top"] =
+					(
+						(cellHeight + 1) // Add a pixel to the cell height to account for the border.
+						* (parseInt(moment().format('h')) // X number of hours.
+						+ (parseInt(moment().format('m')) / 60)) // Plus minutes as a decimal.
+					)
+						+ 1 // Plus one because of rounding? Maybe use a round function.
+						+ "px" // The unit.
+					;
 			  document.getElementById("now-time").innerHTML = moment().format('h:mma') + " / " + moment().subtract('hours', 17).format('h:mma');
 			}, 1000);
 		</script>

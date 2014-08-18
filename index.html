@@ -100,7 +100,7 @@
 		var minutes          = parseInt(moment().format('m'))
 		var minutesAsDecimal = minutes / 60
 
-		var pxFromTop        = ((cellHeight + 1) * (hours + minutesAsDecimal)) + 1;
+		var pxFromTop        = ((cellHeight + 1) * (hours + minutesAsDecimal)) + 2;
 		var scrollPosition   = (((cellHeight + 1) * hours) - (cellHeight * 3));
 
 		window.scrollTo(0,scrollPosition);
@@ -117,8 +117,12 @@
 		</div>
 
 		<script charset="utf-8">
-			document.getElementById("now").style["top"] = pxFromTop + "px";
-			document.getElementById("now-time").innerHTML = moment().format('h:mma') + " / " + moment().subtract('hours', 17).format('h:mma');
+			window.setInterval(function(){
+				// Don't think top position is updating.
+				document.getElementById("now").style["top"] = pxFromTop + "px";
+				// This is working.
+			  document.getElementById("now-time").innerHTML = moment().format('h:mma') + " / " + moment().subtract('hours', 17).format('h:mma');
+			}, 1000);
 		</script>
 
 		<div class="hour sleep daystart">Today</div>

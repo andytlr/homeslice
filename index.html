@@ -27,7 +27,8 @@
 			line-height: 44px;
 			height: 44px;
 			font-size: 16px;
-			background: hsla(0, 0%, 100%, 0.88);
+			background: hsla(173, 83%, 40%, 0.88);
+			color: hsl(0, 0%, 100%);
 			position: fixed;
 			top: 0;
 			display: block;
@@ -45,8 +46,9 @@
 		}
 
 		.hour.current {
-			color: hsl(173, 83%, 40%);
-			/*color: hsl(0, 0%, 100%);*/
+			background: hsl(173, 83%, 40%);
+			color: hsl(0, 0%, 100%);
+			border: none;
 		}
 
 		.sleep {
@@ -83,9 +85,9 @@
 	<div class="city">
 		<div class="cityname cityname">Melbourne</div>
 
-		<div class="hour" id="mel-minus-3"></div>
+		<!-- <div class="hour" id="mel-minus-3"></div>
 		<div class="hour" id="mel-minus-2"></div>
-		<div class="hour" id="mel-minus-1"></div>
+		<div class="hour" id="mel-minus-1"></div> -->
 		<div class="hour current" id="mel-current"></div>
 		<div class="hour" id="mel-add-1"></div>
 		<div class="hour" id="mel-add-2"></div>
@@ -134,9 +136,9 @@
 	<div class="city">
 		<div class="cityname cityname">San Francisco</div>
 
-		<div class="hour" id="sfo-minus-3"></div>
+		<!-- <div class="hour" id="sfo-minus-3"></div>
 		<div class="hour" id="sfo-minus-2"></div>
-		<div class="hour" id="sfo-minus-1"></div>
+		<div class="hour" id="sfo-minus-1"></div> -->
 		<div class="hour current" id="sfo-current"></div>
 		<div class="hour" id="sfo-add-1"></div>
 		<div class="hour" id="sfo-add-2"></div>
@@ -184,9 +186,9 @@
 
 	<script charset="utf-8">
 		window.setInterval(function(){
-			document.getElementById("mel-minus-3").innerHTML = moment().zone(MelUtcOffset).subtract('hours', 3).format(formatTime);
-			document.getElementById("mel-minus-2").innerHTML = moment().zone(MelUtcOffset).subtract('hours', 2).format(formatTime);
-			document.getElementById("mel-minus-1").innerHTML = moment().zone(MelUtcOffset).subtract('hours', 1).format(formatTime);
+			// document.getElementById("mel-minus-3").innerHTML = moment().zone(MelUtcOffset).subtract('hours', 3).format(formatTime);
+			// document.getElementById("mel-minus-2").innerHTML = moment().zone(MelUtcOffset).subtract('hours', 2).format(formatTime);
+			// document.getElementById("mel-minus-1").innerHTML = moment().zone(MelUtcOffset).subtract('hours', 1).format(formatTime);
 			document.getElementById("mel-current").innerHTML = moment().zone(MelUtcOffset).format(formatCurrentTime);
 			document.getElementById("mel-add-1").innerHTML = moment().zone(MelUtcOffset).add('hours', 1).format(formatTime);
 			document.getElementById("mel-add-2").innerHTML = moment().zone(MelUtcOffset).add('hours', 2).format(formatTime);
@@ -231,9 +233,9 @@
 			document.getElementById("mel-add-41").innerHTML = moment().zone(MelUtcOffset).add('hours', 41).format(formatTime);
 			document.getElementById("mel-add-42").innerHTML = moment().zone(MelUtcOffset).add('hours', 42).format(formatTime);
 
-			document.getElementById("sfo-minus-3").innerHTML = moment().zone(SfoUtcOffset).subtract('hours', 3).format(formatTime);
-			document.getElementById("sfo-minus-2").innerHTML = moment().zone(SfoUtcOffset).subtract('hours', 2).format(formatTime);
-			document.getElementById("sfo-minus-1").innerHTML = moment().zone(SfoUtcOffset).subtract('hours', 1).format(formatTime);
+			// document.getElementById("sfo-minus-3").innerHTML = moment().zone(SfoUtcOffset).subtract('hours', 3).format(formatTime);
+			// document.getElementById("sfo-minus-2").innerHTML = moment().zone(SfoUtcOffset).subtract('hours', 2).format(formatTime);
+			// document.getElementById("sfo-minus-1").innerHTML = moment().zone(SfoUtcOffset).subtract('hours', 1).format(formatTime);
 			document.getElementById("sfo-current").innerHTML = moment().zone(SfoUtcOffset).format(formatCurrentTime);
 			document.getElementById("sfo-add-1").innerHTML = moment().zone(SfoUtcOffset).add('hours', 1).format(formatTime);
 			document.getElementById("sfo-add-2").innerHTML = moment().zone(SfoUtcOffset).add('hours', 2).format(formatTime);

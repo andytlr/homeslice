@@ -323,12 +323,12 @@
 			$('.hour:contains("11pm")').addClass('outsidebusiness');
 
 			// This only works for 01. Need to expand.
-			$('.hour:contains("01")').contents().each(function () {
-		    if (this.nodeType == 3) {
-	        $(this).parent().html(function (_, oldValue) {
-            return oldValue.replace(/0/g, "<span class='leadingzero'>0</span>")
-	        })
-		    }
+			$('.hour:contains("01" || "02")').contents().each(function () {
+			    if (this.nodeType == 3) {
+		        	$(this).parent().html(function (_, oldValue) {
+	            		return oldValue.replace(/0/g, "<span class='leadingzero'>0</span>")
+		        	})
+			    }
 			});
 
 		}, 1000);

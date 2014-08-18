@@ -96,7 +96,7 @@
 		// Change this if line-height of .hour cells changes
 		var cellHeight       = 24
 
-		var hours            = parseInt(moment().format('h'))
+		var hours            = parseInt(moment().format('HH'))
 
 		var scrollPosition   = (((cellHeight + 1) * hours) - (cellHeight * 3));
 
@@ -118,7 +118,7 @@
 				document.getElementById("now").style["top"] =
 					(
 						(cellHeight + 1) // Add a pixel to the cell height to account for the border.
-						* (parseInt(moment().format('h')) // X number of hours.
+						* (parseInt(moment().format('HH')) // X number of hours.
 						+ (parseInt(moment().format('m')) / 60)) // Plus minutes as a decimal.
 					)
 						+ 1 // Plus one because of rounding? Maybe use a round function.

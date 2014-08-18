@@ -21,7 +21,6 @@
 			display: inline-block;
 			width: 50%;
 			font-size: 12px;
-
 			padding-top: 44px;
 		}
 
@@ -30,7 +29,6 @@
 			height: 44px;
 			font-size: 16px;
 			background: hsla(0, 0%, 100%, 0.88);
-
 			position: fixed;
 			top: 0;
 			display: block;
@@ -50,6 +48,7 @@
 		.hour {
 			padding: 0;
 			line-height: 24px;
+			height: 24px;
 			border-top: 1px solid hsl(0, 0%, 95%);
 		}
 
@@ -66,41 +65,26 @@
 			color: hsl(0, 0%, 75%);
 		}
 
-		.leadingzero {
-			color: transparent;
-		}
-
-		#now {
-			height: 1px;
-			width: 200%;
-			background: hsl(173, 83%, 40%);
-			display: block;
-			position: relative;
-		}
-
-		#now-time {
-			line-height: 20px;
-			position: relative;
-			display: inline-block;
-			top: -10px;
-			padding: 0 10px;
-			border-radius: 10px;
+		.hour.current {
 			background: hsl(173, 83%, 40%);
 			color: hsl(0, 0%, 100%);
 		}
 	</style>
 
 	<script src="moment.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 	<script type="text/javascript">
-		// Change this if line-height of .hour cells changes
+		var timeZoneOffset   = 17
 		var cellHeight       = 24
-
-		var hours            = parseInt(moment().format('HH'))
-
-		var scrollPosition   = (((cellHeight + 1) * hours) - (cellHeight * 3));
+		var scrollPosition   = (cellHeight + 1) * 7
 
 		window.scrollTo(0,scrollPosition);
+
+		window.setInterval(function(){
+			document.getElementById("current-local").innerHTML = moment().format('h:mm:ssa');
+			document.getElementById("current-remote").innerHTML = moment().subtract('hours', timeZoneOffset).format('h:mm:ssa');
+		}, 1000);
 	</script>
 
 </head>
@@ -109,126 +93,125 @@
 	<div class="city melbourne">
 		<div class="cityname current">Current Location</div>
 
-		<div id="now">
-			<span id="now-time"></span>
-		</div>
-
-		<script charset="utf-8">
-			window.setInterval(function(){
-				document.getElementById("now").style["top"] =
-					(
-						(cellHeight + 1) // Add a pixel to the cell height to account for the border.
-						* (parseInt(moment().format('HH')) // X number of hours.
-						+ (parseInt(moment().format('m')) / 60)) // Plus minutes as a decimal.
-					)
-						+ 1 // Plus one because of rounding? Maybe use a round function.
-						+ "px" // The unit.
-					;
-			  document.getElementById("now-time").innerHTML = moment().format('h:mma') + " / " + moment().subtract('hours', 17).format('h:mma');
-			}, 1000);
-		</script>
-
-		<div class="hour sleep daystart">Today</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>1am</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>2am</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>3am</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>4am</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>5am</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>6am</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>7am</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>8am</div>
-		<div class="hour"><span class="leadingzero">0</span>9am</div>
-		<div class="hour">10am</div>
-		<div class="hour">11am</div>
-		<div class="hour">12pm</div>
-		<div class="hour"><span class="leadingzero">0</span>1pm</div>
-		<div class="hour"><span class="leadingzero">0</span>2pm</div>
-		<div class="hour"><span class="leadingzero">0</span>3pm</div>
-		<div class="hour"><span class="leadingzero">0</span>4pm</div>
-		<div class="hour"><span class="leadingzero">0</span>5pm</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>6pm</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>7pm</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>8pm</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>9pm</div>
-		<div class="hour outsidebusiness">10pm</div>
-		<div class="hour sleep">11pm</div>
-		<div class="hour sleep daystart">Tomorrow</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>1am</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>2am</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>3am</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>4am</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>5am</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>6am</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>7am</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>8am</div>
-		<div class="hour"><span class="leadingzero">0</span>9am</div>
-		<div class="hour">10am</div>
-		<div class="hour">11am</div>
-		<div class="hour">12pm</div>
-		<div class="hour"><span class="leadingzero">0</span>1pm</div>
-		<div class="hour"><span class="leadingzero">0</span>2pm</div>
-		<div class="hour"><span class="leadingzero">0</span>3pm</div>
-		<div class="hour"><span class="leadingzero">0</span>4pm</div>
-		<div class="hour"><span class="leadingzero">0</span>5pm</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>6pm</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>7pm</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>8pm</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>9pm</div>
-		<div class="hour outsidebusiness">10pm</div>
-		<div class="hour sleep">11pm</div>
+		<div class="hour"><script charset="utf-8">document.write(moment().subtract('hours', 10).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().subtract('hours', 9).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().subtract('hours', 8).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().subtract('hours', 7).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().subtract('hours', 6).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().subtract('hours', 5).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().subtract('hours', 4).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().subtract('hours', 3).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().subtract('hours', 2).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().subtract('hours', 1).format('ha'))</script></div>
+		<div class="hour current" id="current-local"></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 1).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 2).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 3).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 4).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 5).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 6).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 7).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 8).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 9).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 10).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 11).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 12).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 13).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 14).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 15).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 16).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 17).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 18).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 19).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 20).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 21).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 22).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 23).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 24).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 25).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 26).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 27).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 28).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 29).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 30).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 31).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 32).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 33).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 34).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 35).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 36).format('ha'))</script></div>
 	</div>
 
 	<div class="city sf">
-		<div class="cityname remote">San Francisco <span class="timediff">-17</span></div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>7am</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>8am</div>
-		<div class="hour"><span class="leadingzero">0</span>9am</div>
-		<div class="hour">10am</div>
-		<div class="hour">11am</div>
-		<div class="hour">12pm</div>
-		<div class="hour"><span class="leadingzero">0</span>1pm</div>
-		<div class="hour"><span class="leadingzero">0</span>2pm</div>
-		<div class="hour"><span class="leadingzero">0</span>3pm</div>
-		<div class="hour"><span class="leadingzero">0</span>4pm</div>
-		<div class="hour"><span class="leadingzero">0</span>5pm</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>6pm</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>7pm</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>8pm</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>9pm</div>
-		<div class="hour outsidebusiness">10pm</div>
-		<div class="hour sleep">11pm</div>
-		<div class="hour sleep daystart">Today</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>1am</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>2am</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>3am</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>4am</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>5am</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>6am</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>7am</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>8am</div>
-		<div class="hour"><span class="leadingzero">0</span>9am</div>
-		<div class="hour">10am</div>
-		<div class="hour">11am</div>
-		<div class="hour">12pm</div>
-		<div class="hour"><span class="leadingzero">0</span>1pm</div>
-		<div class="hour"><span class="leadingzero">0</span>2pm</div>
-		<div class="hour"><span class="leadingzero">0</span>3pm</div>
-		<div class="hour"><span class="leadingzero">0</span>4pm</div>
-		<div class="hour"><span class="leadingzero">0</span>5pm</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>6pm</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>7pm</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>8pm</div>
-		<div class="hour outsidebusiness"><span class="leadingzero">0</span>9pm</div>
-		<div class="hour outsidebusiness">10pm</div>
-		<div class="hour sleep">11pm</div>
-		<div class="hour sleep daystart">Tomorrow</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>1am</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>2am</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>3am</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>4am</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>5am</div>
-		<div class="hour sleep"><span class="leadingzero">0</span>6am</div>
+		<div class="cityname remote">San Francisco <span class="timediff">-<script charset="utf-8">document.write(timeZoneOffset)</script></span></div>
+
+		<div class="hour"><script charset="utf-8">document.write(moment().subtract('hours', 10).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().subtract('hours', 9).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().subtract('hours', 8).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().subtract('hours', 7).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().subtract('hours', 6).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().subtract('hours', 5).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().subtract('hours', 4).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().subtract('hours', 3).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().subtract('hours', 2).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().subtract('hours', 1).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour current" id="current-remote"></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 1).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 2).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 3).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 4).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 5).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 6).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 7).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 8).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 9).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 10).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 11).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 12).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 13).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 14).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 15).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 16).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 17).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 18).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 19).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 20).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 21).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 22).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 23).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 24).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 25).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 26).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 27).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 28).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 29).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 30).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 31).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 32).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 33).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 34).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 35).subtract('hours', timeZoneOffset).format('ha'))</script></div>
+		<div class="hour"><script charset="utf-8">document.write(moment().add('hours', 36).subtract('hours', timeZoneOffset).format('ha'))</script></div>
 	</div>
+
+	<script charset="utf-8">
+		$('.hour:contains("12am")').addClass('sleep');
+		$('.hour:contains("1am")').addClass('sleep');
+		$('.hour:contains("11am")').removeClass('sleep');
+		$('.hour:contains("2am")').addClass('sleep');
+		$('.hour:contains("3am")').addClass('sleep');
+		$('.hour:contains("4am")').addClass('sleep');
+		$('.hour:contains("5am")').addClass('sleep');
+		$('.hour:contains("6am")').addClass('sleep');
+		$('.hour:contains("7am")').addClass('outsidebusiness');
+		$('.hour:contains("8am")').addClass('outsidebusiness');
+		$('.hour:contains("6pm")').addClass('outsidebusiness');
+		$('.hour:contains("7pm")').addClass('outsidebusiness');
+		$('.hour:contains("8pm")').addClass('outsidebusiness');
+		$('.hour:contains("9pm")').addClass('outsidebusiness');
+		$('.hour:contains("10pm")').addClass('outsidebusiness');
+		$('.hour:contains("11pm")').addClass('outsidebusiness');
+	</script>
 
 </body>
 </html>

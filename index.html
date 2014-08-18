@@ -109,6 +109,7 @@
 
 		var formatTime        = 'ddd, ha'
 		var formatCurrentTime = 'ddd, Do MMM, h:mma'
+		var formatNewDay      = 'ddd, Do MMM, ha'
 	</script>
 
 </head>
@@ -229,6 +230,12 @@
 	</div>
 
 	<script charset="utf-8">
+		// if (moment().zone(MelUtcOffset).format('HH') == 00) {
+		// 	alert(
+		// 		moment().zone(MelUtcOffset).format(formatNewDay)
+		// 	)
+		// }
+
 		window.setInterval(function(){
 
 			document.getElementById("mel-current").innerHTML = moment().zone(MelUtcOffset).format(formatCurrentTime);

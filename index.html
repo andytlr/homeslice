@@ -206,9 +206,9 @@
 
 	<script charset="utf-8">
 		window.setInterval(function(){
-			var formatTime        = 'hha (Do)'
-			// var formatCurrentTime = 'h:mma Do'
-			var formatCurrentTime = 'hha (Do)'
+			var formatTime        = 'hha'
+			var formatCurrentTime = 'h:mma (Do)'
+			// var formatCurrentTime = 'hha (Do)'
 
 			document.getElementById("local-minus-10").innerHTML = moment().subtract('hours', 10).format(formatTime);
 			document.getElementById("local-minus-9").innerHTML = moment().subtract('hours', 9).format(formatTime);

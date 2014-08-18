@@ -41,7 +41,7 @@
 			left: 0;
 		}
 
-		.cityname.remote {
+		.cityname.sfo {
 			right: 0;
 		}
 
@@ -82,9 +82,11 @@
 	<script src="js/jquery.min.js"></script>
 
 	<script type="text/javascript">
-		// var cellHeight       = 24
-		// var scrollPosition   = (cellHeight + 1) * 7
-		// window.scrollTo(0,scrollPosition);
+		var MelUtcOffset = '+1000'
+		var SfoUtcOffset = '-0700'
+
+		var formatTime        = 'ha'
+		var formatCurrentTime = 'h:mma Do MMM'
 	</script>
 
 </head>
@@ -93,206 +95,200 @@
 	<div class="city">
 		<div class="cityname current">Melbourne</div>
 
-		<div class="hour" id="local-minus-3"></div>
-		<div class="hour" id="local-minus-2"></div>
-		<div class="hour" id="local-minus-1"></div>
-		<div class="hour current" id="local-current"></div>
-		<div class="hour" id="local-add-1"></div>
-		<div class="hour" id="local-add-2"></div>
-		<div class="hour" id="local-add-3"></div>
-		<div class="hour" id="local-add-4"></div>
-		<div class="hour" id="local-add-5"></div>
-		<div class="hour" id="local-add-6"></div>
-		<div class="hour" id="local-add-7"></div>
-		<div class="hour" id="local-add-8"></div>
-		<div class="hour" id="local-add-9"></div>
-		<div class="hour" id="local-add-10"></div>
-		<div class="hour" id="local-add-11"></div>
-		<div class="hour" id="local-add-12"></div>
-		<div class="hour" id="local-add-13"></div>
-		<div class="hour" id="local-add-14"></div>
-		<div class="hour" id="local-add-15"></div>
-		<div class="hour" id="local-add-16"></div>
-		<div class="hour" id="local-add-17"></div>
-		<div class="hour" id="local-add-18"></div>
-		<div class="hour" id="local-add-19"></div>
-		<div class="hour" id="local-add-20"></div>
-		<div class="hour" id="local-add-21"></div>
-		<div class="hour" id="local-add-22"></div>
-		<div class="hour" id="local-add-23"></div>
-		<div class="hour" id="local-add-24"></div>
-		<div class="hour" id="local-add-25"></div>
-		<div class="hour" id="local-add-26"></div>
-		<div class="hour" id="local-add-27"></div>
-		<div class="hour" id="local-add-28"></div>
-		<div class="hour" id="local-add-29"></div>
-		<div class="hour" id="local-add-30"></div>
-		<div class="hour" id="local-add-31"></div>
-		<div class="hour" id="local-add-32"></div>
-		<div class="hour" id="local-add-33"></div>
-		<div class="hour" id="local-add-34"></div>
-		<div class="hour" id="local-add-35"></div>
-		<div class="hour" id="local-add-36"></div>
-		<div class="hour" id="local-add-37"></div>
-		<div class="hour" id="local-add-38"></div>
-		<div class="hour" id="local-add-39"></div>
-		<div class="hour" id="local-add-40"></div>
-		<div class="hour" id="local-add-41"></div>
-		<div class="hour" id="local-add-42"></div>
+		<div class="hour" id="mel-minus-3"></div>
+		<div class="hour" id="mel-minus-2"></div>
+		<div class="hour" id="mel-minus-1"></div>
+		<div class="hour current" id="mel-current"></div>
+		<div class="hour" id="mel-add-1"></div>
+		<div class="hour" id="mel-add-2"></div>
+		<div class="hour" id="mel-add-3"></div>
+		<div class="hour" id="mel-add-4"></div>
+		<div class="hour" id="mel-add-5"></div>
+		<div class="hour" id="mel-add-6"></div>
+		<div class="hour" id="mel-add-7"></div>
+		<div class="hour" id="mel-add-8"></div>
+		<div class="hour" id="mel-add-9"></div>
+		<div class="hour" id="mel-add-10"></div>
+		<div class="hour" id="mel-add-11"></div>
+		<div class="hour" id="mel-add-12"></div>
+		<div class="hour" id="mel-add-13"></div>
+		<div class="hour" id="mel-add-14"></div>
+		<div class="hour" id="mel-add-15"></div>
+		<div class="hour" id="mel-add-16"></div>
+		<div class="hour" id="mel-add-17"></div>
+		<div class="hour" id="mel-add-18"></div>
+		<div class="hour" id="mel-add-19"></div>
+		<div class="hour" id="mel-add-20"></div>
+		<div class="hour" id="mel-add-21"></div>
+		<div class="hour" id="mel-add-22"></div>
+		<div class="hour" id="mel-add-23"></div>
+		<div class="hour" id="mel-add-24"></div>
+		<div class="hour" id="mel-add-25"></div>
+		<div class="hour" id="mel-add-26"></div>
+		<div class="hour" id="mel-add-27"></div>
+		<div class="hour" id="mel-add-28"></div>
+		<div class="hour" id="mel-add-29"></div>
+		<div class="hour" id="mel-add-30"></div>
+		<div class="hour" id="mel-add-31"></div>
+		<div class="hour" id="mel-add-32"></div>
+		<div class="hour" id="mel-add-33"></div>
+		<div class="hour" id="mel-add-34"></div>
+		<div class="hour" id="mel-add-35"></div>
+		<div class="hour" id="mel-add-36"></div>
+		<div class="hour" id="mel-add-37"></div>
+		<div class="hour" id="mel-add-38"></div>
+		<div class="hour" id="mel-add-39"></div>
+		<div class="hour" id="mel-add-40"></div>
+		<div class="hour" id="mel-add-41"></div>
+		<div class="hour" id="mel-add-42"></div>
 	</div>
 
 	<div class="city">
-		<div class="cityname remote">San Francisco</div>
+		<div class="cityname sfo">San Francisco</div>
 
-		<div class="hour" id="remote-minus-3"></div>
-		<div class="hour" id="remote-minus-2"></div>
-		<div class="hour" id="remote-minus-1"></div>
-		<div class="hour current" id="remote-current"></div>
-		<div class="hour" id="remote-add-1"></div>
-		<div class="hour" id="remote-add-2"></div>
-		<div class="hour" id="remote-add-3"></div>
-		<div class="hour" id="remote-add-4"></div>
-		<div class="hour" id="remote-add-5"></div>
-		<div class="hour" id="remote-add-6"></div>
-		<div class="hour" id="remote-add-7"></div>
-		<div class="hour" id="remote-add-8"></div>
-		<div class="hour" id="remote-add-9"></div>
-		<div class="hour" id="remote-add-10"></div>
-		<div class="hour" id="remote-add-11"></div>
-		<div class="hour" id="remote-add-12"></div>
-		<div class="hour" id="remote-add-13"></div>
-		<div class="hour" id="remote-add-14"></div>
-		<div class="hour" id="remote-add-15"></div>
-		<div class="hour" id="remote-add-16"></div>
-		<div class="hour" id="remote-add-17"></div>
-		<div class="hour" id="remote-add-18"></div>
-		<div class="hour" id="remote-add-19"></div>
-		<div class="hour" id="remote-add-20"></div>
-		<div class="hour" id="remote-add-21"></div>
-		<div class="hour" id="remote-add-22"></div>
-		<div class="hour" id="remote-add-23"></div>
-		<div class="hour" id="remote-add-24"></div>
-		<div class="hour" id="remote-add-25"></div>
-		<div class="hour" id="remote-add-26"></div>
-		<div class="hour" id="remote-add-27"></div>
-		<div class="hour" id="remote-add-28"></div>
-		<div class="hour" id="remote-add-29"></div>
-		<div class="hour" id="remote-add-30"></div>
-		<div class="hour" id="remote-add-31"></div>
-		<div class="hour" id="remote-add-32"></div>
-		<div class="hour" id="remote-add-33"></div>
-		<div class="hour" id="remote-add-34"></div>
-		<div class="hour" id="remote-add-35"></div>
-		<div class="hour" id="remote-add-36"></div>
-		<div class="hour" id="remote-add-37"></div>
-		<div class="hour" id="remote-add-38"></div>
-		<div class="hour" id="remote-add-39"></div>
-		<div class="hour" id="remote-add-40"></div>
-		<div class="hour" id="remote-add-41"></div>
-		<div class="hour" id="remote-add-42"></div>
+		<div class="hour" id="sfo-minus-3"></div>
+		<div class="hour" id="sfo-minus-2"></div>
+		<div class="hour" id="sfo-minus-1"></div>
+		<div class="hour current" id="sfo-current"></div>
+		<div class="hour" id="sfo-add-1"></div>
+		<div class="hour" id="sfo-add-2"></div>
+		<div class="hour" id="sfo-add-3"></div>
+		<div class="hour" id="sfo-add-4"></div>
+		<div class="hour" id="sfo-add-5"></div>
+		<div class="hour" id="sfo-add-6"></div>
+		<div class="hour" id="sfo-add-7"></div>
+		<div class="hour" id="sfo-add-8"></div>
+		<div class="hour" id="sfo-add-9"></div>
+		<div class="hour" id="sfo-add-10"></div>
+		<div class="hour" id="sfo-add-11"></div>
+		<div class="hour" id="sfo-add-12"></div>
+		<div class="hour" id="sfo-add-13"></div>
+		<div class="hour" id="sfo-add-14"></div>
+		<div class="hour" id="sfo-add-15"></div>
+		<div class="hour" id="sfo-add-16"></div>
+		<div class="hour" id="sfo-add-17"></div>
+		<div class="hour" id="sfo-add-18"></div>
+		<div class="hour" id="sfo-add-19"></div>
+		<div class="hour" id="sfo-add-20"></div>
+		<div class="hour" id="sfo-add-21"></div>
+		<div class="hour" id="sfo-add-22"></div>
+		<div class="hour" id="sfo-add-23"></div>
+		<div class="hour" id="sfo-add-24"></div>
+		<div class="hour" id="sfo-add-25"></div>
+		<div class="hour" id="sfo-add-26"></div>
+		<div class="hour" id="sfo-add-27"></div>
+		<div class="hour" id="sfo-add-28"></div>
+		<div class="hour" id="sfo-add-29"></div>
+		<div class="hour" id="sfo-add-30"></div>
+		<div class="hour" id="sfo-add-31"></div>
+		<div class="hour" id="sfo-add-32"></div>
+		<div class="hour" id="sfo-add-33"></div>
+		<div class="hour" id="sfo-add-34"></div>
+		<div class="hour" id="sfo-add-35"></div>
+		<div class="hour" id="sfo-add-36"></div>
+		<div class="hour" id="sfo-add-37"></div>
+		<div class="hour" id="sfo-add-38"></div>
+		<div class="hour" id="sfo-add-39"></div>
+		<div class="hour" id="sfo-add-40"></div>
+		<div class="hour" id="sfo-add-41"></div>
+		<div class="hour" id="sfo-add-42"></div>
 	</div>
 
 	<script charset="utf-8">
 		window.setInterval(function(){
-			var MelUtcOffset = '+1000'
-			var SfoUtcOffset = '-0700'
+			document.getElementById("mel-minus-3").innerHTML = moment().zone(MelUtcOffset).subtract('hours', 3).format(formatTime);
+			document.getElementById("mel-minus-2").innerHTML = moment().zone(MelUtcOffset).subtract('hours', 2).format(formatTime);
+			document.getElementById("mel-minus-1").innerHTML = moment().zone(MelUtcOffset).subtract('hours', 1).format(formatTime);
+			document.getElementById("mel-current").innerHTML = moment().zone(MelUtcOffset).format(formatCurrentTime);
+			document.getElementById("mel-add-1").innerHTML = moment().zone(MelUtcOffset).add('hours', 1).format(formatTime);
+			document.getElementById("mel-add-2").innerHTML = moment().zone(MelUtcOffset).add('hours', 2).format(formatTime);
+			document.getElementById("mel-add-3").innerHTML = moment().zone(MelUtcOffset).add('hours', 3).format(formatTime);
+			document.getElementById("mel-add-4").innerHTML = moment().zone(MelUtcOffset).add('hours', 4).format(formatTime);
+			document.getElementById("mel-add-5").innerHTML = moment().zone(MelUtcOffset).add('hours', 5).format(formatTime);
+			document.getElementById("mel-add-6").innerHTML = moment().zone(MelUtcOffset).add('hours', 6).format(formatTime);
+			document.getElementById("mel-add-7").innerHTML = moment().zone(MelUtcOffset).add('hours', 7).format(formatTime);
+			document.getElementById("mel-add-8").innerHTML = moment().zone(MelUtcOffset).add('hours', 8).format(formatTime);
+			document.getElementById("mel-add-9").innerHTML = moment().zone(MelUtcOffset).add('hours', 9).format(formatTime);
+			document.getElementById("mel-add-10").innerHTML = moment().zone(MelUtcOffset).add('hours', 10).format(formatTime);
+			document.getElementById("mel-add-11").innerHTML = moment().zone(MelUtcOffset).add('hours', 11).format(formatTime);
+			document.getElementById("mel-add-12").innerHTML = moment().zone(MelUtcOffset).add('hours', 12).format(formatTime);
+			document.getElementById("mel-add-13").innerHTML = moment().zone(MelUtcOffset).add('hours', 13).format(formatTime);
+			document.getElementById("mel-add-14").innerHTML = moment().zone(MelUtcOffset).add('hours', 14).format(formatTime);
+			document.getElementById("mel-add-15").innerHTML = moment().zone(MelUtcOffset).add('hours', 15).format(formatTime);
+			document.getElementById("mel-add-16").innerHTML = moment().zone(MelUtcOffset).add('hours', 16).format(formatTime);
+			document.getElementById("mel-add-17").innerHTML = moment().zone(MelUtcOffset).add('hours', 17).format(formatTime);
+			document.getElementById("mel-add-18").innerHTML = moment().zone(MelUtcOffset).add('hours', 18).format(formatTime);
+			document.getElementById("mel-add-19").innerHTML = moment().zone(MelUtcOffset).add('hours', 19).format(formatTime);
+			document.getElementById("mel-add-20").innerHTML = moment().zone(MelUtcOffset).add('hours', 20).format(formatTime);
+			document.getElementById("mel-add-21").innerHTML = moment().zone(MelUtcOffset).add('hours', 21).format(formatTime);
+			document.getElementById("mel-add-22").innerHTML = moment().zone(MelUtcOffset).add('hours', 22).format(formatTime);
+			document.getElementById("mel-add-23").innerHTML = moment().zone(MelUtcOffset).add('hours', 23).format(formatTime);
+			document.getElementById("mel-add-24").innerHTML = moment().zone(MelUtcOffset).add('hours', 24).format(formatTime);
+			document.getElementById("mel-add-25").innerHTML = moment().zone(MelUtcOffset).add('hours', 25).format(formatTime);
+			document.getElementById("mel-add-26").innerHTML = moment().zone(MelUtcOffset).add('hours', 26).format(formatTime);
+			document.getElementById("mel-add-27").innerHTML = moment().zone(MelUtcOffset).add('hours', 27).format(formatTime);
+			document.getElementById("mel-add-28").innerHTML = moment().zone(MelUtcOffset).add('hours', 28).format(formatTime);
+			document.getElementById("mel-add-29").innerHTML = moment().zone(MelUtcOffset).add('hours', 29).format(formatTime);
+			document.getElementById("mel-add-30").innerHTML = moment().zone(MelUtcOffset).add('hours', 30).format(formatTime);
+			document.getElementById("mel-add-31").innerHTML = moment().zone(MelUtcOffset).add('hours', 31).format(formatTime);
+			document.getElementById("mel-add-32").innerHTML = moment().zone(MelUtcOffset).add('hours', 32).format(formatTime);
+			document.getElementById("mel-add-33").innerHTML = moment().zone(MelUtcOffset).add('hours', 33).format(formatTime);
+			document.getElementById("mel-add-34").innerHTML = moment().zone(MelUtcOffset).add('hours', 34).format(formatTime);
+			document.getElementById("mel-add-35").innerHTML = moment().zone(MelUtcOffset).add('hours', 35).format(formatTime);
+			document.getElementById("mel-add-36").innerHTML = moment().zone(MelUtcOffset).add('hours', 36).format(formatTime);
+			document.getElementById("mel-add-37").innerHTML = moment().zone(MelUtcOffset).add('hours', 37).format(formatTime);
+			document.getElementById("mel-add-38").innerHTML = moment().zone(MelUtcOffset).add('hours', 38).format(formatTime);
+			document.getElementById("mel-add-39").innerHTML = moment().zone(MelUtcOffset).add('hours', 39).format(formatTime);
+			document.getElementById("mel-add-40").innerHTML = moment().zone(MelUtcOffset).add('hours', 40).format(formatTime);
+			document.getElementById("mel-add-41").innerHTML = moment().zone(MelUtcOffset).add('hours', 41).format(formatTime);
+			document.getElementById("mel-add-42").innerHTML = moment().zone(MelUtcOffset).add('hours', 42).format(formatTime);
 
-			var formatTime        = 'hha'
-			var formatCurrentTime = 'h:mma Do MMM'
-
-			document.getElementById("local-minus-3").innerHTML = moment().zone(MelUtcOffset).subtract('hours', 3).format(formatTime);
-			document.getElementById("local-minus-2").innerHTML = moment().zone(MelUtcOffset).subtract('hours', 2).format(formatTime);
-			document.getElementById("local-minus-1").innerHTML = moment().zone(MelUtcOffset).subtract('hours', 1).format(formatTime);
-			document.getElementById("local-current").innerHTML = moment().zone(MelUtcOffset).format(formatCurrentTime);
-			document.getElementById("local-add-1").innerHTML = moment().zone(MelUtcOffset).add('hours', 1).format(formatTime);
-			document.getElementById("local-add-2").innerHTML = moment().zone(MelUtcOffset).add('hours', 2).format(formatTime);
-			document.getElementById("local-add-3").innerHTML = moment().zone(MelUtcOffset).add('hours', 3).format(formatTime);
-			document.getElementById("local-add-4").innerHTML = moment().zone(MelUtcOffset).add('hours', 4).format(formatTime);
-			document.getElementById("local-add-5").innerHTML = moment().zone(MelUtcOffset).add('hours', 5).format(formatTime);
-			document.getElementById("local-add-6").innerHTML = moment().zone(MelUtcOffset).add('hours', 6).format(formatTime);
-			document.getElementById("local-add-7").innerHTML = moment().zone(MelUtcOffset).add('hours', 7).format(formatTime);
-			document.getElementById("local-add-8").innerHTML = moment().zone(MelUtcOffset).add('hours', 8).format(formatTime);
-			document.getElementById("local-add-9").innerHTML = moment().zone(MelUtcOffset).add('hours', 9).format(formatTime);
-			document.getElementById("local-add-10").innerHTML = moment().zone(MelUtcOffset).add('hours', 10).format(formatTime);
-			document.getElementById("local-add-11").innerHTML = moment().zone(MelUtcOffset).add('hours', 11).format(formatTime);
-			document.getElementById("local-add-12").innerHTML = moment().zone(MelUtcOffset).add('hours', 12).format(formatTime);
-			document.getElementById("local-add-13").innerHTML = moment().zone(MelUtcOffset).add('hours', 13).format(formatTime);
-			document.getElementById("local-add-14").innerHTML = moment().zone(MelUtcOffset).add('hours', 14).format(formatTime);
-			document.getElementById("local-add-15").innerHTML = moment().zone(MelUtcOffset).add('hours', 15).format(formatTime);
-			document.getElementById("local-add-16").innerHTML = moment().zone(MelUtcOffset).add('hours', 16).format(formatTime);
-			document.getElementById("local-add-17").innerHTML = moment().zone(MelUtcOffset).add('hours', 17).format(formatTime);
-			document.getElementById("local-add-18").innerHTML = moment().zone(MelUtcOffset).add('hours', 18).format(formatTime);
-			document.getElementById("local-add-19").innerHTML = moment().zone(MelUtcOffset).add('hours', 19).format(formatTime);
-			document.getElementById("local-add-20").innerHTML = moment().zone(MelUtcOffset).add('hours', 20).format(formatTime);
-			document.getElementById("local-add-21").innerHTML = moment().zone(MelUtcOffset).add('hours', 21).format(formatTime);
-			document.getElementById("local-add-22").innerHTML = moment().zone(MelUtcOffset).add('hours', 22).format(formatTime);
-			document.getElementById("local-add-23").innerHTML = moment().zone(MelUtcOffset).add('hours', 23).format(formatTime);
-			document.getElementById("local-add-24").innerHTML = moment().zone(MelUtcOffset).add('hours', 24).format(formatTime);
-			document.getElementById("local-add-25").innerHTML = moment().zone(MelUtcOffset).add('hours', 25).format(formatTime);
-			document.getElementById("local-add-26").innerHTML = moment().zone(MelUtcOffset).add('hours', 26).format(formatTime);
-			document.getElementById("local-add-27").innerHTML = moment().zone(MelUtcOffset).add('hours', 27).format(formatTime);
-			document.getElementById("local-add-28").innerHTML = moment().zone(MelUtcOffset).add('hours', 28).format(formatTime);
-			document.getElementById("local-add-29").innerHTML = moment().zone(MelUtcOffset).add('hours', 29).format(formatTime);
-			document.getElementById("local-add-30").innerHTML = moment().zone(MelUtcOffset).add('hours', 30).format(formatTime);
-			document.getElementById("local-add-31").innerHTML = moment().zone(MelUtcOffset).add('hours', 31).format(formatTime);
-			document.getElementById("local-add-32").innerHTML = moment().zone(MelUtcOffset).add('hours', 32).format(formatTime);
-			document.getElementById("local-add-33").innerHTML = moment().zone(MelUtcOffset).add('hours', 33).format(formatTime);
-			document.getElementById("local-add-34").innerHTML = moment().zone(MelUtcOffset).add('hours', 34).format(formatTime);
-			document.getElementById("local-add-35").innerHTML = moment().zone(MelUtcOffset).add('hours', 35).format(formatTime);
-			document.getElementById("local-add-36").innerHTML = moment().zone(MelUtcOffset).add('hours', 36).format(formatTime);
-			document.getElementById("local-add-37").innerHTML = moment().zone(MelUtcOffset).add('hours', 37).format(formatTime);
-			document.getElementById("local-add-38").innerHTML = moment().zone(MelUtcOffset).add('hours', 38).format(formatTime);
-			document.getElementById("local-add-39").innerHTML = moment().zone(MelUtcOffset).add('hours', 39).format(formatTime);
-			document.getElementById("local-add-40").innerHTML = moment().zone(MelUtcOffset).add('hours', 40).format(formatTime);
-			document.getElementById("local-add-41").innerHTML = moment().zone(MelUtcOffset).add('hours', 41).format(formatTime);
-			document.getElementById("local-add-42").innerHTML = moment().zone(MelUtcOffset).add('hours', 42).format(formatTime);
-
-			document.getElementById("remote-minus-3").innerHTML = moment().zone(SfoUtcOffset).subtract('hours', 3).format(formatTime);
-			document.getElementById("remote-minus-2").innerHTML = moment().zone(SfoUtcOffset).subtract('hours', 2).format(formatTime);
-			document.getElementById("remote-minus-1").innerHTML = moment().zone(SfoUtcOffset).subtract('hours', 1).format(formatTime);
-			document.getElementById("remote-current").innerHTML = moment().zone(SfoUtcOffset).format(formatCurrentTime);
-			document.getElementById("remote-add-1").innerHTML = moment().zone(SfoUtcOffset).add('hours', 1).format(formatTime);
-			document.getElementById("remote-add-2").innerHTML = moment().zone(SfoUtcOffset).add('hours', 2).format(formatTime);
-			document.getElementById("remote-add-3").innerHTML = moment().zone(SfoUtcOffset).add('hours', 3).format(formatTime);
-			document.getElementById("remote-add-4").innerHTML = moment().zone(SfoUtcOffset).add('hours', 4).format(formatTime);
-			document.getElementById("remote-add-5").innerHTML = moment().zone(SfoUtcOffset).add('hours', 5).format(formatTime);
-			document.getElementById("remote-add-6").innerHTML = moment().zone(SfoUtcOffset).add('hours', 6).format(formatTime);
-			document.getElementById("remote-add-7").innerHTML = moment().zone(SfoUtcOffset).add('hours', 7).format(formatTime);
-			document.getElementById("remote-add-8").innerHTML = moment().zone(SfoUtcOffset).add('hours', 8).format(formatTime);
-			document.getElementById("remote-add-9").innerHTML = moment().zone(SfoUtcOffset).add('hours', 9).format(formatTime);
-			document.getElementById("remote-add-10").innerHTML = moment().zone(SfoUtcOffset).add('hours', 10).format(formatTime);
-			document.getElementById("remote-add-11").innerHTML = moment().zone(SfoUtcOffset).add('hours', 11).format(formatTime);
-			document.getElementById("remote-add-12").innerHTML = moment().zone(SfoUtcOffset).add('hours', 12).format(formatTime);
-			document.getElementById("remote-add-13").innerHTML = moment().zone(SfoUtcOffset).add('hours', 13).format(formatTime);
-			document.getElementById("remote-add-14").innerHTML = moment().zone(SfoUtcOffset).add('hours', 14).format(formatTime);
-			document.getElementById("remote-add-15").innerHTML = moment().zone(SfoUtcOffset).add('hours', 15).format(formatTime);
-			document.getElementById("remote-add-16").innerHTML = moment().zone(SfoUtcOffset).add('hours', 16).format(formatTime);
-			document.getElementById("remote-add-17").innerHTML = moment().zone(SfoUtcOffset).add('hours', 17).format(formatTime);
-			document.getElementById("remote-add-18").innerHTML = moment().zone(SfoUtcOffset).add('hours', 18).format(formatTime);
-			document.getElementById("remote-add-19").innerHTML = moment().zone(SfoUtcOffset).add('hours', 19).format(formatTime);
-			document.getElementById("remote-add-20").innerHTML = moment().zone(SfoUtcOffset).add('hours', 20).format(formatTime);
-			document.getElementById("remote-add-21").innerHTML = moment().zone(SfoUtcOffset).add('hours', 21).format(formatTime);
-			document.getElementById("remote-add-22").innerHTML = moment().zone(SfoUtcOffset).add('hours', 22).format(formatTime);
-			document.getElementById("remote-add-23").innerHTML = moment().zone(SfoUtcOffset).add('hours', 23).format(formatTime);
-			document.getElementById("remote-add-24").innerHTML = moment().zone(SfoUtcOffset).add('hours', 24).format(formatTime);
-			document.getElementById("remote-add-25").innerHTML = moment().zone(SfoUtcOffset).add('hours', 25).format(formatTime);
-			document.getElementById("remote-add-26").innerHTML = moment().zone(SfoUtcOffset).add('hours', 26).format(formatTime);
-			document.getElementById("remote-add-27").innerHTML = moment().zone(SfoUtcOffset).add('hours', 27).format(formatTime);
-			document.getElementById("remote-add-28").innerHTML = moment().zone(SfoUtcOffset).add('hours', 28).format(formatTime);
-			document.getElementById("remote-add-29").innerHTML = moment().zone(SfoUtcOffset).add('hours', 29).format(formatTime);
-			document.getElementById("remote-add-30").innerHTML = moment().zone(SfoUtcOffset).add('hours', 30).format(formatTime);
-			document.getElementById("remote-add-31").innerHTML = moment().zone(SfoUtcOffset).add('hours', 31).format(formatTime);
-			document.getElementById("remote-add-32").innerHTML = moment().zone(SfoUtcOffset).add('hours', 32).format(formatTime);
-			document.getElementById("remote-add-33").innerHTML = moment().zone(SfoUtcOffset).add('hours', 33).format(formatTime);
-			document.getElementById("remote-add-34").innerHTML = moment().zone(SfoUtcOffset).add('hours', 34).format(formatTime);
-			document.getElementById("remote-add-35").innerHTML = moment().zone(SfoUtcOffset).add('hours', 35).format(formatTime);
-			document.getElementById("remote-add-36").innerHTML = moment().zone(SfoUtcOffset).add('hours', 36).format(formatTime);
-			document.getElementById("remote-add-37").innerHTML = moment().zone(SfoUtcOffset).add('hours', 37).format(formatTime);
-			document.getElementById("remote-add-38").innerHTML = moment().zone(SfoUtcOffset).add('hours', 38).format(formatTime);
-			document.getElementById("remote-add-39").innerHTML = moment().zone(SfoUtcOffset).add('hours', 39).format(formatTime);
-			document.getElementById("remote-add-40").innerHTML = moment().zone(SfoUtcOffset).add('hours', 40).format(formatTime);
-			document.getElementById("remote-add-41").innerHTML = moment().zone(SfoUtcOffset).add('hours', 41).format(formatTime);
-			document.getElementById("remote-add-42").innerHTML = moment().zone(SfoUtcOffset).add('hours', 42).format(formatTime);
+			document.getElementById("sfo-minus-3").innerHTML = moment().zone(SfoUtcOffset).subtract('hours', 3).format(formatTime);
+			document.getElementById("sfo-minus-2").innerHTML = moment().zone(SfoUtcOffset).subtract('hours', 2).format(formatTime);
+			document.getElementById("sfo-minus-1").innerHTML = moment().zone(SfoUtcOffset).subtract('hours', 1).format(formatTime);
+			document.getElementById("sfo-current").innerHTML = moment().zone(SfoUtcOffset).format(formatCurrentTime);
+			document.getElementById("sfo-add-1").innerHTML = moment().zone(SfoUtcOffset).add('hours', 1).format(formatTime);
+			document.getElementById("sfo-add-2").innerHTML = moment().zone(SfoUtcOffset).add('hours', 2).format(formatTime);
+			document.getElementById("sfo-add-3").innerHTML = moment().zone(SfoUtcOffset).add('hours', 3).format(formatTime);
+			document.getElementById("sfo-add-4").innerHTML = moment().zone(SfoUtcOffset).add('hours', 4).format(formatTime);
+			document.getElementById("sfo-add-5").innerHTML = moment().zone(SfoUtcOffset).add('hours', 5).format(formatTime);
+			document.getElementById("sfo-add-6").innerHTML = moment().zone(SfoUtcOffset).add('hours', 6).format(formatTime);
+			document.getElementById("sfo-add-7").innerHTML = moment().zone(SfoUtcOffset).add('hours', 7).format(formatTime);
+			document.getElementById("sfo-add-8").innerHTML = moment().zone(SfoUtcOffset).add('hours', 8).format(formatTime);
+			document.getElementById("sfo-add-9").innerHTML = moment().zone(SfoUtcOffset).add('hours', 9).format(formatTime);
+			document.getElementById("sfo-add-10").innerHTML = moment().zone(SfoUtcOffset).add('hours', 10).format(formatTime);
+			document.getElementById("sfo-add-11").innerHTML = moment().zone(SfoUtcOffset).add('hours', 11).format(formatTime);
+			document.getElementById("sfo-add-12").innerHTML = moment().zone(SfoUtcOffset).add('hours', 12).format(formatTime);
+			document.getElementById("sfo-add-13").innerHTML = moment().zone(SfoUtcOffset).add('hours', 13).format(formatTime);
+			document.getElementById("sfo-add-14").innerHTML = moment().zone(SfoUtcOffset).add('hours', 14).format(formatTime);
+			document.getElementById("sfo-add-15").innerHTML = moment().zone(SfoUtcOffset).add('hours', 15).format(formatTime);
+			document.getElementById("sfo-add-16").innerHTML = moment().zone(SfoUtcOffset).add('hours', 16).format(formatTime);
+			document.getElementById("sfo-add-17").innerHTML = moment().zone(SfoUtcOffset).add('hours', 17).format(formatTime);
+			document.getElementById("sfo-add-18").innerHTML = moment().zone(SfoUtcOffset).add('hours', 18).format(formatTime);
+			document.getElementById("sfo-add-19").innerHTML = moment().zone(SfoUtcOffset).add('hours', 19).format(formatTime);
+			document.getElementById("sfo-add-20").innerHTML = moment().zone(SfoUtcOffset).add('hours', 20).format(formatTime);
+			document.getElementById("sfo-add-21").innerHTML = moment().zone(SfoUtcOffset).add('hours', 21).format(formatTime);
+			document.getElementById("sfo-add-22").innerHTML = moment().zone(SfoUtcOffset).add('hours', 22).format(formatTime);
+			document.getElementById("sfo-add-23").innerHTML = moment().zone(SfoUtcOffset).add('hours', 23).format(formatTime);
+			document.getElementById("sfo-add-24").innerHTML = moment().zone(SfoUtcOffset).add('hours', 24).format(formatTime);
+			document.getElementById("sfo-add-25").innerHTML = moment().zone(SfoUtcOffset).add('hours', 25).format(formatTime);
+			document.getElementById("sfo-add-26").innerHTML = moment().zone(SfoUtcOffset).add('hours', 26).format(formatTime);
+			document.getElementById("sfo-add-27").innerHTML = moment().zone(SfoUtcOffset).add('hours', 27).format(formatTime);
+			document.getElementById("sfo-add-28").innerHTML = moment().zone(SfoUtcOffset).add('hours', 28).format(formatTime);
+			document.getElementById("sfo-add-29").innerHTML = moment().zone(SfoUtcOffset).add('hours', 29).format(formatTime);
+			document.getElementById("sfo-add-30").innerHTML = moment().zone(SfoUtcOffset).add('hours', 30).format(formatTime);
+			document.getElementById("sfo-add-31").innerHTML = moment().zone(SfoUtcOffset).add('hours', 31).format(formatTime);
+			document.getElementById("sfo-add-32").innerHTML = moment().zone(SfoUtcOffset).add('hours', 32).format(formatTime);
+			document.getElementById("sfo-add-33").innerHTML = moment().zone(SfoUtcOffset).add('hours', 33).format(formatTime);
+			document.getElementById("sfo-add-34").innerHTML = moment().zone(SfoUtcOffset).add('hours', 34).format(formatTime);
+			document.getElementById("sfo-add-35").innerHTML = moment().zone(SfoUtcOffset).add('hours', 35).format(formatTime);
+			document.getElementById("sfo-add-36").innerHTML = moment().zone(SfoUtcOffset).add('hours', 36).format(formatTime);
+			document.getElementById("sfo-add-37").innerHTML = moment().zone(SfoUtcOffset).add('hours', 37).format(formatTime);
+			document.getElementById("sfo-add-38").innerHTML = moment().zone(SfoUtcOffset).add('hours', 38).format(formatTime);
+			document.getElementById("sfo-add-39").innerHTML = moment().zone(SfoUtcOffset).add('hours', 39).format(formatTime);
+			document.getElementById("sfo-add-40").innerHTML = moment().zone(SfoUtcOffset).add('hours', 40).format(formatTime);
+			document.getElementById("sfo-add-41").innerHTML = moment().zone(SfoUtcOffset).add('hours', 41).format(formatTime);
+			document.getElementById("sfo-add-42").innerHTML = moment().zone(SfoUtcOffset).add('hours', 42).format(formatTime);
 
 			// This doesn't seem robust. Think I need regex.
 			$('.hour:contains("12am")').addClass('sleep');

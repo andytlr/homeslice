@@ -9,6 +9,17 @@
 	<link rel="apple-touch-icon-precomposed" href="img/airplane-twitter.png"/>
 
 	<style>
+		html {
+			font-size: 10px;
+			-webkit-font-smoothing: antialiased;
+		}
+
+		@media only screen and (min-width: 800px) {
+			html {
+				font-size: 15px;
+			}
+		}
+
 		body {
 			margin: 0;
 			padding: 0;
@@ -24,13 +35,13 @@
 
 		.city {
 			display: table-cell;
-			padding-top: 44px;
+			padding-top: 4.4rem;
 		}
 
 		.cityname {
-			line-height: 44px;
-			height: 44px;
-			font-size: 16px;
+			line-height: 4.4rem;
+			height: 4.4rem;
+			font-size: 1.6rem;
 			background: hsla(173, 83%, 40%, 0.88);
 			color: hsl(0, 0%, 100%);
 			position: fixed;
@@ -43,9 +54,9 @@
 
 		.hour {
 			padding: 0;
-			height: 26px;
-			line-height: 26px;
-			font-size: 12px;
+			height: 2.6rem;
+			line-height: 2.6rem;
+			font-size: 1.2rem;
 			border-top: 1px solid hsl(0, 0%, 95%);
 		}
 

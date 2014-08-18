@@ -286,27 +286,25 @@
 			document.getElementById("remote-add-34").innerHTML = moment().add('hours', 34).subtract('hours', timeZoneOffset).format('ha');
 			document.getElementById("remote-add-35").innerHTML = moment().add('hours', 35).subtract('hours', timeZoneOffset).format('ha');
 			document.getElementById("remote-add-36").innerHTML = moment().add('hours', 36).subtract('hours', timeZoneOffset).format('ha');
+
+			$('.hour:contains("12am")').addClass('sleep');
+			$('.hour:contains("1am")').addClass('sleep');
+			$('.hour:contains("2am")').addClass('sleep');
+			$('.hour:contains("3am")').addClass('sleep');
+			$('.hour:contains("4am")').addClass('sleep');
+			$('.hour:contains("5am")').addClass('sleep');
+			$('.hour:contains("6am")').addClass('sleep');
+			$('.hour:contains("7am")').addClass('outsidebusiness');
+			$('.hour:contains("8am")').addClass('outsidebusiness');
+			$('.hour:contains("6pm")').addClass('outsidebusiness');
+			$('.hour:contains("7pm")').addClass('outsidebusiness');
+			$('.hour:contains("8pm")').addClass('outsidebusiness');
+			$('.hour:contains("9pm")').addClass('outsidebusiness');
+			$('.hour:contains("10pm")').addClass('outsidebusiness');
+			$('.hour:contains("11pm")').addClass('outsidebusiness');
+			$('.hour:contains("11am")').removeClass('sleep');
+			
 		}, 1000);
-	</script>
-
-	<script charset="utf-8">
-		$('.hour:contains("12am")').addClass('sleep');
-		$('.hour:contains("1am")').addClass('sleep');
-		$('.hour:contains("2am")').addClass('sleep');
-		$('.hour:contains("3am")').addClass('sleep');
-		$('.hour:contains("4am")').addClass('sleep');
-		$('.hour:contains("5am")').addClass('sleep');
-		$('.hour:contains("6am")').addClass('sleep');
-		$('.hour:contains("7am")').addClass('outsidebusiness');
-		$('.hour:contains("8am")').addClass('outsidebusiness');
-		$('.hour:contains("6pm")').addClass('outsidebusiness');
-		$('.hour:contains("7pm")').addClass('outsidebusiness');
-		$('.hour:contains("8pm")').addClass('outsidebusiness');
-		$('.hour:contains("9pm")').addClass('outsidebusiness');
-		$('.hour:contains("10pm")').addClass('outsidebusiness');
-		$('.hour:contains("11pm")').addClass('outsidebusiness');
-
-		$('.hour:contains("11am")').removeClass('sleep');
 	</script>
 
 </body>

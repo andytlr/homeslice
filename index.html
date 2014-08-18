@@ -86,21 +86,9 @@
 	<script src="js/jquery.min.js"></script>
 
 	<script type="text/javascript">
-		var cellHeight       = 24
-		var scrollPosition   = (cellHeight + 1) * 7
-
-		window.scrollTo(0,scrollPosition);
-
-		function getParameterByName(name) {
-			name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-			var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-					results = regex.exec(location.search);
-			return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-		}
-
-		var tz = getParameterByName('tz');
-
-		// alert(tz);
+		// var cellHeight       = 24
+		// var scrollPosition   = (cellHeight + 1) * 7
+		// window.scrollTo(0,scrollPosition);
 	</script>
 
 </head>
@@ -109,13 +97,6 @@
 	<div class="city">
 		<div class="cityname current">Melbourne</div>
 
-		<div class="hour" id="local-minus-10"></div>
-		<div class="hour" id="local-minus-9"></div>
-		<div class="hour" id="local-minus-8"></div>
-		<div class="hour" id="local-minus-7"></div>
-		<div class="hour" id="local-minus-6"></div>
-		<div class="hour" id="local-minus-5"></div>
-		<div class="hour" id="local-minus-4"></div>
 		<div class="hour" id="local-minus-3"></div>
 		<div class="hour" id="local-minus-2"></div>
 		<div class="hour" id="local-minus-1"></div>
@@ -161,13 +142,6 @@
 	<div class="city">
 		<div class="cityname remote">San Francisco</div>
 
-		<div class="hour" id="remote-minus-10"></div>
-		<div class="hour" id="remote-minus-9"></div>
-		<div class="hour" id="remote-minus-8"></div>
-		<div class="hour" id="remote-minus-7"></div>
-		<div class="hour" id="remote-minus-6"></div>
-		<div class="hour" id="remote-minus-5"></div>
-		<div class="hour" id="remote-minus-4"></div>
 		<div class="hour" id="remote-minus-3"></div>
 		<div class="hour" id="remote-minus-2"></div>
 		<div class="hour" id="remote-minus-1"></div>
@@ -215,13 +189,6 @@
 			var formatTime        = 'hha'
 			var formatCurrentTime = 'h:mma <br /> Do MMM'
 
-			document.getElementById("local-minus-10").innerHTML = moment().subtract('hours', 10).format(formatTime);
-			document.getElementById("local-minus-9").innerHTML = moment().subtract('hours', 9).format(formatTime);
-			document.getElementById("local-minus-8").innerHTML = moment().subtract('hours', 8).format(formatTime);
-			document.getElementById("local-minus-7").innerHTML = moment().subtract('hours', 7).format(formatTime);
-			document.getElementById("local-minus-6").innerHTML = moment().subtract('hours', 6).format(formatTime);
-			document.getElementById("local-minus-5").innerHTML = moment().subtract('hours', 5).format(formatTime);
-			document.getElementById("local-minus-4").innerHTML = moment().subtract('hours', 4).format(formatTime);
 			document.getElementById("local-minus-3").innerHTML = moment().subtract('hours', 3).format(formatTime);
 			document.getElementById("local-minus-2").innerHTML = moment().subtract('hours', 2).format(formatTime);
 			document.getElementById("local-minus-1").innerHTML = moment().subtract('hours', 1).format(formatTime);
@@ -263,13 +230,6 @@
 			document.getElementById("local-add-35").innerHTML = moment().add('hours', 35).format(formatTime);
 			document.getElementById("local-add-36").innerHTML = moment().add('hours', 36).format(formatTime);
 
-			document.getElementById("remote-minus-10").innerHTML = moment.utc().subtract('hours', 17).format(formatTime);
-			document.getElementById("remote-minus-9").innerHTML = moment.utc().subtract('hours', 16).format(formatTime);
-			document.getElementById("remote-minus-8").innerHTML = moment.utc().subtract('hours', 15).format(formatTime);
-			document.getElementById("remote-minus-7").innerHTML = moment.utc().subtract('hours', 14).format(formatTime);
-			document.getElementById("remote-minus-6").innerHTML = moment.utc().subtract('hours', 13).format(formatTime);
-			document.getElementById("remote-minus-5").innerHTML = moment.utc().subtract('hours', 12).format(formatTime);
-			document.getElementById("remote-minus-4").innerHTML = moment.utc().subtract('hours', 11).format(formatTime);
 			document.getElementById("remote-minus-3").innerHTML = moment.utc().subtract('hours', 10).format(formatTime);
 			document.getElementById("remote-minus-2").innerHTML = moment.utc().subtract('hours', 9).format(formatTime);
 			document.getElementById("remote-minus-1").innerHTML = moment.utc().subtract('hours', 8).format(formatTime);

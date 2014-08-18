@@ -133,6 +133,12 @@
 		<div class="hour" id="local-add-34"></div>
 		<div class="hour" id="local-add-35"></div>
 		<div class="hour" id="local-add-36"></div>
+		<div class="hour" id="local-add-37"></div>
+		<div class="hour" id="local-add-38"></div>
+		<div class="hour" id="local-add-39"></div>
+		<div class="hour" id="local-add-40"></div>
+		<div class="hour" id="local-add-41"></div>
+		<div class="hour" id="local-add-42"></div>
 	</div>
 
 	<div class="city">
@@ -178,6 +184,12 @@
 		<div class="hour" id="remote-add-34"></div>
 		<div class="hour" id="remote-add-35"></div>
 		<div class="hour" id="remote-add-36"></div>
+		<div class="hour" id="remote-add-37"></div>
+		<div class="hour" id="remote-add-38"></div>
+		<div class="hour" id="remote-add-39"></div>
+		<div class="hour" id="remote-add-40"></div>
+		<div class="hour" id="remote-add-41"></div>
+		<div class="hour" id="remote-add-42"></div>
 	</div>
 
 	<script charset="utf-8">
@@ -228,6 +240,12 @@
 			document.getElementById("local-add-34").innerHTML = moment().zone(MelUtcOffset).add('hours', 34).format(formatTime);
 			document.getElementById("local-add-35").innerHTML = moment().zone(MelUtcOffset).add('hours', 35).format(formatTime);
 			document.getElementById("local-add-36").innerHTML = moment().zone(MelUtcOffset).add('hours', 36).format(formatTime);
+			document.getElementById("local-add-37").innerHTML = moment().zone(MelUtcOffset).add('hours', 37).format(formatTime);
+			document.getElementById("local-add-38").innerHTML = moment().zone(MelUtcOffset).add('hours', 38).format(formatTime);
+			document.getElementById("local-add-39").innerHTML = moment().zone(MelUtcOffset).add('hours', 39).format(formatTime);
+			document.getElementById("local-add-40").innerHTML = moment().zone(MelUtcOffset).add('hours', 40).format(formatTime);
+			document.getElementById("local-add-41").innerHTML = moment().zone(MelUtcOffset).add('hours', 41).format(formatTime);
+			document.getElementById("local-add-42").innerHTML = moment().zone(MelUtcOffset).add('hours', 42).format(formatTime);
 
 			document.getElementById("remote-minus-3").innerHTML = moment().zone(SfoUtcOffset).subtract('hours', 3).format(formatTime);
 			document.getElementById("remote-minus-2").innerHTML = moment().zone(SfoUtcOffset).subtract('hours', 2).format(formatTime);
@@ -269,6 +287,12 @@
 			document.getElementById("remote-add-34").innerHTML = moment().zone(SfoUtcOffset).add('hours', 34).format(formatTime);
 			document.getElementById("remote-add-35").innerHTML = moment().zone(SfoUtcOffset).add('hours', 35).format(formatTime);
 			document.getElementById("remote-add-36").innerHTML = moment().zone(SfoUtcOffset).add('hours', 36).format(formatTime);
+			document.getElementById("remote-add-37").innerHTML = moment().zone(SfoUtcOffset).add('hours', 37).format(formatTime);
+			document.getElementById("remote-add-38").innerHTML = moment().zone(SfoUtcOffset).add('hours', 38).format(formatTime);
+			document.getElementById("remote-add-39").innerHTML = moment().zone(SfoUtcOffset).add('hours', 39).format(formatTime);
+			document.getElementById("remote-add-40").innerHTML = moment().zone(SfoUtcOffset).add('hours', 40).format(formatTime);
+			document.getElementById("remote-add-41").innerHTML = moment().zone(SfoUtcOffset).add('hours', 41).format(formatTime);
+			document.getElementById("remote-add-42").innerHTML = moment().zone(SfoUtcOffset).add('hours', 42).format(formatTime);
 
 			// This doesn't seem robust. Think I need regex.
 			$('.hour:contains("12am")').addClass('sleep');

@@ -14,12 +14,6 @@
 			-webkit-font-smoothing: antialiased;
 		}
 
-		@media only screen and (min-width: 800px) {
-			html {
-				font-size: 15px;
-			}
-		}
-
 		body {
 			margin: 0;
 			padding: 0;
@@ -80,7 +74,26 @@
 			color: hsla(173, 83%, 40%, 0.1);
 		}
 
+		.hour.current {
+			background: hsl(173, 83%, 40%);
+			color: hsl(0, 0%, 100%);
+			border: none;
+		}
+
+		.hour.daystart {
+			/*color: hsla(173, 83%, 40%, 1);*/
+			border-color: hsla(173, 83%, 40%, 0.8);
+		}
+
+		.hour:nth-of-type(3) {
+			border-color: transparent;
+		}
+
 		@media only screen and (min-width: 800px) {
+			html {
+				font-size: 15px;
+			}
+
 			.cityname {
 				line-height: 5.5rem;
 				height: 5.5rem;
@@ -94,21 +107,6 @@
 				height: 3.5rem;
 				line-height: 3.5rem;
 			}
-		}
-
-		.hour.current {
-			background: hsl(173, 83%, 40%);
-			color: hsl(0, 0%, 100%);
-			border: none;
-		}
-
-		.hour.daystart {
-			color: hsla(173, 83%, 40%, 0.7);
-			border-color: hsla(173, 83%, 40%, 0.3);
-		}
-
-		.hour:nth-of-type(3) {
-			border-color: transparent;
 		}
 	</style>
 

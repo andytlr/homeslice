@@ -145,6 +145,10 @@
 					var format = formatNewDay;
 				}
 
+				if (currentTime.format('HH') == 12) {
+					var format = 'ddd [Midday]';
+				}
+
 				if (currentTime.format('ha') == "12am") {
 					hourNode.classList.add("sleep");
 					hourNode.classList.add("daystart");
@@ -233,10 +237,15 @@
 					var format = formatNewDay;
 				}
 
+				if (currentTime.format('HH') == 12) {
+					var format = 'ddd [Midday]';
+				}
+
 				if (currentTime.format('ha') == "12am") {
 					hourNode.classList.add("sleep");
 					hourNode.classList.add("daystart");
 				}
+				
 				if (currentTime.format('ha') == "1am") {
 					hourNode.classList.add("sleep");
 				}

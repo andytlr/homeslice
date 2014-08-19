@@ -20,7 +20,6 @@
 			margin: 0;
 			padding: 0;
 			font-family: 'Avenir Next', sans-serif;
-			/*text-align: center;*/
 		}
 
 		.cities {
@@ -126,7 +125,37 @@
 		var formatNewDay      = 'ddd Do MMM'
 	</script>
 
+<!-- <div class="cities" id="cities">
+	<div class="city">
+		<div class="cityname">Melbourne</div>
+			<div class="hour" data-hour-mel></div> -->
+
+</head>
+<body>
+	<div class="cities" id="cities"></div>
+
 	<script charset="utf-8">
+		// var cities = ["mel", "sfo"];
+
+		// for (city in cities) {
+
+		// }
+
+		var citiesEl   = document.getElementById("cities");
+		var cityEl     = document.createElement("div");
+		citiesEl.appendChild(cityEl).classList.add("city", "mel");
+		var cityNameEl = document.createElement("div");
+		cityEl.appendChild(cityNameEl).classList.add("cityname");
+		var cityname   = document.createTextNode("Melbourne");
+		cityNameEl.appendChild(cityname);
+
+		for (var i = 0; i < 168; i++) {
+		  var hourEl     = document.createElement("div");
+			cityEl.appendChild(hourEl).classList.add("hour");
+			hourEl.setAttribute("data-hour-mel", "");
+		}
+
+
 		window.setInterval(function(){
 
 			var hours = document.querySelectorAll('[data-hour-mel]');
@@ -320,328 +349,5 @@
 
 		}, 1000);
 	</script>
-
-</head>
-<body>
-	<div class="cities">
-		<div class="city">
-			<div class="cityname">Melbourne</div>
-
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-			<div class="hour" data-hour-mel></div>
-		</div>
-
-		<div class="city">
-			<div class="cityname">San Francisco</div>
-
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-				<div class="hour" data-hour-sfo></div>
-		</div>
-	</div>
-
 </body>
 </html>

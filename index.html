@@ -120,12 +120,270 @@
 		var formatNewDay      = 'ddd, Do MMM, ha'
 	</script>
 
+	<script charset="utf-8">
+		window.setInterval(function(){
+
+			var hours = document.querySelectorAll('[data-hour-mel]');
+			[].forEach.call(hours, function(hourNode, index) {
+				var currentTime = moment().zone(MelUtcOffset);
+
+				if (index === 0) {
+					var format = formatCurrentTime;
+					hourNode.classList.add("current");
+				} else {
+					var format = formatTime;
+					currentTime = currentTime.add('hours', index);
+				}
+
+				if (currentTime.format('HH') == 00) {
+					var format = formatNewDay;
+				}
+
+				if (currentTime.format('ha') == "12am") {
+					hourNode.classList.add("sleep");
+					hourNode.classList.add("daystart");
+				}
+				if (currentTime.format('ha') == "1am") {
+					hourNode.classList.add("sleep");
+				}
+
+				if (currentTime.format('ha') == "2am") {
+					hourNode.classList.add("sleep");
+				}
+
+				if (currentTime.format('ha') == "3am") {
+					hourNode.classList.add("sleep");
+				}
+
+				if (currentTime.format('ha') == "4am") {
+					hourNode.classList.add("sleep");
+				}
+
+				if (currentTime.format('ha') == "5am") {
+					hourNode.classList.add("sleep");
+				}
+
+				if (currentTime.format('ha') == "6am") {
+					hourNode.classList.add("sleep");
+				}
+
+				if (currentTime.format('ha') == "7am") {
+					hourNode.classList.add("outsidebusiness");
+				}
+
+				if (currentTime.format('ha') == "8am") {
+					hourNode.classList.add("outsidebusiness");
+				}
+
+				if (currentTime.format('ha') == "6pm") {
+					hourNode.classList.add("outsidebusiness");
+				}
+
+				if (currentTime.format('ha') == "7pm") {
+					hourNode.classList.add("outsidebusiness");
+				}
+
+				if (currentTime.format('ha') == "8pm") {
+					hourNode.classList.add("outsidebusiness");
+				}
+
+				if (currentTime.format('ha') == "9pm") {
+					hourNode.classList.add("outsidebusiness");
+				}
+
+				if (currentTime.format('ha') == "10pm") {
+					hourNode.classList.add("outsidebusiness");
+				}
+
+				if (currentTime.format('ha') == "11pm") {
+					hourNode.classList.add("sleep");
+				}
+
+				if (currentTime.format('ddd') == "Sat") {
+					hourNode.classList.add("weekend");
+				}
+
+				if (currentTime.format('ddd') == "Sun") {
+					hourNode.classList.add("weekend");
+				}
+
+			  hourNode.innerHTML = currentTime.format(format);
+			});
+
+
+			var hours = document.querySelectorAll('[data-hour-sfo]');
+			[].forEach.call(hours, function(hourNode, index) {
+				var currentTime = moment().zone(SfoUtcOffset);
+
+				if (index === 0) {
+					var format = formatCurrentTime;
+					hourNode.classList.add("current");
+				} else {
+					var format = formatTime;
+					currentTime = currentTime.add('hours', index);
+				}
+
+				if (currentTime.format('HH') == 00) {
+					var format = formatNewDay;
+				}
+
+				if (currentTime.format('ha') == "12am") {
+					hourNode.classList.add("sleep");
+					hourNode.classList.add("daystart");
+				}
+				if (currentTime.format('ha') == "1am") {
+					hourNode.classList.add("sleep");
+				}
+
+				if (currentTime.format('ha') == "2am") {
+					hourNode.classList.add("sleep");
+				}
+
+				if (currentTime.format('ha') == "3am") {
+					hourNode.classList.add("sleep");
+				}
+
+				if (currentTime.format('ha') == "4am") {
+					hourNode.classList.add("sleep");
+				}
+
+				if (currentTime.format('ha') == "5am") {
+					hourNode.classList.add("sleep");
+				}
+
+				if (currentTime.format('ha') == "6am") {
+					hourNode.classList.add("sleep");
+				}
+
+				if (currentTime.format('ha') == "7am") {
+					hourNode.classList.add("outsidebusiness");
+				}
+
+				if (currentTime.format('ha') == "8am") {
+					hourNode.classList.add("outsidebusiness");
+				}
+
+				if (currentTime.format('ha') == "6pm") {
+					hourNode.classList.add("outsidebusiness");
+				}
+
+				if (currentTime.format('ha') == "7pm") {
+					hourNode.classList.add("outsidebusiness");
+				}
+
+				if (currentTime.format('ha') == "8pm") {
+					hourNode.classList.add("outsidebusiness");
+				}
+
+				if (currentTime.format('ha') == "9pm") {
+					hourNode.classList.add("outsidebusiness");
+				}
+
+				if (currentTime.format('ha') == "10pm") {
+					hourNode.classList.add("outsidebusiness");
+				}
+
+				if (currentTime.format('ha') == "11pm") {
+					hourNode.classList.add("sleep");
+				}
+
+				if (currentTime.format('ddd') == "Sat") {
+					hourNode.classList.add("weekend");
+				}
+
+				if (currentTime.format('ddd') == "Sun") {
+					hourNode.classList.add("weekend");
+				}
+
+			  hourNode.innerHTML = currentTime.format(format);
+			});
+
+		}, 1000);
+	</script>
+
 </head>
 <body>
 	<div class="cities">
 		<div class="city">
 			<div class="cityname">Melbourne</div>
 
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
+			<div class="hour" data-hour-mel></div>
 			<div class="hour" data-hour-mel></div>
 			<div class="hour" data-hour-mel></div>
 			<div class="hour" data-hour-mel></div>
@@ -285,94 +543,85 @@
 				<div class="hour" data-hour-sfo></div>
 				<div class="hour" data-hour-sfo></div>
 				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
+				<div class="hour" data-hour-sfo></div>
 		</div>
-
 	</div>
-
-	<script charset="utf-8">
-		// if (moment().zone(MelUtcOffset).format('HH') == 00) {
-		// 	alert(
-		// 		moment().zone(MelUtcOffset).format(formatNewDay)
-		// 	)
-		// }
-
-		window.setInterval(function(){
-
-			var hours = document.querySelectorAll('[data-hour-mel]');
-			[].forEach.call(hours, function(hourNode, index) {
-				var currentTime = moment().zone(MelUtcOffset);
-				if (index === 0) {
-					var format = formatCurrentTime;
-				} else {
-					var format = formatTime;
-					currentTime = currentTime.add('hours', index + 1);
-				}
-
-				if (currentTime.format('HH') == 00) {
-					var format = formatNewDay;
-				}
-				// Use a switch to add classes
-
-				// hourNode.classList.add("lol");
-			  hourNode.innerHTML = currentTime.format(format);
-			});
-
-			var hours = document.querySelectorAll('[data-hour-sfo]');
-			[].forEach.call(hours, function(hourNode, index) {
-				var currentTime = moment().zone(SfoUtcOffset);
-				if (index === 0) {
-					var format = formatCurrentTime;
-				} else {
-					var format = formatTime;
-					currentTime = currentTime.add('hours', index + 1);
-				}
-
-				if (currentTime.format('HH') == 00) {
-					var format = formatNewDay;
-				}
-
-				// Use a switch to add classes
-
-				// hourNode.classList.add("lol");
-			  hourNode.innerHTML = currentTime.format(format);
-			});
-
-
-			// $('.hour:contains("12am")').addClass('daystart');
-
-			// // This doesn't seem robust. Think I need regex.
-			// $('.hour:contains("12am")').addClass('sleep');
-			// $('.hour:contains("1am")').addClass('sleep');
-			// $('.hour:contains("2am")').addClass('sleep');
-			// $('.hour:contains("3am")').addClass('sleep');
-			// $('.hour:contains("4am")').addClass('sleep');
-			// $('.hour:contains("5am")').addClass('sleep');
-			// $('.hour:contains("6am")').addClass('sleep');
-			// $('.hour:contains("7am")').addClass('outsidebusiness');
-			// $('.hour:contains("8am")').addClass('outsidebusiness');
-			// $('.hour:contains("6pm")').addClass('outsidebusiness');
-			// $('.hour:contains("7pm")').addClass('outsidebusiness');
-			// $('.hour:contains("8pm")').addClass('outsidebusiness');
-			// $('.hour:contains("9pm")').addClass('outsidebusiness');
-			// $('.hour:contains("10pm")').addClass('outsidebusiness');
-			// $('.hour:contains("11pm")').addClass('sleep');
-			// $('.hour:contains("11am")').removeClass('sleep');
-
-			// $('.hour:contains("Sat")').addClass('weekend');
-			// $('.hour:contains("Sun")').addClass('weekend');
-
-
-			// This doesn't work because H:01 gets matched.
-			// $('.hour:contains("01")').contents().each(function () {
-			//     if (this.nodeType == 3) {
-		 //        	$(this).parent().html(function (_, oldValue) {
-	  //           		return oldValue.replace(/0/g, "<span class='leadingzero'>0</span>")
-		 //        	})
-			//     }
-			// });
-
-		}, 1000);
-	</script>
 
 </body>
 </html>

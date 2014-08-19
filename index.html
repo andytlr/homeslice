@@ -60,6 +60,26 @@
 			border-top: 1px solid hsl(0, 0%, 95%);
 		}
 
+		.hour.outsidebusiness {
+			color: hsla(0, 0%, 0%, 0.4);
+		}
+
+		.hour.sleep {
+			color: hsla(0, 0%, 0%, 0.1);
+		}
+
+		.hour.weekend {
+			color: hsla(0, 100%, 25%, 1);
+		}
+
+		.hour.weekend.outsidebusiness {
+			color: hsla(0, 100%, 25%, 0.4);
+		}
+
+		.hour.weekend.sleep {
+			color: hsla(0, 100%, 25%, 0.1);
+		}
+
 		@media only screen and (min-width: 800px) {
 			.cityname {
 				line-height: 5.5rem;
@@ -82,20 +102,8 @@
 			border: none;
 		}
 
-		.sleep {
-			color: hsl(0, 0%, 90%);
-		}
-
 		.daystart {
 			border-color: hsl(0, 0%, 80%);
-		}
-
-		.leadingzero {
-			color: transparent;
-		}
-
-		.outsidebusiness {
-			color: hsl(0, 0%, 65%);
 		}
 	</style>
 
@@ -361,6 +369,9 @@
 			$('.hour:contains("10pm")').addClass('outsidebusiness');
 			$('.hour:contains("11pm")').addClass('sleep');
 			$('.hour:contains("11am")').removeClass('sleep');
+
+			$('.hour:contains("Sat")').addClass('weekend');
+			$('.hour:contains("Sun")').addClass('weekend');
 
 
 			// This doesn't work because H:01 gets matched.

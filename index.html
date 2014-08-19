@@ -139,7 +139,7 @@
 					currentTime = currentTime.add('hours', index);
 				}
 
-				if (currentTime.format('HH') == 00) {
+				if (currentTime.format('HH') == 00 && index != 0) {
 					var format = formatNewDay;
 				}
 
@@ -227,7 +227,7 @@
 					currentTime = currentTime.add('hours', index);
 				}
 
-				if (currentTime.format('HH') == 00) {
+				if (currentTime.format('HH') == 00 && index != 0) {
 					var format = formatNewDay;
 				}
 

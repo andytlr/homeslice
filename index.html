@@ -33,24 +33,30 @@
 			padding-top: 4.4rem;
 		}
 
-		.cityname {
+		.headings {
+			display: table;
+			table-layout: fixed;
+			width: 100%;
+			position: fixed;
+			top: 0;
+		}
+
+		.heading {
+			display: table-cell;
 			line-height: 4.4rem;
 			height: 4.4rem;
+			overflow: hidden;
 			font-size: 1.6rem;
 			background: hsla(173, 83%, 40%, 0.88);
 			color: hsl(0, 0%, 100%);
-			position: fixed;
-			top: 0;
-			display: block;
-			width: 45%;
 			z-index: 1;
-			overflow: hidden;
-			padding-left: 5%;
+			font-weight: normal;
+			padding-left: 5vw;
 		}
 
 		.hour {
 			padding: 0;
-			padding-left: 10%;
+			padding-left: 5vw;
 			height: 2.6rem;
 			line-height: 2.6rem;
 			font-size: 1.2rem;
@@ -58,11 +64,11 @@
 		}
 
 		.hour.outsidebusiness {
-			color: hsla(0, 0%, 0%, 0.4);
+			color: hsla(0, 0%, 0%, 0.5);
 		}
 
 		.hour.sleep {
-			color: hsla(0, 0%, 0%, 0.1);
+			color: hsla(0, 0%, 0%, 0.2);
 		}
 
 		.hour.weekend {
@@ -70,11 +76,11 @@
 		}
 
 		.hour.weekend.outsidebusiness {
-			color: hsla(173, 83%, 40%, 0.5);
+			color: hsla(173, 83%, 40%, 0.55);
 		}
 
 		.hour.weekend.sleep {
-			color: hsla(173, 83%, 40%, 0.1);
+			color: hsla(173, 83%, 40%, 0.2);
 		}
 
 		.hour.current {
@@ -87,7 +93,7 @@
 			border-color: hsla(0, 0%, 0%, 0.15);
 		}
 
-		.hour:nth-of-type(3) {
+		.hour:nth-of-type(2) {
 			border-color: transparent;
 		}
 
@@ -96,7 +102,7 @@
 				font-size: 15px;
 			}
 
-			.cityname {
+			.heading {
 				line-height: 5.5rem;
 				height: 5.5rem;
 			}
@@ -117,6 +123,7 @@
 
 </head>
 <body>
+	<div class="headings" id="headings"></div>
 	<div class="cities" id="cities"></div>
 
 	<script charset="utf-8">
@@ -127,20 +134,24 @@
 		cities = {
      "mel":["mel", "+1000", "Melbourne"],
      "sfo":["sfo", "-0700", "San Francisco"]
+     // "nyc":["nyc", "-0400", "New York"]
 		};
 
 		var hoursInTheFuture = 24 * 7
 
+		var citiesEl      = document.getElementById("cities");
+		var headingsEl    = document.getElementById("headings");
+
 		for (var city in cities) {
-			var citiesEl      = document.getElementById("cities");
 			var cityEl        = document.createElement("div");
+			var headingEl     = document.createElement("h2");
 			var cityNameEl    = document.createElement("div");
 			var cityname      = document.createTextNode(cities[city][2]);
 			var cityShortName = cities[city][0];
 
 			citiesEl.appendChild(cityEl).classList.add("city", cityShortName);
-			cityEl.appendChild(cityNameEl).classList.add("cityname");
-			cityNameEl.appendChild(cityname);
+			headingsEl.appendChild(headingEl).classList.add("heading");
+			headingEl.appendChild(cityname);
 
 			for (var i = 0; i < hoursInTheFuture; i++) {
 			  var hourEl     = document.createElement("div");

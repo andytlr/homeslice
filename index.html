@@ -308,6 +308,9 @@
 					currentTime = currentTime.add('hours', index + 1);
 				}
 
+				if (currentTime.format('HH') == 00) {
+					var format = formatCurrentTime;
+				}
 				// Use a switch to add classes
 
 				// hourNode.classList.add("lol");

@@ -153,8 +153,11 @@
 					hourNode.classList.add("sleep");
 					hourNode.classList.add("daystart");
 				}
+
 				if (currentTime.format('ha') == "1am") {
 					hourNode.classList.add("sleep");
+					// This removes the double border. But need to do so for every other class that's added.
+					hourNode.classList.remove("daystart");
 				}
 
 				if (currentTime.format('ha') == "2am") {
@@ -248,6 +251,8 @@
 
 				if (currentTime.format('ha') == "1am") {
 					hourNode.classList.add("sleep");
+					// This removes the double border. But need to do so for every other class that's added.
+					hourNode.classList.remove("daystart");
 				}
 
 				if (currentTime.format('ha') == "2am") {

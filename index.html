@@ -309,7 +309,7 @@
 				}
 
 				if (currentTime.format('HH') == 00) {
-					var format = formatCurrentTime;
+					var format = formatNewDay;
 				}
 				// Use a switch to add classes
 
@@ -325,6 +325,10 @@
 				} else {
 					var format = formatTime;
 					currentTime = currentTime.add('hours', index + 1);
+				}
+
+				if (currentTime.format('HH') == 00) {
+					var format = formatNewDay;
 				}
 
 				// Use a switch to add classes

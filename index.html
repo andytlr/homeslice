@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8"/>
-	<title>MEL&ndash;SFO</title>
+	<title>Make Time</title>
 
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -115,239 +115,138 @@
 	<script src="js/moment.min.js"></script>
 <!--	<script src="js/jquery.min.js"></script>-->
 
-	<script type="text/javascript">
-		var MelUtcOffset      = '+1000'
-		var SfoUtcOffset      = '-0700'
-		// var NycUtcOffset      = '-0400'
-
-		var formatTime        = 'ddd ha'
-		var formatCurrentTime = 'ddd h:mma, Do MMM'
-		var formatNewDay      = 'ddd Do MMM'
-	</script>
-
-<!-- <div class="cities" id="cities">
-	<div class="city">
-		<div class="cityname">Melbourne</div>
-			<div class="hour" data-hour-mel></div> -->
-
 </head>
 <body>
 	<div class="cities" id="cities"></div>
 
 	<script charset="utf-8">
-		// var cities = ["mel", "sfo"];
+		var formatTime        = 'ddd ha'
+		var formatCurrentTime = 'ddd h:mma, Do MMM'
+		var formatNewDay      = 'ddd Do MMM'
 
-		// for (city in cities) {
+		cities = {
+     "mel":["mel", "+1000", "Melbourne"],
+     "sfo":["sfo", "-0700", "San Francisco"]
+		};
 
-		// }
+		var hoursInTheFuture = 24 * 7
 
-		var citiesEl   = document.getElementById("cities");
-		var cityEl     = document.createElement("div");
-		citiesEl.appendChild(cityEl).classList.add("city", "mel");
-		var cityNameEl = document.createElement("div");
-		cityEl.appendChild(cityNameEl).classList.add("cityname");
-		var cityname   = document.createTextNode("Melbourne");
-		cityNameEl.appendChild(cityname);
+		for (var city in cities) {
+			var citiesEl      = document.getElementById("cities");
+			var cityEl        = document.createElement("div");
+			var cityNameEl    = document.createElement("div");
+			var cityname      = document.createTextNode(cities[city][2]);
+			var cityShortName = cities[city][0];
 
-		for (var i = 0; i < 168; i++) {
-		  var hourEl     = document.createElement("div");
-			cityEl.appendChild(hourEl).classList.add("hour");
-			hourEl.setAttribute("data-hour-mel", "");
+			citiesEl.appendChild(cityEl).classList.add("city", cityShortName);
+			cityEl.appendChild(cityNameEl).classList.add("cityname");
+			cityNameEl.appendChild(cityname);
+
+			for (var i = 0; i < hoursInTheFuture; i++) {
+			  var hourEl     = document.createElement("div");
+				cityEl.appendChild(hourEl).classList.add("hour");
+				hourEl.setAttribute("data-hour", cityShortName);
+			}
+
+			// window.setInterval(function(){
+				var dataAttribute = '[data-hour=' + cityShortName +']';
+				var timeDiff      = cities[city][1];
+				var hours         = document.querySelectorAll(dataAttribute);
+
+				[].forEach.call(hours, function(hourNode, index) {
+					var currentTime = moment().zone(timeDiff);
+
+					if (index === 0) {
+						var format = formatCurrentTime;
+						hourNode.classList.add("current");
+					} else {
+						var format = formatTime;
+						currentTime = currentTime.add('hours', index);
+					}
+
+					if (currentTime.format('HH') == 00 && index != 0) {
+						var format = formatNewDay;
+					}
+
+					if (currentTime.format('HH') == 12) {
+						var format = 'ddd [Midday]';
+					}
+
+					if (currentTime.format('ha') == "12am") {
+						hourNode.classList.add("sleep");
+						hourNode.classList.add("daystart");
+					}
+
+					if (currentTime.format('ha') == "1am") {
+						hourNode.classList.add("sleep");
+						// This removes the double border. But need to do so for every other class that's added.
+						hourNode.classList.remove("daystart");
+					}
+
+					if (currentTime.format('ha') == "2am") {
+						hourNode.classList.add("sleep");
+					}
+
+					if (currentTime.format('ha') == "3am") {
+						hourNode.classList.add("sleep");
+					}
+
+					if (currentTime.format('ha') == "4am") {
+						hourNode.classList.add("sleep");
+					}
+
+					if (currentTime.format('ha') == "5am") {
+						hourNode.classList.add("sleep");
+					}
+
+					if (currentTime.format('ha') == "6am") {
+						hourNode.classList.add("sleep");
+					}
+
+					if (currentTime.format('ha') == "7am") {
+						hourNode.classList.add("outsidebusiness");
+					}
+
+					if (currentTime.format('ha') == "8am") {
+						hourNode.classList.add("outsidebusiness");
+					}
+
+					if (currentTime.format('ha') == "6pm") {
+						hourNode.classList.add("outsidebusiness");
+					}
+
+					if (currentTime.format('ha') == "7pm") {
+						hourNode.classList.add("outsidebusiness");
+					}
+
+					if (currentTime.format('ha') == "8pm") {
+						hourNode.classList.add("outsidebusiness");
+					}
+
+					if (currentTime.format('ha') == "9pm") {
+						hourNode.classList.add("outsidebusiness");
+					}
+
+					if (currentTime.format('ha') == "10pm") {
+						hourNode.classList.add("outsidebusiness");
+					}
+
+					if (currentTime.format('ha') == "11pm") {
+						hourNode.classList.add("sleep");
+					}
+
+					if (currentTime.format('ddd') == "Sat") {
+						hourNode.classList.add("weekend");
+					}
+
+					if (currentTime.format('ddd') == "Sun") {
+						hourNode.classList.add("weekend");
+					}
+
+				  hourNode.innerHTML = currentTime.format(format);
+				});
+			// }, 1000);
 		}
-
-
-		window.setInterval(function(){
-
-			var hours = document.querySelectorAll('[data-hour-mel]');
-			[].forEach.call(hours, function(hourNode, index) {
-				var currentTime = moment().zone(MelUtcOffset);
-
-				if (index === 0) {
-					var format = formatCurrentTime;
-					hourNode.classList.add("current");
-				} else {
-					var format = formatTime;
-					currentTime = currentTime.add('hours', index);
-				}
-
-				if (currentTime.format('HH') == 00 && index != 0) {
-					var format = formatNewDay;
-				}
-
-				if (currentTime.format('HH') == 12) {
-					var format = 'ddd [Midday]';
-				}
-
-				if (currentTime.format('ha') == "12am") {
-					hourNode.classList.add("sleep");
-					hourNode.classList.add("daystart");
-				}
-
-				if (currentTime.format('ha') == "1am") {
-					hourNode.classList.add("sleep");
-					// This removes the double border. But need to do so for every other class that's added.
-					hourNode.classList.remove("daystart");
-				}
-
-				if (currentTime.format('ha') == "2am") {
-					hourNode.classList.add("sleep");
-				}
-
-				if (currentTime.format('ha') == "3am") {
-					hourNode.classList.add("sleep");
-				}
-
-				if (currentTime.format('ha') == "4am") {
-					hourNode.classList.add("sleep");
-				}
-
-				if (currentTime.format('ha') == "5am") {
-					hourNode.classList.add("sleep");
-				}
-
-				if (currentTime.format('ha') == "6am") {
-					hourNode.classList.add("sleep");
-				}
-
-				if (currentTime.format('ha') == "7am") {
-					hourNode.classList.add("outsidebusiness");
-				}
-
-				if (currentTime.format('ha') == "8am") {
-					hourNode.classList.add("outsidebusiness");
-				}
-
-				if (currentTime.format('ha') == "6pm") {
-					hourNode.classList.add("outsidebusiness");
-				}
-
-				if (currentTime.format('ha') == "7pm") {
-					hourNode.classList.add("outsidebusiness");
-				}
-
-				if (currentTime.format('ha') == "8pm") {
-					hourNode.classList.add("outsidebusiness");
-				}
-
-				if (currentTime.format('ha') == "9pm") {
-					hourNode.classList.add("outsidebusiness");
-				}
-
-				if (currentTime.format('ha') == "10pm") {
-					hourNode.classList.add("outsidebusiness");
-				}
-
-				if (currentTime.format('ha') == "11pm") {
-					hourNode.classList.add("sleep");
-				}
-
-				if (currentTime.format('ddd') == "Sat") {
-					hourNode.classList.add("weekend");
-				}
-
-				if (currentTime.format('ddd') == "Sun") {
-					hourNode.classList.add("weekend");
-				}
-
-			  hourNode.innerHTML = currentTime.format(format);
-			});
-
-
-			var hours = document.querySelectorAll('[data-hour-sfo]');
-			[].forEach.call(hours, function(hourNode, index) {
-				var currentTime = moment().zone(SfoUtcOffset);
-
-				if (index === 0) {
-					var format = formatCurrentTime;
-					hourNode.classList.add("current");
-				} else {
-					var format = formatTime;
-					currentTime = currentTime.add('hours', index);
-				}
-
-				if (currentTime.format('HH') == 00 && index != 0) {
-					var format = formatNewDay;
-				}
-
-				if (currentTime.format('HH') == 12) {
-					var format = 'ddd [Midday]';
-				}
-
-				if (currentTime.format('ha') == "12am") {
-					hourNode.classList.add("sleep");
-					hourNode.classList.add("daystart");
-				}
-
-				if (currentTime.format('ha') == "1am") {
-					hourNode.classList.add("sleep");
-					// This removes the double border. But need to do so for every other class that's added.
-					hourNode.classList.remove("daystart");
-				}
-
-				if (currentTime.format('ha') == "2am") {
-					hourNode.classList.add("sleep");
-				}
-
-				if (currentTime.format('ha') == "3am") {
-					hourNode.classList.add("sleep");
-				}
-
-				if (currentTime.format('ha') == "4am") {
-					hourNode.classList.add("sleep");
-				}
-
-				if (currentTime.format('ha') == "5am") {
-					hourNode.classList.add("sleep");
-				}
-
-				if (currentTime.format('ha') == "6am") {
-					hourNode.classList.add("sleep");
-				}
-
-				if (currentTime.format('ha') == "7am") {
-					hourNode.classList.add("outsidebusiness");
-				}
-
-				if (currentTime.format('ha') == "8am") {
-					hourNode.classList.add("outsidebusiness");
-				}
-
-				if (currentTime.format('ha') == "6pm") {
-					hourNode.classList.add("outsidebusiness");
-				}
-
-				if (currentTime.format('ha') == "7pm") {
-					hourNode.classList.add("outsidebusiness");
-				}
-
-				if (currentTime.format('ha') == "8pm") {
-					hourNode.classList.add("outsidebusiness");
-				}
-
-				if (currentTime.format('ha') == "9pm") {
-					hourNode.classList.add("outsidebusiness");
-				}
-
-				if (currentTime.format('ha') == "10pm") {
-					hourNode.classList.add("outsidebusiness");
-				}
-
-				if (currentTime.format('ha') == "11pm") {
-					hourNode.classList.add("sleep");
-				}
-
-				if (currentTime.format('ddd') == "Sat") {
-					hourNode.classList.add("weekend");
-				}
-
-				if (currentTime.format('ddd') == "Sun") {
-					hourNode.classList.add("weekend");
-				}
-
-			  hourNode.innerHTML = currentTime.format(format);
-			});
-
-		}, 1000);
 	</script>
 </body>
 </html>

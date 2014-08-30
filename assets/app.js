@@ -244,6 +244,9 @@ function updateCities(){
         // Add an additional hour to each row based on the number
         // of the item in the array. 6pm + 0 = 6pm, 6pm + 1 = 7pm.
         currentTime = currentTime.add('hours', index);
+        // This adds a data-time attribute to each hour.
+        // Not super useful yet but might be for sharing later.
+        hourNode.setAttribute("data-date-and-time", cities[city][0] + ": " + currentTime.format('dddd Mo MMM, ha.'));
       }
 
       // Regex to match if a time difference is plus or minus 30min.

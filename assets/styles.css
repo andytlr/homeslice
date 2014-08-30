@@ -1,0 +1,201 @@
+html {
+  font-size: 10px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Avenir Next', sans-serif;
+  overflow-x: scroll;
+}
+
+.addbutton {
+  display: block;
+  float: left;
+  width: 50%;
+  line-height: 44px;
+  cursor: pointer;
+  line-height: 4.4rem;
+  height: 4.4rem;
+  overflow: hidden;
+  font-size: 1.6rem;
+  border-top: 1px solid hsla(0, 0%, 0%, 0.06);
+  padding-left: 3vw;
+  padding-right: 3vw;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.addbutton.active {
+  color: hsl(164, 74%, 31%);
+  background: #fff;
+}
+
+.addbutton.inactive {
+  color: #fff;
+  background: hsl(164, 74%, 31%);
+}
+
+.addbutton.active:before {
+  content: '+ ';
+  float: left;
+  width: 1.2em;
+}
+
+.addbutton.inactive:before {
+  content: '− ';
+  float: left;
+  width: 1.2em;
+}
+
+.cities {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.city {
+  display: table-cell;
+  padding-top: 4.4rem;
+}
+
+.headings {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  position: fixed;
+  top: 0;
+}
+
+.heading {
+  display: table-cell;
+  line-height: 4.4rem;
+  height: 4.4rem;
+  overflow: hidden;
+  font-size: 1.6rem;
+  background: hsla(268, 77%, 42%, 0.88);
+  color: hsl(0, 0%, 100%);
+  z-index: 1;
+  font-weight: normal;
+  padding-left: 3vw;
+  padding-right: 3vw;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hour {
+  padding: 0;
+  padding-left: 3vw;
+  padding-right: 3vw;
+  height: 2.8rem;
+  line-height: 2.8rem;
+  overflow: hidden;
+  font-size: 1.2rem;
+  border-top: 1px solid hsla(0, 0%, 0%, 0.06);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.outsidebusiness {
+  color: hsla(0, 0%, 0%, 0.5);
+}
+
+.sleep {
+  color: hsla(0, 0%, 0%, 0.2);
+}
+
+.evening {
+  border-top: 1px solid hsla(18, 85%, 40%, 0.06);
+  color: hsla(18, 85%, 40%, 1);
+  background-color: hsla(18, 85%, 40%, 0.02);
+}
+
+.weekend {
+  border-top: 1px solid hsla(268, 77%, 42%, 0.06);
+  color: hsla(268, 77%, 42%, 1);
+  background-color: hsla(268, 77%, 42%, 0.02);
+}
+
+.weekend.daystart {
+  border-top: 1px solid hsla(268, 77%, 42%, 0.15);
+}
+
+.weekend.outsidebusiness {
+  color: hsla(268, 77%, 42%, 1);
+}
+
+.weekend.sleep {
+  color: hsla(268, 77%, 42%, 0.2);
+}
+
+.daystart {
+  border-color: hsla(0, 0%, 0%, 0.15);
+}
+
+.hour.current {
+  background: hsl(268, 77%, 42%);
+  color: hsl(0, 0%, 100%);
+  border: none;
+}
+
+.hour:nth-of-type(2) {
+  border-color: transparent;
+}
+
+#settings {
+  position:fixed;
+  top: 0;
+  bottom: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  z-index: 5;
+  background: #fff;
+  min-height: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+
+.is-hidden {
+  display: none;
+}
+
+#settingsbutton {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  text-align: center;
+  background: #fff;
+  color: green;
+  z-index: 6;
+  cursor: pointer;
+  padding: 10px;
+  overflow: hidden;
+  font-size: 2rem;
+}
+
+@media only screen and (min-width: 760px) {
+  html {
+    font-size: 15px;
+  }
+
+  .heading,
+  .addbutton {
+    line-height: 5.5rem;
+    height: 5.5rem;
+  }
+
+  .city {
+    padding-top: 5.5rem;
+  }
+
+  .hour {
+    height: 3.5rem;
+    line-height: 3.5rem;
+  }
+}

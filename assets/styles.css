@@ -10,6 +10,22 @@ body {
   overflow-x: scroll;
 }
 
+noscript {
+  display: block;
+  padding: 0 20%;
+  height: 100%;
+}
+
+noscript h1 {
+  text-align: center;
+  position: absolute;
+  display: block;
+  line-height: 50px;
+  margin: 0;
+  top: 50%;
+  margin-top: -25px;
+}
+
 .credit {
   display: block;
   padding: 10%;

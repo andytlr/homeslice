@@ -56,6 +56,20 @@ var creditEl              = document.createElement("div");
                             creditEl.setAttribute("class", "credit");
 var creditCopy            = "<p>Homeslice is a project by <a href=\"http://andytaylor.me/\">Andy&nbsp;Taylor</a>.</p> <p>If you found it useful (I hope you did), why not <a href=\"http://twitter.com/home?status=Homeslice: Find time across timezones. http://homeslice.in\">Tweet about it</a> or <a href=\"https://www.facebook.com/sharer/sharer.php?u=http://homeslice.in\">post it on Facebook</a>.</p> <p>Please submit bugs on <a href=\"https://github.com/andytlr/homeslice/issues/\">GitHub</a>.</p> <p>Timezone conversion is done with&nbsp;<a href=\"http://momentjs.com\">Moment.js</a>.</p>"
 
+function areCookiesEnabled() {
+  var cookieEnabled = (navigator.cookieEnabled) ? true : false;
+
+  if (typeof navigator.cookieEnabled == "undefined" && !cookieEnabled) {
+    document.cookie="testcookie";
+    cookieEnabled = (document.cookie.indexOf("testcookie") != -1) ? true : false;
+  }
+  return (cookieEnabled);
+}
+
+if (areCookiesEnabled() == false) {
+  alert("Homeslice uses cookies to remember which cities you compare. Please turn on cookies if you want it to work.")
+}
+
 // Functions to work with cookies
 function setCookie(c_name,value,exdays) {
   var exdate=new Date();

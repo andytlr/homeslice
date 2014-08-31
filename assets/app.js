@@ -3,7 +3,7 @@ var cityOptions = {
   "uspacific":     ["US Pacific",    "US/Pacific"],
   "sanfrancisco":  ["San Francisco", "America/Los_Angeles"],
   "losangeles":    ["Los Angeles",   "America/Los_Angeles"],
-  "phoenix":       ["Phoenix",       "America/Phoenix"],
+  "denver":        ["Denver",        "America/Denver"],
   "chicago":       ["Chicago",       "America/Chicago"],
   "uscentral":     ["US Central",    "US/Central"],
   "austin":        ["Austin",        "US/Central"],
@@ -19,10 +19,8 @@ var cityOptions = {
   "berlin":        ["Berlin",        "Europe/Berlin"],
   "athens":        ["Athens",        "Europe/Athens"],
   "moscow":        ["Moscow",        "Europe/Moscow"],
-  "moscow":        ["Moscow",        "Europe/Moscow"],
   "dubai":         ["Dubai",         "Asia/Dubai"],
   "colombo":       ["Colombo",       "Asia/Colombo"],
-  "dhaka":         ["Dhaka",         "Asia/Dhaka"],
   "dhaka":         ["Dhaka",         "Asia/Dhaka"],
   "bangkok":       ["Bangkok",       "Asia/Bangkok"],
   "singapore":     ["Singapore",     "Asia/Singapore"],
@@ -37,102 +35,147 @@ var cityOptions = {
   "samoa":         ["Samoa",         "Pacific/Samoa"]
 }
 
-// Setup
-var formatCurrentTime    = 'ddd Do MMM, h:mma'
-var formatTime           = 'ddd ha'
-var formatNewDay         = 'ddd Do MMM, ha'
-var formatTimePlusThirty = 'ddd h:[30]a'
-var hoursInTheFuture     = 24 * 7
-
-// Find query string, remove trailing slash, split on & and add to array.
-var queryString = window.location.search.substring(1).replace(/\//, "");
-var queryCities = queryString.split("&");
-
 // Make an empty Object to be added to.
 cities = {}
 
-function addCityToUrl(city) {
-  queryString += '&' + city;
-  window.location.search = queryString;
+// Setup
+var defaultCities         = "melbourne,sanfrancisco,"
+var formatCurrentTime     = 'ddd Do MMM, h:mma'
+var formatTime            = 'ddd ha'
+var formatNewDay          = 'ddd Do MMM, ha'
+var formatTimePlusThirty  = 'ddd h:[30]a'
+var formatTimeForList     = ' h:mma'
+var hoursInTheFuture      = 24 * 7
+var settingsEl            = document.getElementById("settings");
+var settingsButtonEl      = document.getElementById("settingsbutton");
+var settingsButtonContent = document.createTextNode("+ / −");
+var citiesEl              = document.getElementById("cities");
+var headingsEl            = document.getElementById("headings");
+var cookieString          = getCookie("cities");
+var creditEl              = document.createElement("div");
+                            creditEl.setAttribute("class", "credit");
+var creditCopy            = "<p>Homeslice is a project by <a href=\"http://andytaylor.me/\">Andy&nbsp;Taylor</a>.</p> <p>If you found it useful (I hope you did), why not <a href=\"http://twitter.com/home?status=Homeslice: Find time across timezones. http://homeslice.in\">Tweet about it</a>.</p> <p>Please submit bugs on <a href=\"https://github.com/andytlr/homeslice/issues/\">GitHub</a>.</p> <p>Timezone conversion is done with&nbsp;<a href=\"http://momentjs.com\">Moment.js</a>.</p>"
 
-  return false;
-};
-
-function removeCityFromUrl(city) {
-  var regex = '&' + city
-  queryString = queryString.replace(new RegExp(regex,"g"), "");
-  window.location.search = queryString;
-
-  return false;
-};
-
-var settingsEl         = document.getElementById("settings");
-var settingsButton     = document.getElementById("settingsbutton");
-
-// If settings is in the query string, show settings.
-// Otherwise hide them.
-if (queryString.indexOf("settings") > -1) {
-  settingsEl.classList.remove("is-hidden");
-  var closeText = document.createTextNode("✕")
-  settingsButton.appendChild(closeText)
-} else {
-  settingsEl.classList.add("is-hidden");
-  var addRemoveText = document.createTextNode("+ / −")
-  settingsButton.appendChild(addRemoveText)
+// Functions to work with cookies
+function setCookie(c_name,value,exdays) {
+  var exdate=new Date();
+  exdate.setDate(exdate.getDate() + exdays);
+  var c_value=escape(value) + ((exdays==null) ? "" : ("; expires="+exdate.toUTCString()));
+  document.cookie=c_name + "=" + c_value;
 }
 
-settingsButton.onclick = function toggleSettingsVisibility() {
-  if (queryString.indexOf("settings") > -1) {
-    queryString = queryString.replace(/&settings/, "");
-    window.location.search = queryString;
-  } else {
-    queryString += "&settings"
-    window.location.search = queryString;
+function getCookie(c_name) {
+  var i,x,y,ARRcookies=document.cookie.split(";");
+  for (i=0;i<ARRcookies.length;i++) {
+    x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+    y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+    x=x.replace(/^\s+|\s+$/g,"");
+    if (x==c_name) {
+     return unescape(y);
+    }
   }
+}
+
+function showSettings() {
+  settingsEl.classList.remove("is-hidden");
+  citiesEl.classList.add("is-hidden");
+  window.scrollTo(0, 0);
+}
+
+function hideSettings() {
+  settingsEl.classList.add("is-hidden");
+  citiesEl.classList.remove("is-hidden");
+  window.scrollTo(0, 0);
+}
+
+hideSettings();
+
+if (! cookieString) {
+  // showSettings();
+  var cookieString = defaultCities
+  setCookie("cities", cookieString, 365)
+}
+
+var cookieCities = getCookie("cities").split(",");
+
+function removeCityFromCookie(city) {
+  var addButton = document.getElementById('add' + city);
+
+  if (addButton.classList.contains('is-active')) {
+    addButton.classList.remove('is-active');
+
+    var regex = city + ",";
+    cookieString = cookieString.replace(new RegExp(regex,"g"), "");
+    setCookie("cities", cookieString, 365);
+    var cookieCities = getCookie("cities").split(",");
+    console.log("Cookie String: " + cookieString);
+    console.log("Cookie Array: " + cookieCities);
+  } else {
+    addCityToCookie(city)
+  }
+};
+
+function addCityToCookie(city) {
+  var addButton = document.getElementById('add' + city);
+
+  if (addButton.classList.contains('is-active')) {
+    removeCityFromCookie(city)
+  } else {
+    addButton.classList.add('is-active');
+
+    cookieString += city + ",";
+    setCookie("cities", cookieString, 365);
+    var cookieCities = getCookie("cities").split(",");
+    console.log("Cookie String: " + cookieString);
+    console.log("Cookie Array: " + cookieCities);
+  }
+};
+
+settingsButtonEl.onclick = function showSettingsScreen() {
+  showSettings();
+}
+
+var saveButton              = document.createElement("div");
+var saveButtonCopy          = document.createTextNode("↫ Done");
+
+settingsButtonEl.appendChild(settingsButtonContent);
+settingsEl.appendChild(saveButton);
+saveButton.appendChild(saveButtonCopy);
+saveButton.classList.add("savebutton");
+
+saveButton.onclick = function closeSettingsScreen() {
+  // hideSettings();
+  window.location = "/";
 }
 
 for (var city in cityOptions) {
 
-  var cityOptionEl  = document.createElement("div");
-  var cityName      = document.createTextNode(cityOptions[city][0]);
+  var cityOptionEl            = document.createElement("div");
+  var cityName                = document.createTextNode(cityOptions[city][0]);
+  var cityOptionCurrentTimeEl = document.createElement("span");
+  var currentTime             = document.createTextNode(moment().tz(cityOptions[city][1]).format(formatTimeForList));
+
   settingsEl.appendChild(cityOptionEl);
   cityOptionEl.appendChild(cityName);
+  cityOptionEl.appendChild(cityOptionCurrentTimeEl);
+  cityOptionCurrentTimeEl.appendChild(currentTime);
   cityOptionEl.classList.add("addbutton");
   cityOptionEl.id = "add" + city;
 
   var addButton = document.getElementById('add' + city);
 
-  if (queryString.indexOf(city) > -1) {
-    addButton.classList.add("inactive");
-    addButton.onclick = removeCityFromUrl.bind(this, city);
+  if (cookieCities.indexOf(city) > -1) {
+    addButton.onclick = removeCityFromCookie.bind(this, city);
+    addButton.classList.add("is-active");
+    cities[city] = [
+      cityOptions[city][0],
+      cityOptions[city][1]
+    ];
   } else {
-    addButton.classList.add("active");
-    addButton.onclick = addCityToUrl.bind(this, city);
+    addButton.onclick = addCityToCookie.bind(this, city);
+    addButton.classList.remove("is-active");
   }
 }
-
-
-// If the query string is empty
-if (! queryString) {
-  // Add default cities
-  window.location.search += '?&settings'
-} else {
-  // For each city in the options
-  for (var city in cityOptions) {
-    // If a city exists in the query string.
-    if (queryCities.indexOf(city) > -1) {
-      // Add it to the cities Object.
-      cities[city] = [
-        cityOptions[city][0],
-        cityOptions[city][1]
-      ];
-    }
-  }
-}
-
-// Find elements to add content to.
-var citiesEl      = document.getElementById("cities");
-var headingsEl    = document.getElementById("headings");
 
 // For each city
 for (var city in cities) {
@@ -180,7 +223,6 @@ for (var city in cities) {
   document.title = documentTitle;
 }
 
-
 // Generate content and regenerate on a timer.
 function updateCities(){
 
@@ -219,6 +261,9 @@ function updateCities(){
         // Add an additional hour to each row based on the number
         // of the item in the array. 6pm + 0 = 6pm, 6pm + 1 = 7pm.
         currentTime = currentTime.add('hours', index);
+        // This adds a data-time attribute to each hour.
+        // Not super useful yet but might be for sharing later.
+        hourNode.setAttribute("data-date-and-time", cities[city][0] + ": " + currentTime.format('dddd Mo MMM, ha.'));
       }
 
       // Regex to match if a time difference is plus or minus 30min.
@@ -364,3 +409,6 @@ updateCities();
 
 // Then re-run it every second.
 setInterval(updateCities, 1000);
+
+settingsEl.appendChild(creditEl);
+creditEl.innerHTML = creditCopy;

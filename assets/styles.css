@@ -6,20 +6,36 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Avenir Next', sans-serif;
+  font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', 'Roboto',  sans-serif;
   overflow-x: scroll;
+}
+
+.credit {
+  display: block;
+  padding: 10%;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background: hsl(200, 100%, 25%);
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.credit a {
+  color: #fff;
 }
 
 .addbutton {
   display: block;
-  float: left;
-  width: 50%;
   line-height: 44px;
   cursor: pointer;
   line-height: 4.4rem;
   height: 4.4rem;
   overflow: hidden;
   font-size: 1.6rem;
+  color: #fff;
+  color: hsl(160, 100%, 30%);
+  background: #fff;
   border-top: 1px solid hsla(0, 0%, 0%, 0.06);
   padding-left: 3vw;
   padding-right: 3vw;
@@ -31,24 +47,36 @@ body {
   text-overflow: ellipsis;
 }
 
-.addbutton.active {
-  color: hsl(164, 74%, 31%);
-  background: #fff;
-}
-
-.addbutton.inactive {
+.savebutton {
+  position: fixed;
+  top: 0;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  text-align: center;
+  font-size: 2rem;
+  line-height: 100px;
   color: #fff;
-  background: hsl(164, 74%, 31%);
+  background: hsl(160, 100%, 25%);
 }
 
-.addbutton.active:before {
-  content: '+ ';
+.addbutton span {
+  float: right;
+}
+
+.addbutton.is-active {
+  background: hsl(160, 100%, 30%);
+  color: #fff;
+}
+
+.addbutton.is-active:before {
+  content: '− ';
   float: left;
   width: 1.2em;
 }
 
-.addbutton.inactive:before {
-  content: '− ';
+.addbutton:before {
+  content: '+ ';
   float: left;
   width: 1.2em;
 }
@@ -78,7 +106,7 @@ body {
   height: 4.4rem;
   overflow: hidden;
   font-size: 1.6rem;
-  background: hsla(268, 77%, 42%, 0.88);
+  background: hsl(268, 77%, 45%);
   color: hsl(0, 0%, 100%);
   z-index: 1;
   font-weight: normal;
@@ -140,7 +168,7 @@ body {
 }
 
 .hour.current {
-  background: hsl(268, 77%, 42%);
+  background: hsl(268, 77%, 38%);
   color: hsl(0, 0%, 100%);
   border: none;
 }
@@ -150,15 +178,12 @@ body {
 }
 
 #settings {
-  position:fixed;
-  top: 0;
-  bottom: 0;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  position: absolute;
+  width: 100%;
   z-index: 5;
   background: #fff;
   min-height: 100%;
-  -webkit-overflow-scrolling: touch;
+  padding-top: 100px;
 }
 
 .is-hidden {
@@ -167,16 +192,17 @@ body {
 
 #settingsbutton {
   position: fixed;
-  bottom: 0;
-  right: 0;
+  bottom: 3vw;
+  right: 3vw;
+  border-radius: 5px;
   text-align: center;
-  background: #fff;
-  color: green;
-  z-index: 6;
+  background: hsl(160, 100%, 30%);
+  color: #fff;
+  z-index: 4;
   cursor: pointer;
-  padding: 10px;
+  padding: 5px 10px;
   overflow: hidden;
-  font-size: 2rem;
+  font-size: 20px;
 }
 
 @media only screen and (min-width: 760px) {
@@ -197,5 +223,13 @@ body {
   .hour {
     height: 3.5rem;
     line-height: 3.5rem;
+  }
+
+  #settings {
+    padding-top: 165px;
+  }
+
+  .savebutton {
+    line-height: 165px;
   }
 }

@@ -205,24 +205,6 @@ for (var city in cities) {
   }
 }
 
-// This appends the city names to the page title.
-var documentTitle = "Homeslice: ";
-var cityNumber    = 1
-
-for (var city in cities) {
-  var numberOfCities = Object.keys(cities).length
-
-  if (cityNumber < numberOfCities) {
-    documentTitle += cities[city][0] + ' & ';
-  } else {
-    documentTitle += cities[city][0];
-  }
-
-  cityNumber += 1
-
-  document.title = documentTitle;
-}
-
 // Generate content and regenerate on a timer.
 function updateCities(){
 

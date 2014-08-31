@@ -55,6 +55,9 @@ var settingsButtonContent = document.createTextNode("+ / −");
 var citiesEl              = document.getElementById("cities");
 var headingsEl            = document.getElementById("headings");
 var cookieString          = getCookie("cities");
+var creditEl              = document.createElement("div");
+                            creditEl.setAttribute("class", "credit");
+var creditCopy            = "<p>Homeslice is a project by <a href=\"http://andytaylor.me/\">Andy&nbsp;Taylor</a>.</p> <p>If you found it useful (I hope you did), why not <a href=\"http://twitter.com/home?status=Homeslice: Find time across timezones. http://homeslice.in\">Tweet about it</a>.</p> <p>Please submit bugs on <a href=\"https://github.com/andytlr/homeslice/issues/\">GitHub</a>.</p> <p>Timezone conversion is done with&nbsp;<a href=\"http://momentjs.com\">Moment.js</a>.</p>"
 
 // Functions to work with cookies
 function setCookie(c_name,value,exdays) {
@@ -392,3 +395,6 @@ updateCities();
 
 // Then re-run it every second.
 setInterval(updateCities, 1000);
+
+settingsEl.appendChild(creditEl);
+creditEl.innerHTML = creditCopy;

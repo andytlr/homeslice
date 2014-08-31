@@ -6,8 +6,23 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Avenir Next', sans-serif;
+  font-family: 'Avenir Next', 'Helvetica Neue', 'Roboto', sans-serif;
   overflow-x: scroll;
+}
+
+.credit {
+  display: block;
+  padding: 10%;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background: hsl(200, 100%, 25%);
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.credit a {
+  color: #fff;
 }
 
 .addbutton {

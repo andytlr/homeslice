@@ -105,7 +105,6 @@ function hideSettings() {
 hideSettings();
 
 if (! cookieString) {
-  // showSettings();
   var cookieString = defaultCities
   setCookie("cities", cookieString, 365)
 }
@@ -122,8 +121,8 @@ function removeCityFromCookie(city) {
     cookieString = cookieString.replace(new RegExp(regex,"g"), "");
     setCookie("cities", cookieString, 365);
     var cookieCities = getCookie("cities").split(",");
-    console.log("Cookie String: " + cookieString);
-    console.log("Cookie Array: " + cookieCities);
+    // console.log("Cookie String: " + cookieString);
+    // console.log("Cookie Array: " + cookieCities);
   } else {
     addCityToCookie(city)
   }
@@ -140,8 +139,8 @@ function addCityToCookie(city) {
     cookieString += city + ",";
     setCookie("cities", cookieString, 365);
     var cookieCities = getCookie("cities").split(",");
-    console.log("Cookie String: " + cookieString);
-    console.log("Cookie Array: " + cookieCities);
+    // console.log("Cookie String: " + cookieString);
+    // console.log("Cookie Array: " + cookieCities);
   }
 };
 

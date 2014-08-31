@@ -101,8 +101,7 @@ var cookieCities = getCookie("cities").split(",");
 function removeCityFromCookie(city) {
   var addButton = document.getElementById('add' + city);
 
-  if (addButton.classList.contains('is-active')){
-    // Remove class ...
+  if (addButton.classList.contains('is-active')) {
     addButton.classList.remove('is-active');
 
     var regex = city + ",";
@@ -112,7 +111,6 @@ function removeCityFromCookie(city) {
     console.log("Cookie String: " + cookieString);
     console.log("Cookie Array: " + cookieCities);
   } else {
-    // alert('Already removed ...');
     addCityToCookie(city)
   }
 };
@@ -120,14 +118,11 @@ function removeCityFromCookie(city) {
 function addCityToCookie(city) {
   var addButton = document.getElementById('add' + city);
 
-  if (addButton.classList.contains('is-active')){
-    // alert('Already added ...');
+  if (addButton.classList.contains('is-active')) {
     removeCityFromCookie(city)
   } else {
-    // Add class ...
     addButton.classList.add('is-active');
 
-    // Add cookie ...
     cookieString += city + ",";
     setCookie("cities", cookieString, 365);
     var cookieCities = getCookie("cities").split(",");
@@ -149,8 +144,8 @@ saveButton.appendChild(saveButtonCopy);
 saveButton.classList.add("savebutton");
 
 saveButton.onclick = function closeSettingsScreen() {
-  hideSettings();
-  // window.location = "/";
+  // hideSettings();
+  window.location = "/";
 }
 
 for (var city in cityOptions) {

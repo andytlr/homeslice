@@ -39,14 +39,13 @@ var cityOptions = {
 cities = {}
 
 // Setup
-var defaultCities         = "melbourne,sanfrancisco"
+var defaultCities         = "melbourne,sanfrancisco,"
 var formatCurrentTime     = 'ddd Do MMM, h:mma'
 var formatTime            = 'ddd ha'
 var formatNewDay          = 'ddd Do MMM, ha'
 var formatTimePlusThirty  = 'ddd h:[30]a'
 var formatTimeForList     = ' h:mma'
 var hoursInTheFuture      = 24 * 7
-var queryString           = window.location.search.substring(1).replace(/\//, "");
 var settingsEl            = document.getElementById("settings");
 var settingsButtonEl      = document.getElementById("settingsbutton");
 var settingsButtonContent = document.createTextNode("+ / −");
@@ -103,11 +102,17 @@ function removeCityFromCookie(city) {
   var regex = city + ",";
   cookieString = cookieString.replace(new RegExp(regex,"g"), "");
   setCookie("cities", cookieString, 365);
+  var cookieCities = getCookie("cities").split(",");
+  console.log("Cookie String: " + cookieString);
+  console.log("Cookie Array: " + cookieCities);
 };
 
 function addCityToCookie(city) {
   cookieString += city + ",";
   setCookie("cities", cookieString, 365);
+  var cookieCities = getCookie("cities").split(",");
+  console.log("Cookie String: " + cookieString);
+  console.log("Cookie Array: " + cookieCities);
 };
 
 settingsButtonEl.onclick = function showSettingsScreen() {
@@ -146,18 +151,13 @@ for (var city in cityOptions) {
   if (cookieCities.indexOf(city) > -1) {
     addButton.onclick = removeCityFromCookie.bind(this, city);
     addButton.classList.add("is-active");
-  } else {
-    addButton.onclick = addCityToCookie.bind(this, city);
-    addButton.classList.remove("is-active");
-  }
-
-  // If a city exists in the cookie.
-  if (cookieCities.indexOf(city) > -1) {
-    // Add it to the cities Object.
     cities[city] = [
       cityOptions[city][0],
       cityOptions[city][1]
     ];
+  } else {
+    addButton.onclick = addCityToCookie.bind(this, city);
+    addButton.classList.remove("is-active");
   }
 }
 

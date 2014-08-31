@@ -15,6 +15,12 @@
 </head>
 
 <body>
+  <script charset="utf-8" src="vendor/fastclick.min.js"></script>
+  <script charset="utf-8">
+    window.addEventListener('load', function() {
+      FastClick.attach(document.body);
+    }, false);
+  </script>
   <script charset="utf-8" src="vendor/moment.min.js"></script>
   <script charset="utf-8" src="vendor/moment-timezone-with-data-2010-2020.min.js"></script>
   <div id="settingsbutton"></div>

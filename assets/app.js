@@ -99,20 +99,41 @@ if (! cookieString) {
 var cookieCities = getCookie("cities").split(",");
 
 function removeCityFromCookie(city) {
-  var regex = city + ",";
-  cookieString = cookieString.replace(new RegExp(regex,"g"), "");
-  setCookie("cities", cookieString, 365);
-  var cookieCities = getCookie("cities").split(",");
-  console.log("Cookie String: " + cookieString);
-  console.log("Cookie Array: " + cookieCities);
+  var addButton = document.getElementById('add' + city);
+
+  if (addButton.classList.contains('is-active')){
+    // Remove class ...
+    addButton.classList.remove('is-active');
+
+    var regex = city + ",";
+    cookieString = cookieString.replace(new RegExp(regex,"g"), "");
+    setCookie("cities", cookieString, 365);
+    var cookieCities = getCookie("cities").split(",");
+    console.log("Cookie String: " + cookieString);
+    console.log("Cookie Array: " + cookieCities);
+  } else {
+    // alert('Already removed ...');
+    addCityToCookie(city)
+  }
 };
 
 function addCityToCookie(city) {
-  cookieString += city + ",";
-  setCookie("cities", cookieString, 365);
-  var cookieCities = getCookie("cities").split(",");
-  console.log("Cookie String: " + cookieString);
-  console.log("Cookie Array: " + cookieCities);
+  var addButton = document.getElementById('add' + city);
+
+  if (addButton.classList.contains('is-active')){
+    // alert('Already added ...');
+    removeCityFromCookie(city)
+  } else {
+    // Add class ...
+    addButton.classList.add('is-active');
+
+    // Add cookie ...
+    cookieString += city + ",";
+    setCookie("cities", cookieString, 365);
+    var cookieCities = getCookie("cities").split(",");
+    console.log("Cookie String: " + cookieString);
+    console.log("Cookie Array: " + cookieCities);
+  }
 };
 
 settingsButtonEl.onclick = function showSettingsScreen() {
@@ -128,8 +149,8 @@ saveButton.appendChild(saveButtonCopy);
 saveButton.classList.add("savebutton");
 
 saveButton.onclick = function closeSettingsScreen() {
-  // hideSettings();
-  window.location = "/";
+  hideSettings();
+  // window.location = "/";
 }
 
 for (var city in cityOptions) {

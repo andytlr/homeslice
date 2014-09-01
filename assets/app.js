@@ -21,6 +21,7 @@ var cityOptions = {
   "moscow":        ["Moscow",        "Europe/Moscow"],
   "dubai":         ["Dubai",         "Asia/Dubai"],
   "colombo":       ["Colombo",       "Asia/Colombo"],
+  "mumbai":        ["Mumbai",        "Asia/Kolkata"],
   "dhaka":         ["Dhaka",         "Asia/Dhaka"],
   "bangkok":       ["Bangkok",       "Asia/Bangkok"],
   "singapore":     ["Singapore",     "Asia/Singapore"],

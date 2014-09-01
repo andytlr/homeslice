@@ -28,6 +28,7 @@ var cityOptions = {
   "hongkong":      ["Hong Kong",     "Asia/Hong_Kong"],
   "tokyo":         ["Tokyo",         "Asia/Tokyo"],
   "adelaide":      ["Adelaide",      "Australia/Adelaide"],
+  "brisbane":      ["Brisbane",      "Australia/Brisbane"],
   "melbourne":     ["Melbourne",     "Australia/Melbourne"],
   "sydney":        ["Sydney",        "Australia/Sydney"],
   "vladivostok":   ["Vladivostok",   "Asia/Vladivostok"],

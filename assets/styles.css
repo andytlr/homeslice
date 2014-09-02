@@ -1,13 +1,15 @@
 html {
   font-size: 10px;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   margin: 0;
   padding: 0;
   font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', 'Roboto',  sans-serif;
-  overflow-x: scroll;
+  overflow-x: hidden;
+  background: hsla(0, 0%, 0%, 0.06);
 }
 
 noscript {
@@ -30,15 +32,16 @@ noscript h1 {
   display: block;
   padding: 10%;
   text-align: center;
-  text-decoration: none;
-  color: #fff;
-  background: hsl(200, 100%, 25%);
-  font-size: 16px;
-  line-height: 22px;
+  color: #333;
+  background: #fff;
+  font-size: 1.6rem;
+  line-height: 1.4;
+  background: hsla(0, 0%, 0%, 0.06);
+  border-top: 1px solid hsla(0, 0%, 0%, 0.06);
 }
 
 .credit a {
-  color: #fff;
+  color: hsl(200, 100%, 25%);
 }
 
 .addbutton {
@@ -75,32 +78,56 @@ noscript h1 {
   box-sizing: border-box;
   font-family: inherit;
   display: block;
-  width: 100%;
+  width: 90vw;
   border: none;
   height: auto;
-  font-size: 1.6rem;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  font-size: 1.8rem;
+  padding-top: 2.6rem;
+  padding-bottom: 2.6rem;
   border-radius: 0;
   outline: 0;
-  text-align: center;
+  padding-left: 3vw;
+  margin-left: 1.8rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#filter::-webkit-input-placeholder {
+  color: hsl(0, 0%, 60%);
 }
 
 #filter:focus::-webkit-input-placeholder {
-    color: transparent;
+  color: transparent;
+}
+
+#clearbutton {
+  position: absolute;
+  top: 103px;
+  right: 0;
+  font-size: 2.8rem;
+  line-height: 2.5rem;
+  padding-top: 2.6rem;
+  padding-bottom: 2.6rem;
+  cursor: pointer;
+  padding-right: 7vw;
+  padding-left: 7vw;
+  color: hsl(0, 0%, 60%);
+}
+
+#clearbutton.is-active {
+  color: hsl(160, 100%, 30%);
 }
 
 .savebutton {
-  position: fixed;
-  top: 0;
   display: block;
   width: 100%;
   cursor: pointer;
   text-align: center;
-  font-size: 2rem;
+  font-size: 2.6rem;
   line-height: 100px;
+  background: hsl(268, 77%, 45%);
+  border-bottom: 1px solid hsla(0, 0%, 0%, 0.06);
   color: #fff;
-  background: hsl(160, 100%, 25%);
 }
 
 .addbutton span {
@@ -123,13 +150,13 @@ noscript h1 {
 .addbutton.is-active:before {
   content: '− ';
   float: left;
-  width: 1.2em;
+  width: 1.8rem;
 }
 
 .addbutton:before {
   content: '+ ';
   float: left;
-  width: 1.2em;
+  width: 1.8rem;
 }
 
 .cities {
@@ -229,12 +256,11 @@ noscript h1 {
 }
 
 #settings {
-  position: absolute;
+  position: relative;
   width: 100%;
   z-index: 5;
   background: #fff;
   min-height: 100%;
-  padding-top: 100px;
 }
 
 .is-hidden {
@@ -276,11 +302,11 @@ noscript h1 {
     line-height: 3.5rem;
   }
 
-  #settings {
-    padding-top: 165px;
-  }
-
   .savebutton {
     line-height: 165px;
+  }
+
+  #clearbutton {
+    top: 167px;
   }
 }

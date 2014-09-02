@@ -56,7 +56,7 @@ var headingsEl            = document.getElementById("headings");
 var cookieString          = getCookie("cities");
 var creditEl              = document.createElement("div");
                             creditEl.setAttribute("class", "credit");
-var creditCopy            = "<p>Homeslice is a project by <a href=\"http://andytaylor.me/\">Andy&nbsp;Taylor</a>.</p> <p>If you find it useful (I hope you do), why not <a href=\"http://twitter.com/home?status=Homeslice: Find time across timezones. http://homeslice.in\">Tweet about it</a> or <a href=\"https://www.facebook.com/sharer/sharer.php?u=http://homeslice.in\">post it on&nbsp;Facebook</a>.</p> <p>Please submit bugs and requests on <a href=\"https://github.com/andytlr/homeslice/issues/\">GitHub</a>.</p> <p>Timezone conversion is done with&nbsp;<a href=\"http://momentjs.com\">Moment.js</a>.</p>"
+var creditCopy            = "<p>Homeslice is a project by <a href=\"http://andytaylor.me/\">Andy&nbsp;Taylor</a>.</p> <p>If you find it useful (I hope you do), why not <a href=\"http://twitter.com/home?status=Homeslice: Find time across timezones. http://homeslice.in\">Tweet about it</a> or <a href=\"https://www.facebook.com/sharer/sharer.php?u=http://homeslice.in\">post it on&nbsp;Facebook</a>.</p> <p>Please submit bugs and requests on <a href=\"https://github.com/andytlr/homeslice/issues/\">GitHub</a>.</p>"
 
 function areCookiesEnabled() {
   var cookieEnabled = (navigator.cookieEnabled) ? true : false;
@@ -95,12 +95,16 @@ function getCookie(c_name) {
 function showSettings() {
   settingsEl.classList.remove("is-hidden");
   citiesEl.classList.add("is-hidden");
+  settingsButtonEl.classList.add("is-hidden");
+  headingsEl.classList.add("is-hidden");
   window.scrollTo(0, 0);
 }
 
 function hideSettings() {
   settingsEl.classList.add("is-hidden");
   citiesEl.classList.remove("is-hidden");
+  settingsButtonEl.classList.remove("is-hidden");
+  headingsEl.classList.remove("is-hidden");
   window.scrollTo(0, 0);
 }
 
@@ -150,15 +154,15 @@ settingsButtonEl.onclick = function showSettingsScreen() {
   showSettings();
 }
 
-var saveButton              = document.createElement("div");
-var saveButtonCopy          = document.createTextNode("↫ Done");
+var saveButtonEl            = document.createElement("div");
+var saveButtonCopy          = document.createTextNode("↫ I'm done pickin’");
 
 settingsButtonEl.appendChild(settingsButtonContent);
-settingsEl.appendChild(saveButton);
-saveButton.appendChild(saveButtonCopy);
-saveButton.classList.add("savebutton");
+settingsEl.insertBefore(saveButtonEl, settingsEl.firstChild);
+saveButtonEl.appendChild(saveButtonCopy);
+saveButtonEl.classList.add("savebutton");
 
-saveButton.onclick = function closeSettingsScreen() {
+saveButtonEl.onclick = function closeSettingsScreen() {
   // hideSettings();
   window.location = "/";
 }
@@ -416,14 +420,27 @@ creditEl.innerHTML = creditCopy;
 
 // Filtering
 window.setInterval(function(){
-  var filterInputValue = document.getElementById("filter").value.toLowerCase();
+  var filterInputValue = document.getElementById("filter").value;
 
   var allAddButtons = document.querySelectorAll('.addbutton');
   for (var i = 0; i < allAddButtons.length; i++) {
-    if (allAddButtons[i].textContent.toLowerCase().indexOf(filterInputValue) >= 0) {
+    if (allAddButtons[i].textContent.toLowerCase().indexOf(filterInputValue.toLowerCase().trim()) >= 0) {
       allAddButtons[i].classList.remove("is-hidden");
     } else {
       allAddButtons[i].classList.add("is-hidden");
     }
   }
+
+  var clearButton = document.getElementById("clearbutton");
+
+  if (filterInputValue == "") {
+    clearButton.classList.remove("is-active");
+  } else {
+    clearButton.classList.add("is-active");
+  }
+
+  clearButton.onclick = function clearSearchInput() {
+    document.getElementById("filter").value = "";
+  }
 }, 500);
+

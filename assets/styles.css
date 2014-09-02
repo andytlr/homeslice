@@ -32,14 +32,15 @@ noscript h1 {
   padding: 10%;
   text-align: center;
   text-decoration: none;
-  color: #fff;
-  background: hsl(200, 100%, 25%);
-  font-size: 16px;
-  line-height: 22px;
+  color: hsl(200, 100%, 25%);
+  background: #fff;
+  font-size: 1.6rem;
+  line-height: 1.4;
+  border-top: 1px solid hsla(0, 0%, 0%, 0.06);
 }
 
 .credit a {
-  color: #fff;
+  color: hsl(200, 100%, 25%);
 }
 
 .addbutton {
@@ -100,7 +101,7 @@ noscript h1 {
 
 #clearbutton {
   position: absolute;
-  top: 100px;
+  top: 103px;
   right: 0;
   font-size: 2.8rem;
   line-height: 2.5rem;
@@ -305,6 +306,6 @@ noscript h1 {
   }
 
   #clearbutton {
-    top: 165px;
+    top: 167px;
   }
 }

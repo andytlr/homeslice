@@ -56,7 +56,7 @@ var headingsEl            = document.getElementById("headings");
 var cookieString          = getCookie("cities");
 var creditEl              = document.createElement("div");
                             creditEl.setAttribute("class", "credit");
-var creditCopy            = "<p>Homeslice is a project by <a href=\"http://andytaylor.me/\">Andy&nbsp;Taylor</a>.</p> <p>If you find it useful (I hope you do), why not <a href=\"http://twitter.com/home?status=Homeslice: Find time across timezones. http://homeslice.in\">Tweet about it</a> or <a href=\"https://www.facebook.com/sharer/sharer.php?u=http://homeslice.in\">post it on&nbsp;Facebook</a>.</p> <p>Please submit bugs and requests on <a href=\"https://github.com/andytlr/homeslice/issues/\">GitHub</a>.</p> <p>Timezone conversion is done with&nbsp;<a href=\"http://momentjs.com\">Moment.js</a>.</p>"
+var creditCopy            = "<p>Homeslice is a project by <a href=\"http://andytaylor.me/\">Andy&nbsp;Taylor</a>.</p> <p>If you find it useful (I hope you do), why not <a href=\"http://twitter.com/home?status=Homeslice: Find time across timezones. http://homeslice.in\">Tweet about it</a> or <a href=\"https://www.facebook.com/sharer/sharer.php?u=http://homeslice.in\">post it on&nbsp;Facebook</a>.</p> <p>Please submit bugs and requests on <a href=\"https://github.com/andytlr/homeslice/issues/\">GitHub</a>.</p>"
 
 function areCookiesEnabled() {
   var cookieEnabled = (navigator.cookieEnabled) ? true : false;

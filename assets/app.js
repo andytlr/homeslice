@@ -1,4 +1,5 @@
 var cityOptions = {
+  "samoa":         ["Samoa",         "Pacific/Samoa"],
   "hawaii":        ["Hawaii",        "US/Hawaii"],
   "uspacific":     ["US Pacific",    "US/Pacific"],
   "sanfrancisco":  ["San Francisco", "America/Los_Angeles"],
@@ -33,8 +34,7 @@ var cityOptions = {
   "melbourne":     ["Melbourne",     "Australia/Melbourne"],
   "sydney":        ["Sydney",        "Australia/Sydney"],
   "vladivostok":   ["Vladivostok",   "Asia/Vladivostok"],
-  "auckland":      ["Auckland",      "Pacific/Auckland"],
-  "samoa":         ["Samoa",         "Pacific/Samoa"]
+  "auckland":      ["Auckland",      "Pacific/Auckland"]
 }
 
 // Make an empty Object to be added to.
@@ -46,7 +46,7 @@ var formatCurrentTime     = 'ddd Do MMM, h:mma'
 var formatTime            = 'ddd ha'
 var formatNewDay          = 'ddd Do MMM, ha'
 var formatTimePlusThirty  = 'ddd h:[30]a'
-var formatTimeForList     = ' h:mma'
+var formatTimeForList     = 'h:mma'
 var hoursInTheFuture      = 24 * 7
 var settingsEl            = document.getElementById("settings");
 var settingsButtonEl      = document.getElementById("settingsbutton");
@@ -165,15 +165,19 @@ saveButton.onclick = function closeSettingsScreen() {
 
 for (var city in cityOptions) {
 
-  var cityOptionEl            = document.createElement("div");
-  var cityName                = document.createTextNode(cityOptions[city][0]);
-  var cityOptionCurrentTimeEl = document.createElement("span");
-  var currentTime             = document.createTextNode(moment().tz(cityOptions[city][1]).format(formatTimeForList));
+  var cityOptionEl                 = document.createElement("div");
+  var cityName                     = document.createTextNode(cityOptions[city][0]);
+  var cityOptionCurrentTimeEl      = document.createElement("span");
+  var cityOptionCurrentGmtOffsetEl = document.createElement("span");
+  var currentTime                  = document.createTextNode(moment().tz(cityOptions[city][1]).format(formatTimeForList));
+  var currentGmtOffset             = document.createTextNode(moment().tz(cityOptions[city][1]).format('Z'));
 
   settingsEl.appendChild(cityOptionEl);
   cityOptionEl.appendChild(cityName);
   cityOptionEl.appendChild(cityOptionCurrentTimeEl);
+  cityOptionEl.appendChild(cityOptionCurrentGmtOffsetEl);
   cityOptionCurrentTimeEl.appendChild(currentTime);
+  cityOptionCurrentGmtOffsetEl.appendChild(currentGmtOffset);
   cityOptionEl.classList.add("addbutton");
   cityOptionEl.id = "add" + city;
 
@@ -409,3 +413,17 @@ setInterval(updateCities, 1000);
 
 settingsEl.appendChild(creditEl);
 creditEl.innerHTML = creditCopy;
+
+// Filtering
+window.setInterval(function(){
+  var filterInputValue = document.getElementById("filter").value.toLowerCase();
+
+  var allAddButtons = document.querySelectorAll('.addbutton');
+  for (var i = 0; i < allAddButtons.length; i++) {
+    if (allAddButtons[i].textContent.toLowerCase().indexOf(filterInputValue) >= 0) {
+      allAddButtons[i].classList.remove("is-hidden");
+    } else {
+      allAddButtons[i].classList.add("is-hidden");
+    }
+  }
+}, 500);

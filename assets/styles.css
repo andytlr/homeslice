@@ -42,7 +42,11 @@ noscript h1 {
 }
 
 .addbutton {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
   display: block;
+  width: 100%;
   line-height: 44px;
   cursor: pointer;
   line-height: 4.4rem;
@@ -55,12 +59,30 @@ noscript h1 {
   border-top: 1px solid hsla(0, 0%, 0%, 0.06);
   padding-left: 3vw;
   padding-right: 3vw;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+#filter {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: inherit;
+  display: block;
+  width: 100%;
+  border: none;
+  height: auto;
+  font-size: 1.6rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  border-radius: 0;
+  outline: 0;
+  text-align: center;
+}
+
+#filter:focus::-webkit-input-placeholder {
+    color: transparent;
 }
 
 .savebutton {

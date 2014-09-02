@@ -409,3 +409,24 @@ setInterval(updateCities, 1000);
 
 settingsEl.appendChild(creditEl);
 creditEl.innerHTML = creditCopy;
+
+// Filtering
+window.setInterval(function(){
+  var filterInputValue = document.getElementById("filter").value;
+  console.log(filterInputValue);
+
+  var allAddButtons = document.querySelectorAll('.addbutton');
+  for (var i = 0; i < allAddButtons.length; i++) {
+    if (allAddButtons[i].innerText.indexOf(filterInputValue) >= 0) {
+      allAddButtons[i].classList.remove("is-hidden");
+    } else {
+      allAddButtons[i].classList.add("is-hidden");
+    }
+  }
+}, 1000);
+
+
+
+
+
+

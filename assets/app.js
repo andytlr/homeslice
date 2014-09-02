@@ -95,12 +95,16 @@ function getCookie(c_name) {
 function showSettings() {
   settingsEl.classList.remove("is-hidden");
   citiesEl.classList.add("is-hidden");
+  settingsButtonEl.classList.add("is-hidden");
+  headingsEl.classList.add("is-hidden");
   window.scrollTo(0, 0);
 }
 
 function hideSettings() {
   settingsEl.classList.add("is-hidden");
   citiesEl.classList.remove("is-hidden");
+  settingsButtonEl.classList.remove("is-hidden");
+  headingsEl.classList.remove("is-hidden");
   window.scrollTo(0, 0);
 }
 

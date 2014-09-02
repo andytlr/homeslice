@@ -150,15 +150,15 @@ settingsButtonEl.onclick = function showSettingsScreen() {
   showSettings();
 }
 
-var saveButton              = document.createElement("div");
-var saveButtonCopy          = document.createTextNode("↫ Done");
+var saveButtonEl            = document.createElement("div");
+var saveButtonCopy          = document.createTextNode("↫ I'm done pickin’");
 
 settingsButtonEl.appendChild(settingsButtonContent);
-settingsEl.appendChild(saveButton);
-saveButton.appendChild(saveButtonCopy);
-saveButton.classList.add("savebutton");
+settingsEl.insertBefore(saveButtonEl, settingsEl.firstChild);
+saveButtonEl.appendChild(saveButtonCopy);
+saveButtonEl.classList.add("savebutton");
 
-saveButton.onclick = function closeSettingsScreen() {
+saveButtonEl.onclick = function closeSettingsScreen() {
   // hideSettings();
   window.location = "/";
 }
@@ -427,3 +427,8 @@ window.setInterval(function(){
     }
   }
 }, 500);
+
+var clearButton = document.getElementById("clearbutton");
+clearButton.onclick = function clearSearchInput() {
+  document.getElementById("filter").value = "";
+}

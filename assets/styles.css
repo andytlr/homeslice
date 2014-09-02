@@ -107,6 +107,8 @@ noscript h1 {
   float: right;
   padding-left: 1rem;
   color: hsl(0, 0%, 60%);
+  min-width: 7.5rem;
+  text-align: right;
 }
 
 .addbutton.is-active span {

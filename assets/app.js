@@ -416,7 +416,7 @@ window.setInterval(function(){
 
   var allAddButtons = document.querySelectorAll('.addbutton');
   for (var i = 0; i < allAddButtons.length; i++) {
-    if (allAddButtons[i].innerText.toLowerCase().indexOf(filterInputValue) >= 0) {
+    if (allAddButtons[i].textContent.toLowerCase().indexOf(filterInputValue) >= 0) {
       allAddButtons[i].classList.remove("is-hidden");
     } else {
       allAddButtons[i].classList.add("is-hidden");

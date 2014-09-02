@@ -90,6 +90,10 @@ noscript h1 {
   -moz-osx-font-smoothing: grayscale;
 }
 
+#filter::-webkit-input-placeholder {
+  color: hsl(0, 0%, 60%);
+}
+
 #filter:focus::-webkit-input-placeholder {
   color: transparent;
 }
@@ -105,6 +109,11 @@ noscript h1 {
   cursor: pointer;
   padding-right: 7vw;
   padding-left: 7vw;
+  color: hsl(0, 0%, 60%);
+}
+
+#clearbutton.is-active {
+  color: hsl(160, 100%, 30%);
 }
 
 .savebutton {

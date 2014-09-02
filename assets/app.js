@@ -416,19 +416,27 @@ creditEl.innerHTML = creditCopy;
 
 // Filtering
 window.setInterval(function(){
-  var filterInputValue = document.getElementById("filter").value.toLowerCase();
+  var filterInputValue = document.getElementById("filter").value;
 
   var allAddButtons = document.querySelectorAll('.addbutton');
   for (var i = 0; i < allAddButtons.length; i++) {
-    if (allAddButtons[i].textContent.toLowerCase().indexOf(filterInputValue.trim()) >= 0) {
+    if (allAddButtons[i].textContent.toLowerCase().indexOf(filterInputValue.toLowerCase().trim()) >= 0) {
       allAddButtons[i].classList.remove("is-hidden");
     } else {
       allAddButtons[i].classList.add("is-hidden");
     }
   }
+
+  var clearButton = document.getElementById("clearbutton");
+
+  if (filterInputValue == "") {
+    clearButton.classList.remove("is-active");
+  } else {
+    clearButton.classList.add("is-active");
+  }
+
+  clearButton.onclick = function clearSearchInput() {
+    document.getElementById("filter").value = "";
+  }
 }, 500);
 
-var clearButton = document.getElementById("clearbutton");
-clearButton.onclick = function clearSearchInput() {
-  document.getElementById("filter").value = "";
-}

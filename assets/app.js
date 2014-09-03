@@ -94,7 +94,6 @@ var settingsEl              = document.getElementById("settings");
 var settingsButtonEl        = document.getElementById("settingsbutton");
 var settingsButtonContent   = document.createTextNode("+ / −");
 var timeFormatButtonEl      = document.getElementById("timeformatbutton");
-var timeFormatButtonContent = document.createTextNode("24h");
 var citiesEl                = document.getElementById("cities");
 var headingsEl              = document.getElementById("headings");
 var cookieString            = getCookie("cities");
@@ -111,6 +110,7 @@ var formatTimeForList       = ''
 
 function setTimeFormat() {
   if (getCookie("timeformat") == "12hr" || getCookie("timeformat") == undefined) {
+    timeFormatButtonEl.innerHTML = "12h"
     formatCurrentTime       = 'ddd Do MMM, h:mma'
     formatTime              = 'ddd ha'
     formatNewDay            = 'ddd Do MMM, ha'
@@ -118,6 +118,7 @@ function setTimeFormat() {
     formatMidday            = 'ddd [Midday]'
     formatTimeForList       = 'h:mma'
   } else {
+    timeFormatButtonEl.innerHTML = "24h"
     formatCurrentTime       = 'HH:mm ddd DD/MM'
     formatTime              = 'HH[:00] ddd'
     formatNewDay            = 'HH[:00] ddd DD/MM'
@@ -126,10 +127,10 @@ function setTimeFormat() {
     formatTimeForList       = 'HH:mm'
   }
 }
+
 setTimeFormat()
 setInterval(setTimeFormat, 100);
 
-timeFormatButtonEl.appendChild(timeFormatButtonContent);
 timeFormatButtonEl.onclick = function setTwentyFourHourTime() {
   if (getCookie("timeformat") == "12hr" || getCookie("timeformat") == undefined) {
     setCookie("timeformat", "24hr", 365);

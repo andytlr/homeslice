@@ -90,6 +90,7 @@ noscript h1 {
   margin-left: 1.8rem;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
 }
 
 #filter::-webkit-input-placeholder {
@@ -102,7 +103,7 @@ noscript h1 {
 
 #clearbutton {
   position: absolute;
-  top: 103px;
+  top: 63px;
   right: 0;
   font-size: 2.8rem;
   line-height: 2.5rem;
@@ -119,12 +120,15 @@ noscript h1 {
 }
 
 .savebutton {
+  position: fixed;
+  top: 0;
   display: block;
   width: 100%;
   cursor: pointer;
   text-align: center;
-  font-size: 2.6rem;
-  line-height: 100px;
+  font-size: 1.8rem;
+  z-index: 4;
+  line-height: 60px;
   background: hsl(268, 77%, 45%);
   border-bottom: 1px solid hsla(0, 0%, 0%, 0.06);
   color: #fff;
@@ -257,8 +261,10 @@ noscript h1 {
 
 #settings {
   position: relative;
+  padding-top: 63px;
+  overflow-x: hidden;
   width: 100%;
-  z-index: 5;
+  z-index: 3;
   background: #fff;
   min-height: 100%;
 }
@@ -275,7 +281,7 @@ noscript h1 {
   text-align: center;
   background: hsl(160, 100%, 30%);
   color: #fff;
-  z-index: 4;
+  z-index: 2;
   cursor: pointer;
   padding: 5px 10px;
   overflow: hidden;
@@ -304,6 +310,11 @@ noscript h1 {
 
   .savebutton {
     line-height: 165px;
+    font-size: 2.5rem;
+  }
+
+  #settings {
+    padding-top: 167px;
   }
 
   #clearbutton {

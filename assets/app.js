@@ -111,19 +111,19 @@ var formatTimeForList       = ''
 function setTimeFormat() {
   if (getCookie("timeformat") == "12hr" || getCookie("timeformat") == undefined) {
     timeFormatButtonEl.innerHTML = "24h"
-    formatCurrentTime       = 'ddd Do MMM, h:mma'
+    formatCurrentTime       = 'ddd h:mma'
     formatTime              = 'ddd ha'
-    formatNewDay            = 'ddd Do MMM, ha'
+    formatNewDay            = 'ddd Do MMM'
     formatTimePlusThirty    = 'ddd h:[30]a'
     formatMidday            = 'ddd [Midday]'
     formatTimeForList       = 'h:mma'
   } else {
     timeFormatButtonEl.innerHTML = "12h"
-    formatCurrentTime       = 'HH:mm ddd DD/MM'
-    formatTime              = 'HH[:00] ddd'
-    formatNewDay            = 'HH[:00] ddd DD/MM'
-    formatTimePlusThirty    = 'HH[:30] ddd'
-    formatMidday            = 'HH[:00] ddd'
+    formatCurrentTime       = 'ddd HH:mm'
+    formatTime              = 'ddd HH[:00]'
+    formatNewDay            = 'ddd DD/MM'
+    formatTimePlusThirty    = 'ddd HH[:30]'
+    formatMidday            = 'ddd HH[:00]'
     formatTimeForList       = 'HH:mm'
   }
 }

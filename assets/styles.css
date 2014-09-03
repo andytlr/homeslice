@@ -216,10 +216,10 @@ noscript h1 {
   padding: 0;
   padding-left: 3vw;
   padding-right: 3vw;
-  height: 2.8rem;
-  line-height: 2.8rem;
+  height: 3rem;
+  line-height: 3rem;
   overflow: hidden;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   border-top: 1px solid hsla(0, 0%, 0%, 0.06);
   white-space: nowrap;
   overflow: hidden;

@@ -72,13 +72,18 @@ noscript h1 {
   user-select: none;
 }
 
+.searchbox {
+  display: table;
+  width: 100%;
+}
+
 #filter {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   font-family: inherit;
-  display: block;
-  width: 90vw;
+  display: table-cell;
+  width: 90%;
   border: none;
   height: auto;
   font-size: 1.8rem;
@@ -91,6 +96,7 @@ noscript h1 {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: transparent;
+  z-index: 2;
 }
 
 #filter::-webkit-input-placeholder {
@@ -102,17 +108,15 @@ noscript h1 {
 }
 
 #clearbutton {
-  position: absolute;
-  top: 63px;
-  right: 0;
+  display: table-cell;
   font-size: 2.8rem;
   line-height: 2.5rem;
-  padding-top: 2.6rem;
-  padding-bottom: 2.6rem;
+  vertical-align: middle;
   cursor: pointer;
-  padding-right: 7vw;
-  padding-left: 7vw;
+  text-align: center;
+  width: 20%;
   color: hsl(0, 0%, 60%);
+  z-index: 3;
 }
 
 #clearbutton.is-active {

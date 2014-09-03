@@ -462,7 +462,7 @@ updateCities();
 // Then re-run it every second.
 setInterval(updateCities, 1000);
 
-settingsEl.appendChild(creditEl);
+document.body.insertBefore(creditEl, document.body.lastChild);
 creditEl.innerHTML = creditCopy;
 
 // Filtering

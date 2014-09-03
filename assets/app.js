@@ -490,4 +490,4 @@ window.setInterval(function(){
     document.getElementById("filter").value = "";
     window.scrollTo(0, 0);
   }
-}, 500);
+}, 50);

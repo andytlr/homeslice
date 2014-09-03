@@ -486,10 +486,9 @@ window.setInterval(function(){
     clearButton.classList.remove("is-active");
   } else {
     clearButton.classList.add("is-active");
-  }
-
-  clearButton.onclick = function clearSearchInput() {
-    document.getElementById("filter").value = "";
-    window.scrollTo(0, 0);
+    clearButton.onclick = function clearSearchInput() {
+      document.getElementById("filter").value = "";
+      window.scrollTo(0, 0);
+    }
   }
 }, 50);

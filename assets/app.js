@@ -102,14 +102,14 @@ var creditEl                = document.createElement("div");
                               creditEl.setAttribute("class", "credit");
 var creditCopy              = "<p>Homeslice is a project by <a href=\"http://andytaylor.me/\">Andy&nbsp;Taylor</a> (@<a href=\"http://twitter.com/andytlr/\">andytlr</a>).</p> <p>If you find it useful (I hope you do), why not <a href=\"http://twitter.com/home?status=Homeslice: Find time across timezones. http://homeslice.in\">Tweet about it</a> or <a href=\"https://www.facebook.com/sharer/sharer.php?u=http://homeslice.in\">post it on&nbsp;Facebook</a>.</p> <p>Please submit bugs and requests on <a href=\"https://github.com/andytlr/homeslice/issues/\">GitHub</a>.</p>"
 
-var formatCurrentTime       = 'ddd Do MMM, h:mma'
-var formatTime              = 'ddd ha'
-var formatNewDay            = 'ddd Do MMM, ha'
-var formatTimePlusThirty    = 'ddd h:[30]a'
-var formatMidday            = 'ddd [Midday]'
-var formatTimeForList       = 'h:mma'
+var formatCurrentTime       = ''
+var formatTime              = ''
+var formatNewDay            = ''
+var formatTimePlusThirty    = ''
+var formatMidday            = ''
+var formatTimeForList       = ''
 
-window.setInterval(function(){
+function setTimeFormat() {
   if (getCookie("timeformat") == "12hr" || getCookie("timeformat") == undefined) {
     formatCurrentTime       = 'ddd Do MMM, h:mma'
     formatTime              = 'ddd ha'
@@ -118,14 +118,16 @@ window.setInterval(function(){
     formatMidday            = 'ddd [Midday]'
     formatTimeForList       = 'h:mma'
   } else {
-    formatCurrentTime       = 'HH:mm, ddd DD/MM'
-    formatTime              = 'HH[:00], ddd'
-    formatNewDay            = 'HH[:00], ddd DD/MM'
-    formatTimePlusThirty    = 'HH[:30], ddd'
-    formatMidday            = 'HH[:00], ddd'
+    formatCurrentTime       = 'HH:mm ddd DD/MM'
+    formatTime              = 'HH[:00] ddd'
+    formatNewDay            = 'HH[:00] ddd DD/MM'
+    formatTimePlusThirty    = 'HH[:30] ddd'
+    formatMidday            = 'HH[:00] ddd'
     formatTimeForList       = 'HH:mm'
   }
-}, 50);
+}
+setTimeFormat()
+setInterval(setTimeFormat, 100);
 
 timeFormatButtonEl.appendChild(timeFormatButtonContent);
 timeFormatButtonEl.onclick = function setTwentyFourHourTime() {

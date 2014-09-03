@@ -88,22 +88,55 @@ var cityOptions = {
 cities = {}
 
 // Setup
-var defaultCities         = "melbourne,sanfrancisco,"
-var formatCurrentTime     = 'ddd Do MMM, h:mma'
-var formatTime            = 'ddd ha'
-var formatNewDay          = 'ddd Do MMM, ha'
-var formatTimePlusThirty  = 'ddd h:[30]a'
-var formatTimeForList     = 'h:mma'
-var hoursInTheFuture      = 24 * 7
-var settingsEl            = document.getElementById("settings");
-var settingsButtonEl      = document.getElementById("settingsbutton");
-var settingsButtonContent = document.createTextNode("+ / −");
-var citiesEl              = document.getElementById("cities");
-var headingsEl            = document.getElementById("headings");
-var cookieString          = getCookie("cities");
-var creditEl              = document.createElement("div");
-                            creditEl.setAttribute("class", "credit");
-var creditCopy            = "<p>Homeslice is a project by <a href=\"http://andytaylor.me/\">Andy&nbsp;Taylor</a> (@<a href=\"http://twitter.com/andytlr/\">andytlr</a>).</p> <p>If you find it useful (I hope you do), why not <a href=\"http://twitter.com/home?status=Homeslice: Find time across timezones. http://homeslice.in\">Tweet about it</a> or <a href=\"https://www.facebook.com/sharer/sharer.php?u=http://homeslice.in\">post it on&nbsp;Facebook</a>.</p> <p>Please submit bugs and requests on <a href=\"https://github.com/andytlr/homeslice/issues/\">GitHub</a>.</p>"
+var defaultCities           = "melbourne,sanfrancisco,"
+var hoursInTheFuture        = 24 * 7
+var settingsEl              = document.getElementById("settings");
+var settingsButtonEl        = document.getElementById("settingsbutton");
+var settingsButtonContent   = document.createTextNode("+ / −");
+var timeFormatButtonEl      = document.getElementById("timeformatbutton");
+var timeFormatButtonContent = document.createTextNode("24h");
+var citiesEl                = document.getElementById("cities");
+var headingsEl              = document.getElementById("headings");
+var cookieString            = getCookie("cities");
+var creditEl                = document.createElement("div");
+                              creditEl.setAttribute("class", "credit");
+var creditCopy              = "<p>Homeslice is a project by <a href=\"http://andytaylor.me/\">Andy&nbsp;Taylor</a> (@<a href=\"http://twitter.com/andytlr/\">andytlr</a>).</p> <p>If you find it useful (I hope you do), why not <a href=\"http://twitter.com/home?status=Homeslice: Find time across timezones. http://homeslice.in\">Tweet about it</a> or <a href=\"https://www.facebook.com/sharer/sharer.php?u=http://homeslice.in\">post it on&nbsp;Facebook</a>.</p> <p>Please submit bugs and requests on <a href=\"https://github.com/andytlr/homeslice/issues/\">GitHub</a>.</p>"
+
+var formatCurrentTime       = 'ddd Do MMM, h:mma'
+var formatTime              = 'ddd ha'
+var formatNewDay            = 'ddd Do MMM, ha'
+var formatTimePlusThirty    = 'ddd h:[30]a'
+var formatMidday            = 'ddd [Midday]'
+var formatTimeForList       = 'h:mma'
+
+window.setInterval(function(){
+  if (getCookie("timeformat") == "12hr" || getCookie("timeformat") == undefined) {
+    formatCurrentTime       = 'ddd Do MMM, h:mma'
+    formatTime              = 'ddd ha'
+    formatNewDay            = 'ddd Do MMM, ha'
+    formatTimePlusThirty    = 'ddd h:[30]a'
+    formatMidday            = 'ddd [Midday]'
+    formatTimeForList       = 'h:mma'
+  } else {
+    formatCurrentTime       = 'HH:mm, ddd DD/MM'
+    formatTime              = 'HH[:00], ddd'
+    formatNewDay            = 'HH[:00], ddd DD/MM'
+    formatTimePlusThirty    = 'HH[:30], ddd'
+    formatMidday            = 'HH[:00], ddd'
+    formatTimeForList       = 'HH:mm'
+  }
+}, 50);
+
+timeFormatButtonEl.appendChild(timeFormatButtonContent);
+timeFormatButtonEl.onclick = function setTwentyFourHourTime() {
+  if (getCookie("timeformat") == "12hr" || getCookie("timeformat") == undefined) {
+    setCookie("timeformat", "24hr", 365);
+    console.log(getCookie("timeformat"));
+  } else {
+    setCookie("timeformat", "12hr", 365);
+    console.log(getCookie("timeformat"));
+  }
+}
 
 function areCookiesEnabled() {
   var cookieEnabled = (navigator.cookieEnabled) ? true : false;
@@ -143,6 +176,7 @@ function showSettings() {
   settingsEl.classList.remove("is-hidden");
   citiesEl.classList.add("is-hidden");
   settingsButtonEl.classList.add("is-hidden");
+  timeFormatButtonEl.classList.add("is-hidden");
   headingsEl.classList.add("is-hidden");
   document.body.classList.add("settingsvisible");
   window.scrollTo(0, 0);
@@ -152,6 +186,7 @@ function hideSettings() {
   settingsEl.classList.add("is-hidden");
   citiesEl.classList.remove("is-hidden");
   settingsButtonEl.classList.remove("is-hidden");
+  timeFormatButtonEl.classList.remove("is-hidden");
   headingsEl.classList.remove("is-hidden");
   document.body.classList.remove("settingsvisible");
   window.scrollTo(0, 0);
@@ -364,7 +399,7 @@ function updateCities(){
       // and it isn't the first item (current time).
       // Set the new time format.
       if (timeDiff.match(notPlusOrMinusThirty) && currentTime.format('HH') == 12 && index != 0) {
-        var format = 'ddd [Midday]';
+        var format = formatMidday;
       }
 
       if (currentTime.format('ha') == "12am") {

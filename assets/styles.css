@@ -286,10 +286,10 @@ noscript h1 {
   display: none;
 }
 
-#settingsbutton {
+#settingsbutton,
+#timeformatbutton {
   position: fixed;
   bottom: 3vw;
-  right: 3vw;
   border-radius: 5px;
   text-align: center;
   background: hsl(160, 100%, 30%);
@@ -299,6 +299,19 @@ noscript h1 {
   padding: 5px 10px;
   overflow: hidden;
   font-size: 20px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+#settingsbutton {
+  right: 3vw;
+}
+
+#timeformatbutton {
+  left: 3vw;
 }
 
 @media only screen and (min-width: 760px) {

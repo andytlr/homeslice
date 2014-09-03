@@ -298,7 +298,6 @@ noscript h1 {
   cursor: pointer;
   padding: 0 10px;
   overflow: hidden;
-  font-size: 20px;
   line-height: 32px;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -308,6 +307,7 @@ noscript h1 {
 }
 
 #settingsbutton {
+  font-size: 20px;
   right: 3vw;
 }
 

@@ -110,7 +110,7 @@ var formatTimeForList       = ''
 
 function setTimeFormat() {
   if (getCookie("timeformat") == "12hr" || getCookie("timeformat") == undefined) {
-    timeFormatButtonEl.innerHTML = "12h"
+    timeFormatButtonEl.innerHTML = "24h"
     formatCurrentTime       = 'ddd Do MMM, h:mma'
     formatTime              = 'ddd ha'
     formatNewDay            = 'ddd Do MMM, ha'
@@ -118,7 +118,7 @@ function setTimeFormat() {
     formatMidday            = 'ddd [Midday]'
     formatTimeForList       = 'h:mma'
   } else {
-    timeFormatButtonEl.innerHTML = "24h"
+    timeFormatButtonEl.innerHTML = "12h"
     formatCurrentTime       = 'HH:mm ddd DD/MM'
     formatTime              = 'HH[:00] ddd'
     formatNewDay            = 'HH[:00] ddd DD/MM'

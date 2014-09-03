@@ -9,7 +9,11 @@ body {
   padding: 0;
   font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', 'Roboto',  sans-serif;
   overflow-x: hidden;
-  background: hsla(0, 0%, 0%, 0.06);
+  background: #fff;
+}
+
+body.settingsvisible {
+  background: #f3f3f3;
 }
 
 noscript {
@@ -36,7 +40,7 @@ noscript h1 {
   background: #fff;
   font-size: 1.6rem;
   line-height: 1.4;
-  background: hsla(0, 0%, 0%, 0.06);
+  background: #f3f3f3;
   border-top: 1px solid hsla(0, 0%, 0%, 0.06);
 }
 

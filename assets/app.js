@@ -144,6 +144,7 @@ function showSettings() {
   citiesEl.classList.add("is-hidden");
   settingsButtonEl.classList.add("is-hidden");
   headingsEl.classList.add("is-hidden");
+  document.body.classList.add("settingsvisible");
   window.scrollTo(0, 0);
 }
 
@@ -152,6 +153,7 @@ function hideSettings() {
   citiesEl.classList.remove("is-hidden");
   settingsButtonEl.classList.remove("is-hidden");
   headingsEl.classList.remove("is-hidden");
+  document.body.classList.remove("settingsvisible");
   window.scrollTo(0, 0);
 }
 

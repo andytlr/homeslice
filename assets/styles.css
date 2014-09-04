@@ -229,7 +229,7 @@ noscript h1 {
 }
 
 .hour[data-email-content] {
-  cursor: crosshair;
+  cursor: cell;
 }
 
 .outsidebusiness {

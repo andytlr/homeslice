@@ -224,9 +224,9 @@ noscript h1 {
 }
 
 .hour.selectedhourforsharing {
-  background: hsl(186, 100%, 96%);
-  border-color: hsla(186, 100%, 50%, 0.3);
-  color: hsla(186, 100%, 30%, 1);
+  background: hsl(186, 100%, 96%) !important;
+  border-color: hsla(186, 100%, 50%, 0.3) !important;
+  color: hsla(186, 100%, 30%, 1) !important;
 }
 
 .hour[data-email-content] {

@@ -340,22 +340,19 @@ function updateCities(){
       // Get the GMT offset and remove the : from +09:30
       var timeDiff = moment().tz(tzName).format('Z').replace(/:/, "")
 
-      // If it's the first hour
       if (index === 0) {
-        // Set a different time format
         var format = formatCurrentTime;
-        // Add the class current
         hourNode.classList.add("current");
-      // Otherwise
       } else {
-        // Use a default time format.
         var format = formatTime;
-        // Add an additional hour to each row based on the number
-        // of the item in the array. 6pm + 0 = 6pm, 6pm + 1 = 7pm.
         currentTime = currentTime.add('hours', index);
-        // This adds a data-time attribute to each hour.
-        // Not super useful yet but might be for sharing later.
-        hourNode.setAttribute("data-date-and-time", cities[city][0] + ": " + currentTime.format('dddd Mo MMM, ha.'));
+        hourNode.setAttribute("data-email-content", cities[city][0] + ":%0D%0A" + currentTime.format('dddd Mo MMM, ha.') + "%0D%0A%0D%0A");
+      }
+
+      hourNode.onclick = function toggleClassOnSelectedHours() {
+        this.classList.toggle("selectedhourforsharing");
+        // tappedTime = this.getAttribute("data-email-content")
+        // console.log("Index = " + index + " " + tappedTime)
       }
 
       // Regex to match if a time difference is plus or minus 30min.
@@ -530,3 +527,29 @@ window.setInterval(function(){
     }
   }
 }, 50);
+
+var shareButton = document.getElementById("sharebutton");
+
+function hideOrShowEmailButton() {
+  var shareableHours = document.querySelectorAll('.selectedhourforsharing');
+
+  if (shareableHours.length == 0) {
+    shareButton.classList.add("is-hidden");
+  } else {
+    shareButton.classList.remove("is-hidden");
+  }
+}
+hideOrShowEmailButton();
+setInterval(hideOrShowEmailButton, 1000);
+
+shareButton.onclick = function emailSelectedHours() {
+  var shareableHours = document.querySelectorAll('.selectedhourforsharing');
+
+  var data = []
+
+  for (var i = 0; i < shareableHours.length; i++) {
+    data += shareableHours[i].getAttribute("data-email-content")
+  }
+
+  window.location = "mailto:?subject=Let's%20Chat&body=" + data;
+}

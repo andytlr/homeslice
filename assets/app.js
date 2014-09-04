@@ -134,10 +134,10 @@ setInterval(setTimeFormat, 100);
 timeFormatButtonEl.onclick = function setTwentyFourHourTime() {
   if (getCookie("timeformat") == "12hr" || getCookie("timeformat") == undefined) {
     setCookie("timeformat", "24hr", 365);
-    console.log(getCookie("timeformat"));
+    // console.log(getCookie("timeformat"));
   } else {
     setCookie("timeformat", "12hr", 365);
-    console.log(getCookie("timeformat"));
+    // console.log(getCookie("timeformat"));
   }
 }
 
@@ -355,8 +355,8 @@ function updateCities(){
 
       hourNode.onclick = function toggleClassOnSelectedHours() {
         this.classList.toggle("selectedhourforsharing");
-        // tappedTime = this.getAttribute("data-email-content")
-        // console.log("Index = " + index + " " + tappedTime)
+        // console.log("Index: " + index)
+        // console.log("Data arribute for sharing: " + this.getAttribute("data-email-content"))
       }
 
       // Regex to match if a time difference is plus or minus 30min.

@@ -88,6 +88,7 @@ var cityOptions = {
 cities = {}
 
 // Setup
+var interval                = 500
 var defaultCities           = "melbourne,sanfrancisco,"
 var hoursInTheFuture        = 24 * 7
 var settingsEl              = document.getElementById("settings");
@@ -133,7 +134,7 @@ function setTimeFormat() {
 }
 
 setTimeFormat()
-setInterval(setTimeFormat, 100);
+setInterval(setTimeFormat, interval);
 
 timeFormatButtonEl.onclick = function setTwentyFourHourTime() {
   if (getCookie("timeformat") == "12hr" || getCookie("timeformat") == undefined) {
@@ -359,7 +360,6 @@ function updateCities(){
 
       if (!hourNode.classList.contains("current")) {
         hourNode.onclick = function toggleClassOnSelectedHours() {
-          this.classList.add("selectedhourforsharing");
           selectedIndex = index;
         }
       }
@@ -515,7 +515,7 @@ function updateCities(){
 updateCities();
 
 // Then re-run it every second.
-setInterval(updateCities, 100);
+setInterval(updateCities, interval);
 
 document.body.insertBefore(creditEl, document.body.lastChild);
 creditEl.innerHTML = creditCopy;
@@ -558,7 +558,7 @@ function hideOrShowEmailButton() {
   }
 }
 hideOrShowEmailButton();
-setInterval(hideOrShowEmailButton, 1000);
+setInterval(hideOrShowEmailButton, interval);
 
 shareButton.onclick = function emailSelectedHours() {
   var shareableHours = document.querySelectorAll('.selectedhourforsharing');

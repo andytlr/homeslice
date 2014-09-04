@@ -107,6 +107,7 @@ var formatNewDay            = ''
 var formatTimePlusThirty    = ''
 var formatMidday            = ''
 var formatTimeForList       = ''
+var formatForEmail          = ''
 
 function setTimeFormat() {
   if (getCookie("timeformat") == "12hr" || getCookie("timeformat") == undefined) {
@@ -117,6 +118,7 @@ function setTimeFormat() {
     formatTimePlusThirty    = 'ddd h:[30]a'
     formatMidday            = 'ddd [Midday]'
     formatTimeForList       = 'h:mma'
+    formatForEmail          = 'ha on dddd Do MMMM'
   } else {
     timeFormatButtonEl.innerHTML = "Use 12hr"
     formatCurrentTime       = 'ddd HH:mm'
@@ -125,6 +127,7 @@ function setTimeFormat() {
     formatTimePlusThirty    = 'ddd HH[:30]'
     formatMidday            = 'ddd HH[:00]'
     formatTimeForList       = 'HH:mm'
+    formatForEmail          = 'HH[:00] on DD/MM/YYYY'
   }
 }
 
@@ -350,7 +353,7 @@ function updateCities(){
       } else {
         var format = formatTime;
         currentTime = currentTime.add('hours', index);
-        hourNode.setAttribute("data-email-content", cities[city][0] + "%0D%0A" + currentTime.format('ha (HH[:00)] on dddd MMM M.') + "%0D%0A%0D%0A");
+        hourNode.setAttribute("data-email-content", cities[city][0] + "%0D%0A" + currentTime.format(formatForEmail) + "%0D%0A%0D%0A");
       }
 
       hourNode.onclick = function toggleClassOnSelectedHours() {

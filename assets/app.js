@@ -361,6 +361,7 @@ function updateCities(){
         var format = formatCurrentTime;
         hourNode.classList.add("current");
       } else if (timeDiff.match(plusOrMinusThirty) && index != 0){
+        format = formatTimePlusThirty;
         currentTime = currentTime.add('hours', index);
         currentTime = currentTime.subtract('hours', 0.5);
         hourNode.setAttribute("data-email-content", cities[city][0] + "%0D%0A" + currentTime.format(formatForEmailPlusThirty) + "%0D%0A%0D%0A");
@@ -383,11 +384,6 @@ function updateCities(){
         }
       } else {
         hourNode.classList.remove("selectedhourforsharing");
-      }
-
-      if (timeDiff.match(plusOrMinusThirty) && index != 0){
-        format = formatTimePlusThirty;
-        currentTime = currentTime.subtract('hours', 0.5);
       }
 
       // If timezone doesn't have a half hour difference,

@@ -92,7 +92,7 @@ var defaultCities           = "melbourne,sanfrancisco,"
 var hoursInTheFuture        = 24 * 7
 var settingsEl              = document.getElementById("settings");
 var settingsButtonEl        = document.getElementById("settingsbutton");
-var settingsButtonContent   = document.createTextNode("+ / −");
+var settingsButtonContent   = document.createTextNode("Set Cities");
 var timeFormatButtonEl      = document.getElementById("timeformatbutton");
 var citiesEl                = document.getElementById("cities");
 var headingsEl              = document.getElementById("headings");
@@ -110,7 +110,7 @@ var formatTimeForList       = ''
 
 function setTimeFormat() {
   if (getCookie("timeformat") == "12hr" || getCookie("timeformat") == undefined) {
-    timeFormatButtonEl.innerHTML = "24h"
+    timeFormatButtonEl.innerHTML = "Use 24hr"
     formatCurrentTime       = 'ddd h:mma'
     formatTime              = 'ddd ha'
     formatNewDay            = 'ddd Do MMM'
@@ -118,7 +118,7 @@ function setTimeFormat() {
     formatMidday            = 'ddd [Midday]'
     formatTimeForList       = 'h:mma'
   } else {
-    timeFormatButtonEl.innerHTML = "12h"
+    timeFormatButtonEl.innerHTML = "Use 12hr"
     formatCurrentTime       = 'ddd HH:mm'
     formatTime              = 'ddd HH[:00]'
     formatNewDay            = 'ddd DD/MM'
@@ -238,6 +238,10 @@ function addCityToCookie(city) {
 };
 
 settingsButtonEl.onclick = function showSettingsScreen() {
+  showSettings();
+}
+
+headingsEl.onclick = function showSettingsScreen() {
   showSettings();
 }
 

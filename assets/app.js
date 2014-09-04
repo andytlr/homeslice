@@ -88,9 +88,15 @@ var cityOptions = {
 cities = {}
 
 // Setup
-var interval                = 500
 var defaultCities           = "melbourne,sanfrancisco,"
+var interval                = 500
 var hoursInTheFuture        = 24 * 7
+                            // Regex to match if a time difference is plus or minus 30min.
+                            // E.g. Adelaide is +0930.
+var plusOrMinusThirty       = /(\+|\-)\d{2}3\d{1}/g
+                            // Negative lookahead of the above regex.
+                            // So you can say "doesn't match".
+var notPlusOrMinusThirty    = /^(?!(\+|\-)\d{2}3\d{1})/g
 var settingsEl              = document.getElementById("settings");
 var settingsButtonEl        = document.getElementById("settingsbutton");
 var settingsButtonContent   = document.createTextNode("Set Cities");
@@ -114,22 +120,23 @@ var formatForEmail          = ''
 function setTimeFormat() {
   if (getCookie("timeformat") == "12hr" || getCookie("timeformat") == undefined) {
     timeFormatButtonEl.innerHTML = "Use 24hr"
-    formatCurrentTime       = 'ddd h:mma'
-    formatTime              = 'ddd ha'
-    formatNewDay            = 'ddd Do MMM'
-    formatTimePlusThirty    = 'ddd h:[30]a'
-    formatMidday            = 'ddd [Midday]'
-    formatTimeForList       = 'h:mma'
-    formatForEmail          = 'ha on dddd Do MMMM'
+    formatCurrentTime            = 'ddd h:mma'
+    formatTime                   = 'ddd ha'
+    formatNewDay                 = 'ddd Do MMM'
+    formatTimePlusThirty         = 'ddd h:[30]a'
+    formatMidday                 = 'ddd [Midday]'
+    formatTimeForList            = 'h:mma'
+    formatForEmail               = 'ha on dddd Do MMMM'
+    formatForEmailPlusThirty     = 'h[:30]a on dddd Do MMMM'
   } else {
     timeFormatButtonEl.innerHTML = "Use 12hr"
-    formatCurrentTime       = 'ddd HH:mm'
-    formatTime              = 'ddd HH[:00]'
-    formatNewDay            = 'ddd DD/MM'
-    formatTimePlusThirty    = 'ddd HH[:30]'
-    formatMidday            = 'ddd HH[:00]'
-    formatTimeForList       = 'HH:mm'
-    formatForEmail          = 'HH[:00] on DD/MM/YYYY'
+    formatCurrentTime            = 'ddd HH:mm'
+    formatTime                   = 'ddd HH[:00]'
+    formatNewDay                 = 'ddd DD/MM'
+    formatTimePlusThirty         = 'ddd HH[:30]'
+    formatMidday                 = 'ddd HH[:00]'
+    formatTimeForList            = 'HH:mm'
+    formatForEmail               = 'HH[:00] on DD/MM/YYYY'
   }
 }
 
@@ -352,6 +359,10 @@ function updateCities(){
       if (index == 0) {
         var format = formatCurrentTime;
         hourNode.classList.add("current");
+      } else if (timeDiff.match(plusOrMinusThirty) && index != 0){
+        currentTime = currentTime.add('hours', index);
+        currentTime = currentTime.subtract('hours', 0.5);
+        hourNode.setAttribute("data-email-content", cities[city][0] + "%0D%0A" + currentTime.format(formatForEmailPlusThirty) + "%0D%0A%0D%0A");
       } else {
         var format = formatTime;
         currentTime = currentTime.add('hours', index);
@@ -372,14 +383,6 @@ function updateCities(){
       } else {
         hourNode.classList.remove("selectedhourforsharing");
       }
-
-      // Regex to match if a time difference is plus or minus 30min.
-      // E.g. Adelaide is +0930.
-      var plusOrMinusThirty    = /(\+|\-)\d{2}3\d{1}/g
-
-      // Negative lookahead of the above regex.
-      // So you can say "doesn't match".
-      var notPlusOrMinusThirty = /^(?!(\+|\-)\d{2}3\d{1})/g
 
       if (timeDiff.match(plusOrMinusThirty) && index != 0){
         format = formatTimePlusThirty;

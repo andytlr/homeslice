@@ -272,6 +272,11 @@ noscript h1 {
   background: hsl(268, 77%, 38%);
   color: hsl(0, 0%, 100%);
   border: none;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  -o-user-select: text;
+  user-select: text;
 }
 
 .hour:nth-of-type(2) {

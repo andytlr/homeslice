@@ -356,10 +356,12 @@ function updateCities(){
         hourNode.setAttribute("data-email-content", cities[city][0] + "%0D%0A" + currentTime.format(formatForEmail) + "%0D%0A%0D%0A");
       }
 
-      hourNode.onclick = function toggleClassOnSelectedHours() {
-        this.classList.toggle("selectedhourforsharing");
-        // console.log("Index: " + index)
-        // console.log("Data arribute for sharing: " + this.getAttribute("data-email-content"))
+      if (!hourNode.classList.contains("current")) {
+        hourNode.onclick = function toggleClassOnSelectedHours() {
+          this.classList.toggle("selectedhourforsharing");
+          // console.log("Index: " + index)
+          // console.log("Data arribute for sharing: " + this.getAttribute("data-email-content"))
+        }
       }
 
       // Regex to match if a time difference is plus or minus 30min.

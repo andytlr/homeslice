@@ -89,14 +89,22 @@ cities = {}
 
 // Setup
 var defaultCities           = "melbourne,sanfrancisco,"
+var interval                = 500
 var hoursInTheFuture        = 24 * 7
+                            // Regex to match if a time difference is plus or minus 30min.
+                            // E.g. Adelaide is +0930.
+var plusOrMinusThirty       = /(\+|\-)\d{2}3\d{1}/g
+                            // Negative lookahead of the above regex.
+                            // So you can say "doesn't match".
+var notPlusOrMinusThirty    = /^(?!(\+|\-)\d{2}3\d{1})/g
 var settingsEl              = document.getElementById("settings");
 var settingsButtonEl        = document.getElementById("settingsbutton");
-var settingsButtonContent   = document.createTextNode("+ / −");
+var settingsButtonContent   = document.createTextNode("Set Cities");
 var timeFormatButtonEl      = document.getElementById("timeformatbutton");
 var citiesEl                = document.getElementById("cities");
 var headingsEl              = document.getElementById("headings");
 var cookieString            = getCookie("cities");
+var selectedIndex           = undefined;
 var creditEl                = document.createElement("div");
                               creditEl.setAttribute("class", "credit");
 var creditCopy              = "<p>Homeslice is a project by <a href=\"http://andytaylor.me/\">Andy&nbsp;Taylor</a> (@<a href=\"http://twitter.com/andytlr/\">andytlr</a>).</p> <p>If you find it useful (I hope you do), why not <a href=\"http://twitter.com/home?status=Homeslice: Find time across timezones. http://homeslice.in\">Tweet about it</a> or <a href=\"https://www.facebook.com/sharer/sharer.php?u=http://homeslice.in\">post it on&nbsp;Facebook</a>.</p> <p>Please submit bugs and requests on <a href=\"https://github.com/andytlr/homeslice/issues/\">GitHub</a>.</p>"
@@ -107,37 +115,42 @@ var formatNewDay            = ''
 var formatTimePlusThirty    = ''
 var formatMidday            = ''
 var formatTimeForList       = ''
+var formatForEmail          = ''
 
 function setTimeFormat() {
   if (getCookie("timeformat") == "12hr" || getCookie("timeformat") == undefined) {
-    timeFormatButtonEl.innerHTML = "24h"
-    formatCurrentTime       = 'ddd h:mma'
-    formatTime              = 'ddd ha'
-    formatNewDay            = 'ddd Do MMM'
-    formatTimePlusThirty    = 'ddd h:[30]a'
-    formatMidday            = 'ddd [Midday]'
-    formatTimeForList       = 'h:mma'
+    timeFormatButtonEl.innerHTML = "Use 24hr"
+    formatCurrentTime            = 'ddd h:mma'
+    formatTime                   = 'ddd ha'
+    formatNewDay                 = 'ddd Do MMM'
+    formatTimePlusThirty         = 'ddd h:[30]a'
+    formatMidday                 = 'ddd [Midday]'
+    formatTimeForList            = 'h:mma'
+    formatForEmail               = 'ha on dddd Do MMMM'
+    formatForEmailPlusThirty     = 'h[:30]a on dddd Do MMMM'
   } else {
-    timeFormatButtonEl.innerHTML = "12h"
-    formatCurrentTime       = 'ddd HH:mm'
-    formatTime              = 'ddd HH[:00]'
-    formatNewDay            = 'ddd DD/MM'
-    formatTimePlusThirty    = 'ddd HH[:30]'
-    formatMidday            = 'ddd HH[:00]'
-    formatTimeForList       = 'HH:mm'
+    timeFormatButtonEl.innerHTML = "Use 12hr"
+    formatCurrentTime            = 'ddd HH:mm'
+    formatTime                   = 'ddd HH[:00]'
+    formatNewDay                 = 'ddd DD/MM'
+    formatTimePlusThirty         = 'ddd HH[:30]'
+    formatMidday                 = 'ddd HH[:00]'
+    formatTimeForList            = 'HH:mm'
+    formatForEmail               = 'HH[:00] on DD/MM/YYYY'
+    formatForEmailPlusThirty     = 'HH[:30] on DD/MM/YYYY'
   }
 }
 
 setTimeFormat()
-setInterval(setTimeFormat, 100);
+setInterval(setTimeFormat, interval);
 
 timeFormatButtonEl.onclick = function setTwentyFourHourTime() {
   if (getCookie("timeformat") == "12hr" || getCookie("timeformat") == undefined) {
     setCookie("timeformat", "24hr", 365);
-    console.log(getCookie("timeformat"));
+    // console.log(getCookie("timeformat"));
   } else {
     setCookie("timeformat", "12hr", 365);
-    console.log(getCookie("timeformat"));
+    // console.log(getCookie("timeformat"));
   }
 }
 
@@ -241,6 +254,10 @@ settingsButtonEl.onclick = function showSettingsScreen() {
   showSettings();
 }
 
+headingsEl.onclick = function showSettingsScreen() {
+  showSettings();
+}
+
 var saveButtonEl            = document.createElement("div");
 var saveButtonCopy          = document.createTextNode("↫ I'm done pickin’");
 
@@ -340,46 +357,37 @@ function updateCities(){
       // Get the GMT offset and remove the : from +09:30
       var timeDiff = moment().tz(tzName).format('Z').replace(/:/, "")
 
-      // If it's the first hour
-      if (index === 0) {
-        // Set a different time format
+      if (index == 0) {
         var format = formatCurrentTime;
-        // Add the class current
         hourNode.classList.add("current");
-      // Otherwise
-      } else {
-        // Use a default time format.
-        var format = formatTime;
-        // Add an additional hour to each row based on the number
-        // of the item in the array. 6pm + 0 = 6pm, 6pm + 1 = 7pm.
+      } else if (timeDiff.match(plusOrMinusThirty) && index != 0){
         currentTime = currentTime.add('hours', index);
-        // This adds a data-time attribute to each hour.
-        // Not super useful yet but might be for sharing later.
-        hourNode.setAttribute("data-date-and-time", cities[city][0] + ": " + currentTime.format('dddd Mo MMM, ha.'));
+        currentTime = currentTime.subtract('hours', 0.5);
+        hourNode.setAttribute("data-email-content", cities[city][0] + "%0D%0A" + currentTime.format(formatForEmailPlusThirty) + "%0D%0A%0D%0A");
+      } else {
+        var format = formatTime;
+        currentTime = currentTime.add('hours', index);
+        hourNode.setAttribute("data-email-content", cities[city][0] + "%0D%0A" + currentTime.format(formatForEmail) + "%0D%0A%0D%0A");
       }
 
-      // Regex to match if a time difference is plus or minus 30min.
-      // E.g. Adelaide is +0930.
-      var plusOrMinusThirty    = /(\+|\-)\d{2}3\d{1}/g
+      if (!hourNode.classList.contains("current")) {
+        hourNode.onclick = function toggleClassOnSelectedHours() {
+          selectedIndex = index;
+        }
+      }
 
-      // Negative lookahead of the above regex.
-      // So you can say "doesn't match".
-      var notPlusOrMinusThirty = /^(?!(\+|\-)\d{2}3\d{1})/g
+      if (index == selectedIndex) {
+        hourNode.classList.add("selectedhourforsharing");
+        hourNode.onclick = function clearSelection() {
+          selectedIndex = undefined;
+        }
+      } else {
+        hourNode.classList.remove("selectedhourforsharing");
+      }
 
-      // If timezone has a half an hour difference,
-      // and it isn't the first item (current time).
-      // Set the new time format.
       if (timeDiff.match(plusOrMinusThirty) && index != 0){
-        var format = formatTimePlusThirty;
-      }
-
-      // If timezone has a half an hour difference,
-      // and it's in the first half of the full hour,
-      // and it isn't the first item (current time).
-      // Subtract an hour and set the new time format.
-      if (timeDiff.match(plusOrMinusThirty) && currentTime.format('mm') < 30 && index != 0){
-        currentTime = currentTime.subtract('hours', 1);
-        var format = formatTimePlusThirty;
+        format = formatTimePlusThirty;
+        currentTime = currentTime.subtract('hours', 0.5);
       }
 
       // If timezone doesn't have a half hour difference,
@@ -500,7 +508,7 @@ function updateCities(){
 updateCities();
 
 // Then re-run it every second.
-setInterval(updateCities, 1000);
+setInterval(updateCities, interval);
 
 document.body.insertBefore(creditEl, document.body.lastChild);
 creditEl.innerHTML = creditCopy;
@@ -530,3 +538,29 @@ window.setInterval(function(){
     }
   }
 }, 50);
+
+var shareButton = document.getElementById("sharebutton");
+
+function hideOrShowEmailButton() {
+  var shareableHours = document.querySelectorAll('.selectedhourforsharing');
+
+  if (shareableHours.length == 0) {
+    shareButton.classList.add("is-hidden");
+  } else {
+    shareButton.classList.remove("is-hidden");
+  }
+}
+hideOrShowEmailButton();
+setInterval(hideOrShowEmailButton, interval);
+
+shareButton.onclick = function emailSelectedHours() {
+  var shareableHours = document.querySelectorAll('.selectedhourforsharing');
+
+  var data = []
+
+  for (var i = 0; i < shareableHours.length; i++) {
+    data += shareableHours[i].getAttribute("data-email-content")
+  }
+
+  window.location = "mailto:?subject=Let's Chat&body=" + data + "Scheduled with http://homeslice.in";
+}

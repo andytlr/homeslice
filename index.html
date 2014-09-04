@@ -6,8 +6,6 @@
   <title>Homeslice: Find time across timezones.</title>
 
   <meta name="apple-mobile-web-app-title" content="Homeslice">
-  <!-- <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black"> -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimal-ui" />
   <link rel="apple-touch-icon-precomposed" href="assets/icon.png" />
   <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon" />
@@ -26,8 +24,11 @@
   </script>
   <script charset="utf-8" src="vendor/moment.min.js"></script>
   <script charset="utf-8" src="vendor/moment-timezone-with-data-2010-2020.min.js"></script>
-  <div id="settingsbutton"></div>
-  <div id="timeformatbutton"></div>
+  <div class="buttoncluster">
+    <div id="timeformatbutton"></div>
+    <div id="sharebutton">Email</div>
+    <div id="settingsbutton"></div>
+  </div>
   <div id="settings" class="is-hidden">
     <div class="searchbox">
       <input id="filter" type="text" placeholder="Search places..." />

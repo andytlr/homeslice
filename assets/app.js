@@ -137,6 +137,7 @@ function setTimeFormat() {
     formatMidday                 = 'ddd HH[:00]'
     formatTimeForList            = 'HH:mm'
     formatForEmail               = 'HH[:00] on DD/MM/YYYY'
+    formatForEmailPlusThirty     = 'HH[:30] on DD/MM/YYYY'
   }
 }
 

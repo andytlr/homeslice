@@ -366,6 +366,9 @@ function updateCities(){
 
       if (index == selectedIndex) {
         hourNode.classList.add("selectedhourforsharing");
+        hourNode.onclick = function clearSelection() {
+          selectedIndex = undefined;
+        }
       } else {
         hourNode.classList.remove("selectedhourforsharing");
       }

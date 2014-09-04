@@ -350,7 +350,7 @@ function updateCities(){
       } else {
         var format = formatTime;
         currentTime = currentTime.add('hours', index);
-        hourNode.setAttribute("data-email-content", cities[city][0] + ":%0D%0A" + currentTime.format('dddd Mo MMM, ha.') + "%0D%0A%0D%0A");
+        hourNode.setAttribute("data-email-content", cities[city][0] + "%0D%0A" + currentTime.format('ha (HH[:00)] on dddd MMM M.') + "%0D%0A%0D%0A");
       }
 
       hourNode.onclick = function toggleClassOnSelectedHours() {
@@ -555,5 +555,5 @@ shareButton.onclick = function emailSelectedHours() {
     data += shareableHours[i].getAttribute("data-email-content")
   }
 
-  window.location = "mailto:?subject=Let's%20Chat&body=" + data;
+  window.location = "mailto:?subject=Let's Chat&body=" + data + "Scheduled with http://homeslice.in";
 }

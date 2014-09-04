@@ -381,20 +381,9 @@ function updateCities(){
       // So you can say "doesn't match".
       var notPlusOrMinusThirty = /^(?!(\+|\-)\d{2}3\d{1})/g
 
-      // If timezone has a half an hour difference,
-      // and it isn't the first item (current time).
-      // Set the new time format.
       if (timeDiff.match(plusOrMinusThirty) && index != 0){
-        var format = formatTimePlusThirty;
-      }
-
-      // If timezone has a half an hour difference,
-      // and it's in the first half of the full hour,
-      // and it isn't the first item (current time).
-      // Subtract an hour and set the new time format.
-      if (timeDiff.match(plusOrMinusThirty) && currentTime.format('mm') < 30 && index != 0){
-        currentTime = currentTime.subtract('hours', 1);
-        var format = formatTimePlusThirty;
+        format = formatTimePlusThirty;
+        currentTime = currentTime.subtract('hours', 0.5);
       }
 
       // If timezone doesn't have a half hour difference,

@@ -97,7 +97,7 @@ var timeFormatButtonEl      = document.getElementById("timeformatbutton");
 var citiesEl                = document.getElementById("cities");
 var headingsEl              = document.getElementById("headings");
 var cookieString            = getCookie("cities");
-var selectedIndex           = 0;
+var selectedIndex           = undefined;
 var creditEl                = document.createElement("div");
                               creditEl.setAttribute("class", "credit");
 var creditCopy              = "<p>Homeslice is a project by <a href=\"http://andytaylor.me/\">Andy&nbsp;Taylor</a> (@<a href=\"http://twitter.com/andytlr/\">andytlr</a>).</p> <p>If you find it useful (I hope you do), why not <a href=\"http://twitter.com/home?status=Homeslice: Find time across timezones. http://homeslice.in\">Tweet about it</a> or <a href=\"https://www.facebook.com/sharer/sharer.php?u=http://homeslice.in\">post it on&nbsp;Facebook</a>.</p> <p>Please submit bugs and requests on <a href=\"https://github.com/andytlr/homeslice/issues/\">GitHub</a>.</p>"

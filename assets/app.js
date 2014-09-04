@@ -349,7 +349,7 @@ function updateCities(){
       // Get the GMT offset and remove the : from +09:30
       var timeDiff = moment().tz(tzName).format('Z').replace(/:/, "")
 
-      if (index === 0) {
+      if (index == 0) {
         var format = formatCurrentTime;
         hourNode.classList.add("current");
       } else {

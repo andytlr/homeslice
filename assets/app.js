@@ -44,6 +44,7 @@ var cityOptions = {
   "brussels":      ["Brussels",        "Europe/Brussels"],
   "copenhagen":    ["Copenhagen",      "Europe/Copenhagen"],
   "johannesburg":  ["Johannesburg",    "Africa/Johannesburg"],
+  "capetown":      ["Cape Town",       "Africa/Johannesburg"], // Not in tzdb
   "helsinki":      ["Helsinki",        "Europe/Helsinki"],
   "istanbul":      ["Istanbul",        "Asia/Istanbul"],
   "baghdad":       ["Baghdad",         "Asia/Baghdad"],

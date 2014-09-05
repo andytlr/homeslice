@@ -561,12 +561,3 @@ shareButton.onclick = function emailSelectedHours() {
 
   window.location = "mailto:?subject=Let's Chat&body=" + data + "Scheduled with http://homeslice.in";
 }
-
-// Update app if update is available.
-if (window.applicationCache) {
-  applicationCache.addEventListener('updateready', function() {
-    if (confirm('An update is available. Reload now?')) {
-      window.location.reload();
-    }
-  });
-}

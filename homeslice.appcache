@@ -1,0 +1,16 @@
+CACHE MANIFEST
+
+CACHE:
+# html files
+index.html
+
+# Assets
+assets/app.js
+assets/styles.css
+assets/favicon.png
+assets/icon.png
+
+# Vendor
+vendor/moment.min.js
+vendor/moment-timezone-with-data-2010-2020.min.js
+vendor/fastclick.min.js

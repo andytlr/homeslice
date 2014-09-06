@@ -367,20 +367,34 @@ function updateCities(){
         hourNode.setAttribute("data-email-content", cities[city][0] + "%0D%0A" + currentTime.format(formatForEmail) + "%0D%0A%0D%0A");
       }
 
-      if (!hourNode.classList.contains("current")) {
-        hourNode.onclick = function toggleClassOnSelectedHours() {
-          selectedIndex = index;
-        }
+      function addSelectedClass() {
+        this.classList.add("selectedhourforsharing");
+        selectedIndex = index;
       }
 
+      // if (!hourNode.classList.contains("current")) {
+      // }
+
+      // function setSelectedIndex() {
+      //   selectedIndex = index;
+      // }
+
+      // function clearSelection() {
+      //   selectedIndex = undefined;
+      // }
+
+      function selectOtherCellsInRow() {
+      }
+      // When this is inside the function above, it doesn't work.
       if (index == selectedIndex) {
         hourNode.classList.add("selectedhourforsharing");
-        hourNode.onclick = function clearSelection() {
-          selectedIndex = undefined;
-        }
       } else {
         hourNode.classList.remove("selectedhourforsharing");
       }
+
+      hourNode.addEventListener("click", addSelectedClass, true);
+      hourNode.addEventListener("click", selectOtherCellsInRow, true);
+      hourNode.addEventListener("click", hideOrShowEmailButton, true);
 
       // If timezone doesn't have a half hour difference,
       // And it's midnight,
@@ -543,7 +557,6 @@ function hideOrShowEmailButton() {
   }
 }
 hideOrShowEmailButton();
-setInterval(hideOrShowEmailButton, interval);
 
 shareButton.onclick = function emailSelectedHours() {
   var shareableHours = document.querySelectorAll('.selectedhourforsharing');

@@ -12,6 +12,11 @@ Moment Timezone provides a copy of this data from 2010–2020. So times *should*
 
 If you'd like to request a city, please check out the [list of timezones in the database][4].
 
+## Disabling Application Cache for Development in Chrome
+
+1. Remove `manifest="homeslice.appcache"` from `<html lang="en" manifest="homeslice.appcache">`.
+2. Visit [chrome://appcache-internals/](chrome://appcache-internals/) and delete the cache.
+
 ## License
 
 ![Creative Commons License](http://i.creativecommons.org/l/by-nc/4.0/80x15.png)

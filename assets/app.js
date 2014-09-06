@@ -367,11 +367,6 @@ function updateCities(){
         hourNode.setAttribute("data-email-content", cities[city][0] + "%0D%0A" + currentTime.format(formatForEmail) + "%0D%0A%0D%0A");
       }
 
-      function addSelectedClass() {
-        this.classList.add("selectedhourforsharing");
-        selectedIndex = index;
-      }
-
       // if (!hourNode.classList.contains("current")) {
       // }
 
@@ -383,18 +378,23 @@ function updateCities(){
       //   selectedIndex = undefined;
       // }
 
-      function selectOtherCellsInRow() {
+      function addSelectedClass() {
+        this.classList.add("selectedhourforsharing");
+        selectedIndex = index;
       }
-      // When this is inside the function above, it doesn't work.
-      if (index == selectedIndex) {
-        hourNode.classList.add("selectedhourforsharing");
-      } else {
-        hourNode.classList.remove("selectedhourforsharing");
+
+      function selectOtherCellsInRow(index, selectedIndex) {
+        if (index == selectedIndex) {
+          hourNode.classList.add("selectedhourforsharing");
+        } else {
+          hourNode.classList.remove("selectedhourforsharing");
+        }
       }
 
       hourNode.addEventListener("click", addSelectedClass, true);
-      hourNode.addEventListener("click", selectOtherCellsInRow, true);
       hourNode.addEventListener("click", hideOrShowEmailButton, true);
+      // selectOtherCellsInRow doesn't run on click. It's still happening on the interval timer.
+      hourNode.addEventListener("click", selectOtherCellsInRow(index, selectedIndex), true);
 
       // If timezone doesn't have a half hour difference,
       // And it's midnight,

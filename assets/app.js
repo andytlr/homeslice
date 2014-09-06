@@ -383,7 +383,7 @@ function updateCities(){
         selectedIndex = index;
       }
 
-      function selectOtherCellsInRow(index, selectedIndex) {
+      function selectOtherCellsInRow(index, selectedIndex, hourNode) {
         if (index == selectedIndex) {
           hourNode.classList.add("selectedhourforsharing");
         } else {
@@ -394,7 +394,7 @@ function updateCities(){
       hourNode.addEventListener("click", addSelectedClass, true);
       hourNode.addEventListener("click", hideOrShowEmailButton, true);
       // selectOtherCellsInRow doesn't run on click. It's still happening on the interval timer.
-      hourNode.addEventListener("click", selectOtherCellsInRow(index, selectedIndex), true);
+      hourNode.addEventListener("click", selectOtherCellsInRow(index, selectedIndex, hourNode), true);
 
       // If timezone doesn't have a half hour difference,
       // And it's midnight,

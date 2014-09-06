@@ -15,7 +15,7 @@ If you'd like to request a city, please check out the [list of timezones in the 
 ## Disabling Application Cache for Development in Chrome
 
 1. Remove `manifest="homeslice.appcache"` from `<html lang="en" manifest="homeslice.appcache">`.
-2. Visit [chrome://appcache-internals/](chrome://appcache-internals/) and delete the cache.
+2. Visit <chrome://appcache-internals/> and delete the cache.
 
 ## License
 

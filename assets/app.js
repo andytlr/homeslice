@@ -90,7 +90,7 @@ cities = {}
 
 // Setup
 var defaultCities           = "melbourne,sanfrancisco,"
-var interval                = 500
+var interval                = 2000
 var hoursInTheFuture        = 24 * 7
                             // Regex to match if a time difference is plus or minus 30min.
                             // E.g. Adelaide is +0930.
@@ -393,7 +393,8 @@ function updateCities(){
 
       hourNode.addEventListener("click", addSelectedClass, true);
       hourNode.addEventListener("click", hideOrShowEmailButton, true);
-      // selectOtherCellsInRow doesn't run on click. It's still happening on the interval timer.
+      // `selectOtherCellsInRow` doesn't run on click. It's still happening on the interval timer.
+      // Where as `addSelectedClass` and `hideOrShowEmailButton` are both running instantly.
       hourNode.addEventListener("click", selectOtherCellsInRow(index, selectedIndex, hourNode), true);
 
       // If timezone doesn't have a half hour difference,

@@ -15,7 +15,6 @@ gulp.task('manifest', function(){
     .pipe(manifest({
       hash: true,
       timestamp: false,
-      // network: ['http://*', 'https://*', '*'],
       filename: 'homeslice.appcache'
      }))
     .pipe(gulp.dest(''));

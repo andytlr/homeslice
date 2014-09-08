@@ -12,6 +12,13 @@ Moment Timezone provides a copy of this data from 2010–2020. So times *should*
 
 If you'd like to request a city, please check out the [list of timezones in the database][4].
 
+## Development
+
+1. Install [Node][5].
+2. Install gulp globally `sudo npm install --global gulp`
+3. Install NPM dependencies in the project directory `sudo npm install --save-dev`.
+4. `gulp` to start a local server and watch changes.
+
 ## License
 
 ![Creative Commons License](http://i.creativecommons.org/l/by-nc/4.0/80x15.png)
@@ -22,10 +29,4 @@ Homeslice is licensed under a [Creative Commons Attribution-NonCommercial 4.0 In
 [2]: http://www.iana.org/time-zones
 [3]: http://creativecommons.org/licenses/by-nc/4.0/
 [4]: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-
-## Development
-
-1. Install [Node](http://nodejs.org).
-2. Install gulp globally `sudo npm install --global gulp`
-3. Install NPM dependencies in the project directory `sudo npm install --save-dev`.
-4. `gulp` to start a local server and watch changes.
+[5]: http://nodejs.org

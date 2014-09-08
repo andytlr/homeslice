@@ -22,3 +22,9 @@ Homeslice is licensed under a [Creative Commons Attribution-NonCommercial 4.0 In
 [2]: http://www.iana.org/time-zones
 [3]: http://creativecommons.org/licenses/by-nc/4.0/
 [4]: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+
+## Development
+
+1. Install [Node](http://nodejs.org).
+2. Install gulp globally `sudo npm install --global gulp`
+3. Install NPM dependencies in the project directory `sudo npm install --save-dev`.

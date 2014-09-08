@@ -110,15 +110,9 @@ var creditEl                = document.createElement("div");
                               creditEl.setAttribute("class", "credit");
 var creditCopy              = "<p>Homeslice is a project by <a href=\"http://andytaylor.me/\">Andy&nbsp;Taylor</a> (@<a href=\"http://twitter.com/andytlr/\">andytlr</a>).</p> <p>If you find it useful (I hope you do), why not <a href=\"http://twitter.com/home?status=Homeslice: Find time across timezones. http://homeslice.in\">Tweet about it</a> or <a href=\"https://www.facebook.com/sharer/sharer.php?u=http://homeslice.in\">post it on&nbsp;Facebook</a>.</p> <p>Please submit bugs and requests on <a href=\"https://github.com/andytlr/homeslice/issues/\">GitHub</a>.</p>"
 
-var formatCurrentTime       = ''
-var formatTime              = ''
-var formatNewDay            = ''
-var formatTimePlusThirty    = ''
-var formatMidday            = ''
-var formatTimeForList       = ''
-var formatForEmail          = ''
+setCookie("timeformat", "12hr", 365);
 
-function setTimeFormat() {
+function setTimeFormats() {
   if (getCookie("timeformat") == "12hr" || getCookie("timeformat") == undefined) {
     timeFormatButtonEl.innerHTML = "Use 24hr"
     formatCurrentTime            = 'ddd h:mma'
@@ -142,10 +136,9 @@ function setTimeFormat() {
   }
 }
 
-setTimeFormat()
-setInterval(setTimeFormat, interval);
+setTimeFormats();
 
-timeFormatButtonEl.onclick = function setTwentyFourHourTime() {
+function changeTimeFormatting() {
   if (getCookie("timeformat") == "12hr" || getCookie("timeformat") == undefined) {
     setCookie("timeformat", "24hr", 365);
     // console.log(getCookie("timeformat"));
@@ -154,6 +147,10 @@ timeFormatButtonEl.onclick = function setTwentyFourHourTime() {
     // console.log(getCookie("timeformat"));
   }
 }
+
+timeFormatButtonEl.addEventListener("click", changeTimeFormatting, false);
+timeFormatButtonEl.addEventListener("click", setTimeFormats, false);
+timeFormatButtonEl.addEventListener("click", updateCities, false);
 
 function areCookiesEnabled() {
   var cookieEnabled = (navigator.cookieEnabled) ? true : false;

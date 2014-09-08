@@ -1,9 +1,9 @@
 var gulp = require('gulp');
 var manifest = require('gulp-manifest');
 
-gulp.task('default', function () {
-
-});
+var paths = {
+  assets: ['assets/*', 'vendor/*']
+};
 
 gulp.task('manifest', function(){
   gulp.src([
@@ -19,3 +19,11 @@ gulp.task('manifest', function(){
      }))
     .pipe(gulp.dest(''));
 });
+
+// Rerun the task when a file changes
+gulp.task('watch', function() {
+  gulp.watch(paths.assets, ['manifest']);
+});
+
+// The default task (called when you run `gulp` from cli)
+gulp.task('default', ['watch', 'manifest']);

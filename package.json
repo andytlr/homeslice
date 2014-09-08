@@ -2,6 +2,7 @@
   "name" : "my-project",
   "version" : "1.0.0",
   "dependencies" : {
-    "gulp" : "3.8.8"
+    "gulp" : "3.8.8",
+    "gulp-manifest" : "0.0.6"
   }
 }

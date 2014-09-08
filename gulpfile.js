@@ -3,7 +3,9 @@ var manifest = require('gulp-manifest');
 var server   = require('gulp-connect');
 
 gulp.task('server', function() {
-  server.server();
+  server.server({
+    port: 8000,
+  });
 });
 
 var paths = {

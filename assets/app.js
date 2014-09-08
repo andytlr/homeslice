@@ -90,7 +90,7 @@ cities = {}
 
 // Setup
 var defaultCities           = "melbourne,sanfrancisco,"
-var interval                = 500
+var interval                = 2000
 var hoursInTheFuture        = 24 * 7
                             // Regex to match if a time difference is plus or minus 30min.
                             // E.g. Adelaide is +0930.
@@ -369,20 +369,34 @@ function updateCities(){
         hourNode.setAttribute("data-email-content", cities[city][0] + "%0D%0A" + currentTime.format(formatForEmail) + "%0D%0A%0D%0A");
       }
 
-      if (!hourNode.classList.contains("current")) {
-        hourNode.onclick = function toggleClassOnSelectedHours() {
-          selectedIndex = index;
+      // if (!hourNode.classList.contains("current")) {
+      // }
+
+      // function setSelectedIndex() {
+      //   selectedIndex = index;
+      // }
+
+      // function clearSelection() {
+      //   selectedIndex = undefined;
+      // }
+
+      function addSelectedClass() {
+        this.classList.add("selectedhourforsharing");
+        selectedIndex = index;
+      }
+
+      hourNode.addEventListener("click", addSelectedClass, true);
+      hourNode.addEventListener("click", hideOrShowEmailButton, true);
+
+      function selectOtherCellsInRow(index, selectedIndex, hourNode) {
+        if (index == selectedIndex) {
+          hourNode.classList.add("selectedhourforsharing");
+        } else {
+          hourNode.classList.remove("selectedhourforsharing");
         }
       }
 
-      if (index == selectedIndex) {
-        hourNode.classList.add("selectedhourforsharing");
-        hourNode.onclick = function clearSelection() {
-          selectedIndex = undefined;
-        }
-      } else {
-        hourNode.classList.remove("selectedhourforsharing");
-      }
+      hourNode.addEventListener("click", function(){ selectOtherCellsInRow(index, selectedIndex, hourNode) }, true);
 
       // If timezone doesn't have a half hour difference,
       // And it's midnight,
@@ -545,7 +559,6 @@ function hideOrShowEmailButton() {
   }
 }
 hideOrShowEmailButton();
-setInterval(hideOrShowEmailButton, interval);
 
 shareButton.onclick = function emailSelectedHours() {
   var shareableHours = document.querySelectorAll('.selectedhourforsharing');

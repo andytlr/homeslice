@@ -1,5 +1,10 @@
-var gulp = require('gulp');
+var gulp     = require('gulp');
 var manifest = require('gulp-manifest');
+var server   = require('gulp-connect');
+
+gulp.task('server', function() {
+  server.server();
+});
 
 var paths = {
   cache: [
@@ -26,4 +31,4 @@ gulp.task('watch', function() {
 });
 
 // The default task (called when you run `gulp` from cli)
-gulp.task('default', ['watch', 'manifest']);
+gulp.task('default', ['watch', 'manifest', 'server']);

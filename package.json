@@ -2,8 +2,6 @@
   "name" : "my-project",
   "version" : "1.0.0",
   "dependencies" : {
-    "gulp" : "3.8.8",
-    "gulp-rev" : "1.1.0",
-    "gulp-fingerprint" : "0.3.2"
+    "gulp" : "3.8.8"
   }
 }

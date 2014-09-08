@@ -16,7 +16,7 @@ If you'd like to request a city, please check out the [list of timezones in the 
 
 1. Install [Node][5].
 2. Install gulp globally `sudo npm install --global gulp`
-3. Install NPM dependencies in the project directory `sudo npm install --save-dev`.
+3. Install NPM dependencies in the project directory `npm install`.
 4. `gulp` to start a local server and watch changes.
 5. Open <http://localhost:8000>
 

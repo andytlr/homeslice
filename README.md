@@ -28,3 +28,4 @@ Homeslice is licensed under a [Creative Commons Attribution-NonCommercial 4.0 In
 1. Install [Node](http://nodejs.org).
 2. Install gulp globally `sudo npm install --global gulp`
 3. Install NPM dependencies in the project directory `sudo npm install --save-dev`.
+4. `gulp` to start a local server and watch changes.

@@ -1,17 +1,8 @@
-var gulp        = require('gulp');
-var fingerprint = require('gulp-fingerprint');
-
-// rev-manifest.json produced from gulp-rev
-var manifest = require('../../dist/rev-manifest');
+var gulp   = require('gulp');
+var rev    = require('gulp-rev');
 
 gulp.task('default', function () {
-  var options = {
-    base: 'assets/',
-    prefix: '//cdn.example.com/',
-    verbose: true
-  };
-
-  return gulp.src('.tmp/styles/app.css')
-    .pipe(fingerprint(manifest, options))
+  return gulp.src(['assets/*.js', 'assets/*.css', 'assets/*.png'])
+    .pipe(rev())
     .pipe(gulp.dest('dist'));
 });

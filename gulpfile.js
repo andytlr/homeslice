@@ -8,16 +8,15 @@ gulp.task('default', function () {
 gulp.task('manifest', function(){
   gulp.src([
       '*.html',
-      'assets/*.js',
-      'assets/*.css',
-      'assets/*.png',
-      'vendor/*.js'
+      '*/*.js',
+      '*/*.css',
+      '*/*.png'
     ])
     .pipe(manifest({
       hash: true,
       timestamp: false,
-      network: ['http://*', 'https://*', '*'],
-      filename: 'homeslice-new.appcache'
+      // network: ['http://*', 'https://*', '*'],
+      filename: 'homeslice.appcache'
      }))
     .pipe(gulp.dest(''));
 });

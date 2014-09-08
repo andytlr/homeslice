@@ -1,16 +1,18 @@
 CACHE MANIFEST
 
-# Version 1
 
 CACHE:
 index.html
 assets/app.js
+vendor/fastclick.min.js
+vendor/moment-timezone-with-data-2010-2020.min.js
+vendor/moment.min.js
 assets/styles.css
 assets/favicon.png
 assets/icon.png
-vendor/moment.min.js
-vendor/moment-timezone-with-data-2010-2020.min.js
-vendor/fastclick.min.js
+
 
 NETWORK:
 *
+
+# hash: 41ca710515bfa242fc44f8c7d19c7b3de9832e34b477c227ab5fff572408f937

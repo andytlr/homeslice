@@ -70,8 +70,8 @@ noscript h1 {
   color: hsl(160, 100%, 30%);
   background: #fff;
   border-top: 1px solid hsla(0, 0%, 0%, 0.06);
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 1rem;
+  padding-right: 1rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -96,7 +96,7 @@ noscript h1 {
   padding-bottom: 2.6rem;
   border-radius: 0;
   outline: 0;
-  padding-left: 10px;
+  padding-left: 1rem;
   margin-left: 1.8rem;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -202,8 +202,8 @@ noscript h1 {
   color: hsl(0, 0%, 100%);
   z-index: 1;
   font-weight: normal;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 1rem;
+  padding-right: 1rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -211,8 +211,8 @@ noscript h1 {
 
 .hour {
   padding: 0;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 1rem;
+  padding-right: 1rem;
   height: 3rem;
   line-height: 3rem;
   overflow: hidden;
@@ -339,12 +339,12 @@ noscript h1 {
   .heading,
   .addbutton,
   .hour {
-    padding-left: 35px;
-    padding-right: 35px;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 
   #filter {
-    padding-left: 35px;
+    padding-left: 2rem;
   }
 
   .city {

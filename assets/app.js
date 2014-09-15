@@ -533,21 +533,21 @@ window.setInterval(function(){
   }
 }, 50);
 
-var shareButton = document.getElementById("sharebutton");
+var shareButtonEl = document.getElementById("sharebutton");
 
 function hideOrShowEmailButton() {
   var shareableHours = document.querySelectorAll('.selectedhourforsharing');
 
   if (shareableHours.length == 0) {
-    shareButton.classList.add("is-hidden");
+    shareButtonEl.classList.add("is-hidden");
   } else {
-    shareButton.classList.remove("is-hidden");
+    shareButtonEl.classList.remove("is-hidden");
   }
 }
 hideOrShowEmailButton();
 setInterval(hideOrShowEmailButton, interval);
 
-shareButton.onclick = function emailSelectedHours() {
+shareButtonEl.onclick = function emailSelectedHours() {
   var shareableHours = document.querySelectorAll('.selectedhourforsharing');
 
   var data = []
@@ -558,3 +558,12 @@ shareButton.onclick = function emailSelectedHours() {
 
   window.location = "mailto:?subject=Let's Chat&body=" + data + "Scheduled with http://homeslice.in";
 }
+
+// Analytics Stuff
+shareButtonEl.addEventListener("click", function(){
+  ga('send', 'event', 'button', 'click', 'share-button');
+}, true);
+
+settingsButtonEl.addEventListener("click", function(){
+  ga('send', 'event', 'button', 'click', 'settings-button');
+}, true);

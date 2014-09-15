@@ -561,9 +561,13 @@ shareButtonEl.onclick = function emailSelectedHours() {
 
 // Analytics Stuff
 shareButtonEl.addEventListener("click", function(){
-  ga('send', 'event', 'button', 'click', 'share-button');
+  ga('send', 'event', 'button', 'click', 'Email');
 }, true);
 
 settingsButtonEl.addEventListener("click", function(){
-  ga('send', 'event', 'button', 'click', 'settings-button');
+  ga('send', 'event', 'button', 'click', 'Open Settings');
+}, true);
+
+timeFormatButtonEl.addEventListener("click", function(){
+  ga('send', 'event', 'button', 'click', 'Switch Time Format');
 }, true);

@@ -13,6 +13,7 @@ var cityOptions = {
   "uscentral":     ["US Central",      "US/Central"],
   "austin":        ["Austin",          "US/Central"],
   "jamaica":       ["Jamaica",         "America/Jamaica"],
+  "caracas":       ["Caracas",         "America/Caracas"],
   "lapaz":         ["La Paz",          "America/La_Paz"],
   "havana":        ["Havana",          "America/Havana"],
   "detroit":       ["Detroit",         "America/Detroit"],

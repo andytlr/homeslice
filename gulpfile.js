@@ -22,7 +22,8 @@ gulp.task('manifest', function(){
     .pipe(manifest({
       hash: true,
       timestamp: false,
-      filename: 'homeslice.appcache'
+      filename: 'homeslice.appcache',
+      exclude: 'assets/screenshots.png'
      }))
     .pipe(gulp.dest(''));
 });

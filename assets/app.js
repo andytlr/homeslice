@@ -92,7 +92,7 @@ cities = {}
 // Setup
 var defaultCities           = "melbourne,sanfrancisco,"
 var interval                = 500
-var hoursInTheFuture        = 24 * 7
+var hoursInTheFuture        = 24 * 7 * 2
                             // Regex to match if a time difference is plus or minus 30min.
                             // E.g. Adelaide is +0930.
 var plusOrMinusThirty       = /(\+|\-)\d{2}3\d{1}/g

@@ -8,6 +8,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', 'Roboto',  sans-serif;
+  font-family: 'Helvetica Neue', 'Helvetica', 'Roboto',  sans-serif;
+  font-weight: 300;
   overflow-x: hidden;
   background: #fff;
   -webkit-user-select: none;
@@ -198,10 +200,10 @@ noscript h1 {
   height: 4.4rem;
   overflow: hidden;
   font-size: 1.6rem;
-  background: hsl(268, 77%, 45%);
+  background: hsl(0, 0%, 10%);
   color: hsl(0, 0%, 100%);
   z-index: 1;
-  font-weight: normal;
+  font-weight: 300;
   padding-left: 1rem;
   padding-right: 1rem;
   white-space: nowrap;
@@ -270,7 +272,7 @@ noscript h1 {
 }
 
 .hour.current {
-  background: hsl(268, 77%, 38%);
+  background: hsl(0, 0%, 15%);
   color: hsl(0, 0%, 100%);
   border: none;
   -webkit-user-select: text;
@@ -312,8 +314,8 @@ noscript h1 {
 #sharebutton {
   display: table-cell;
   text-align: center;
-  background: hsl(160, 100%, 30%);
-  color: #fff;
+  background: hsl(0, 0%, 10%);
+  color: hsl(0, 0%, 100%);
   z-index: 2;
   overflow: hidden;
   font-size: 1.3rem;

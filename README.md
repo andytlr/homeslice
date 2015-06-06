@@ -38,5 +38,3 @@ Homeslice is licensed under a [Creative Commons Attribution-NonCommercial 4.0 In
 [3]: http://creativecommons.org/licenses/by-nc/4.0/
 [4]: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 [5]: http://nodejs.org
-
-Test adding some stuff to the end.

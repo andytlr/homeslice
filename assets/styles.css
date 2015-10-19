@@ -7,7 +7,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', 'Roboto',  sans-serif;
+  font-family: -apple-system, 'Avenir Next', 'Helvetica Neue', 'Helvetica', 'Roboto',  sans-serif;
   overflow-x: hidden;
   background: #fff;
   -webkit-user-select: none;

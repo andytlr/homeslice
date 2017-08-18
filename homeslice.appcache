@@ -5,7 +5,7 @@ CACHE:
 index.html
 assets/app.js
 vendor/fastclick.min.js
-vendor/moment-timezone-with-data-2010-2020.min.js
+vendor/moment-timezone-with-data-2012-2022.min.js
 vendor/moment.min.js
 assets/styles.css
 assets/favicon.png
@@ -15,4 +15,4 @@ assets/icon.png
 NETWORK:
 *
 
-# hash: 90db8742787f31a1f24feb71185170a49783bac812412d4a60136f245baba371
+# hash: d9c340a849136aa55323f9f81ef3102b7c6167dc8ce45a6e3d42e635db58dbdf

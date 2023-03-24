@@ -8,24 +8,11 @@ I used [Moment Timezone][1] which uses [The Time Zone Database][2] as the source
 
 > The Time Zone Database (often called tz or zoneinfo) contains code and data that represent the history of local time for many representative locations around the globe. It is updated periodically to reflect changes made by political bodies to time zone boundaries, UTC offsets, and daylight-saving rules.
 
-Moment Timezone provides a copy of this data from 2010–2020. So times *should* update correctly with daylight savings.
+As of March 2023 the original 10 year timezone data file was out of date. I've updated it so hopefully it's good for another decade or more.
 
 ## Adding Cities
 
 If you'd like to request a city, please check out the [list of timezones in the database][4]. Sending me the zone name, e.g. `America/Los_Angeles` is super helpful.
-
-## Development
-
-1. Install [Node][5].
-2. Install gulp globally `sudo npm install --global gulp`
-3. Install NPM dependencies in the project directory `sudo npm install`.
-4. `gulp` to start a local server and watch changes.
-5. Open <http://localhost:8000>
-
-### Disabling Application Cache for Development in Chrome
-
-1. Remove `manifest="homeslice.appcache"` from `<html lang="en" manifest="homeslice.appcache">`.
-2. Visit <chrome://appcache-internals/> and delete the cache.
 
 ## License
 
